@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta charset="utf-8">
+  <title>Nolan Family Lawyers &amp; Mediation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #F7F4EF; }
+    body { font-family: 'Instrument Sans', sans-serif; color: #1C2B3A; -webkit-font-smoothing: antialiased; }
+    a { color: #A9552F; text-decoration: none; }
+    a:hover { color: #8F4525; text-decoration: underline; text-underline-offset: 2px; }
+    @media (max-width: 860px) {
+      [data-nav-links] { display: none !important; }
+      [data-section] { padding-top: 80px !important; padding-bottom: 80px !important; }
+    }
+  </style>
+</helmet>
+
+<div style="background: #F7F4EF; min-width: 320px;">
+
+  <!-- ============ NAV ============ -->
+  <header data-screen-label="Navigation" style="position: sticky; top: 0; z-index: 50; background: rgba(247,244,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #E5DFD4;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+      <div style="display: flex; flex-direction: column; line-height: 1;">
+        <span style="font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; color: #16283A; letter-spacing: 0.01em;">Nolan</span>
+        <span style="font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #5D6873; margin-top: 4px;">Family Law &amp; Mediation</span>
+      </div>
+      <nav data-nav-links="true" style="display: flex; align-items: center; gap: 36px;">
+        <a href="#" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">About</a>
+        <a href="#" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Services</a>
+        <a href="#" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Mediation</a>
+        <a href="#" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Resources</a>
+        <a href="#" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Contact</a>
+      </nav>
+      <a href="#" style="background: {{ accent }}; color: #FCFBF8; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; padding: 12px 24px; border-radius: 2px; white-space: nowrap; transition: background 180ms ease-out;" style-hover="background: {{ accentHover }}; color: #FCFBF8; text-decoration: none;">Schedule a Consultation</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section data-screen-label="Hero" data-section="true" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 128px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 64px; align-items: center;">
+      <div style="flex: 1 1 440px; min-width: 300px;">
+        <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #5D6873; margin-bottom: 24px;">Family Law Specialists — Sydney &amp; Melbourne</div>
+        <h1 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(44px, 6vw, 68px); line-height: 1.05; letter-spacing: -0.01em; color: #16283A; margin: 0 0 24px;">Clarity.<br>Compassion.<br>Resolution.</h1>
+        <p style="font-size: 19px; line-height: 1.65; color: #5D6873; max-width: 46ch; margin: 0 0 40px; text-wrap: pretty;">An award-winning family law firm, recognised by Doyle's Guide every year since 2023 — for measured, decisive advice through the hardest chapters of family life.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+          <a href="#" style="background: {{ accent }}; color: #FCFBF8; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; padding: 16px 32px; border-radius: 2px; transition: all 180ms ease-out;" style-hover="background: {{ accentHover }}; color: #FCFBF8; text-decoration: none; transform: translateY(-1px);">Schedule a Consultation</a>
+          <a href="#" style="border: 1px solid #16283A; color: #16283A; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; padding: 16px 32px; border-radius: 2px; transition: all 180ms ease-out;" style-hover="background: #16283A; color: #FCFBF8; text-decoration: none;">Our Approach</a>
+        </div>
+      </div>
+      <div style="flex: 1 1 400px; min-width: 300px; height: 520px;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="hero-team" shape="rounded" radius="4" placeholder="Team photograph — natural light, warm tones" hint-size="100%,520px"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RECOGNITION STRIP ============ -->
+  <sc-if value="{{ showDoylesStrip }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Recognition strip" style="border-top: 1px solid #E5DFD4; border-bottom: 1px solid #E5DFD4; background: #FCFBF8;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px 56px;">
+        <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #5D6873;">Recognised by Doyle's Guide</span>
+        <span style="font-family: 'Newsreader', serif; font-size: 18px; color: #16283A;">2023 · 2024 · 2025 · 2026</span>
+        <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #5D6873;">Family Law · Parenting Law · Property Matters</span>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ INTRO ============ -->
+  <section data-screen-label="Introduction" data-section="true" style="max-width: 1200px; margin: 0 auto; padding: 128px 24px;">
+    <div style="max-width: 760px;">
+      <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">The Firm</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(30px, 4vw, 40px); line-height: 1.2; color: #16283A; margin: 0 0 24px; text-wrap: pretty;">Strength and precision, without posturing.</h2>
+      <p style="font-size: 19px; line-height: 1.65; color: #5D6873; margin: 0; text-wrap: pretty;">Our team of Accredited Family Law Specialists prepares every matter as though it will be scrutinised by a judge — so whether you are negotiating a resolution or advancing to court, you are always strategically positioned. Measured, decisive, and highly effective: we combine clear advice and disciplined strategy to protect your rights, assets, and long-term interests.</p>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICE AREAS ============ -->
+  <section data-screen-label="Practice areas" data-section="true" style="background: #FCFBF8; border-top: 1px solid #E5DFD4;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 128px 24px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 64px;">
+        <div>
+          <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 24px;">Practice Areas</div>
+          <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(30px, 4vw, 40px); line-height: 1.2; color: #16283A; margin: 0;">How we can help</h2>
+        </div>
+        <a href="#" style="font-size: 15px; font-weight: 500;">All family law services →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+
+        <div style="background: #FCFBF8; border: 1px solid #E5DFD4; border-radius: 2px; padding: 32px; transition: all 180ms ease-out;" style-hover="box-shadow: 0 12px 32px rgba(13,27,41,0.08); border-color: rgba(22,40,58,0.3);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Property Settlements</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #5D6873; margin: 0 0 24px;">Complex financial settlements handled with rigour — from family homes to business interests and trusts.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500;">Learn more →</a>
+        </div>
+
+        <div style="background: #FCFBF8; border: 1px solid #E5DFD4; border-radius: 2px; padding: 32px; transition: all 180ms ease-out;" style-hover="box-shadow: 0 12px 32px rgba(13,27,41,0.08); border-color: rgba(22,40,58,0.3);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Parenting Matters</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #5D6873; margin: 0 0 24px;">Support and empathy for every parenting arrangement — including high-conflict matters and child custody.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500;">Learn more →</a>
+        </div>
+
+        <div style="background: #FCFBF8; border: 1px solid #E5DFD4; border-radius: 2px; padding: 32px; transition: all 180ms ease-out;" style-hover="box-shadow: 0 12px 32px rgba(13,27,41,0.08); border-color: rgba(22,40,58,0.3);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Mediation &amp; Dispute Resolution</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #5D6873; margin: 0 0 24px;">Resolve matters without a final hearing wherever possible — guided by experienced, accredited mediators.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500;">Learn more →</a>
+        </div>
+
+        <div style="background: #FCFBF8; border: 1px solid #E5DFD4; border-radius: 2px; padding: 32px; transition: all 180ms ease-out;" style-hover="box-shadow: 0 12px 32px rgba(13,27,41,0.08); border-color: rgba(22,40,58,0.3);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Divorce &amp; Separation</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #5D6873; margin: 0 0 24px;">Clear guidance through one of life's most difficult transitions, with compassion and experience.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500;">Learn more →</a>
+        </div>
+
+        <div style="background: #FCFBF8; border: 1px solid #E5DFD4; border-radius: 2px; padding: 32px; transition: all 180ms ease-out;" style-hover="box-shadow: 0 12px 32px rgba(13,27,41,0.08); border-color: rgba(22,40,58,0.3);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Financial Agreements</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #5D6873; margin: 0 0 24px;">Binding financial and prenuptial agreements that protect what matters, drafted to withstand scrutiny.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500;">Learn more →</a>
+        </div>
+
+        <div style="background: #FCFBF8; border: 1px solid #E5DFD4; border-radius: 2px; padding: 32px; transition: all 180ms ease-out;" style-hover="box-shadow: 0 12px 32px rgba(13,27,41,0.08); border-color: rgba(22,40,58,0.3);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">De Facto Relationships</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #5D6873; margin: 0 0 24px;">Navigating the added complexity of de facto matters to ensure you receive a fair settlement.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500;">Learn more →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST / RECOGNITION ============ -->
+  <section data-screen-label="Recognition" data-section="true" style="background: #0D1B29;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 128px 24px; display: flex; flex-wrap: wrap; gap: 64px;">
+      <div style="flex: 1 1 400px; min-width: 300px;">
+        <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #B08D57; margin-bottom: 24px;">Recognition</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(30px, 4vw, 40px); line-height: 1.2; color: #EDE8DF; margin: 0 0 24px; text-wrap: pretty;">Recognised by our peers, every year since 2023.</h2>
+        <p style="font-size: 17px; line-height: 1.65; color: rgba(237,232,223,0.7); margin: 0 0 40px; max-width: 52ch; text-wrap: pretty;">Doyle's Guide rankings reflect our standing within the legal profession and the trust placed in us by peers and clients alike. Our Principal, Tash Nolan, has been individually recognised each year — acknowledging her leadership, advocacy, and expertise in family law.</p>
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="tash-portrait" shape="circle" placeholder="Portrait" style="width: 72px; height: 72px; flex: none;" hint-size="72px,72px"></x-import>
+          <div>
+            <div style="font-family: 'Newsreader', serif; font-size: 20px; color: #EDE8DF;">Tash Nolan</div>
+            <div style="font-size: 14px; color: rgba(237,232,223,0.6);">Principal · Accredited Family Law Specialist</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1 1 380px; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 24px 0; border-top: 1px solid rgba(176,141,87,0.35);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #EDE8DF;">2026</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,223,0.65); text-align: right;">Recommended — Family &amp; Parenting Law</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 24px 0; border-top: 1px solid rgba(176,141,87,0.35);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #EDE8DF;">2025</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,223,0.65); text-align: right;">Leading — Parenting &amp; Children's Matters</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 24px 0; border-top: 1px solid rgba(176,141,87,0.35);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #EDE8DF;">2024</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,223,0.65); text-align: right;">Leading — Family Law, Sydney</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 24px 0; border-top: 1px solid rgba(176,141,87,0.35); border-bottom: 1px solid rgba(176,141,87,0.35);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #EDE8DF;">2023</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(237,232,223,0.65); text-align: right;">Recommended — Family Law, Sydney</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section data-screen-label="Testimonial" data-section="true" style="max-width: 1200px; margin: 0 auto; padding: 128px 24px;">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{ accent }}; margin-bottom: 32px;">Client Experiences</div>
+      <blockquote style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(24px, 3.4vw, 32px); line-height: 1.4; color: #16283A; margin: 0 0 32px; text-wrap: pretty;">"Incredibly patient, professional, and understanding throughout what was a very difficult and emotional time. I always felt informed and in control of my own matter."</blockquote>
+      <div style="font-size: 14px; color: #5D6873;">Google review · ★★★★★ · 5.0 from verified clients</div>
+    </div>
+  </section>
+
+  <!-- ============ CONSULTATION CTA ============ -->
+  <section data-screen-label="Consultation CTA" data-section="true" style="background: #16283A;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 112px 24px; text-align: center;">
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(32px, 4.5vw, 44px); line-height: 1.15; color: #EDE8DF; margin: 0 auto 24px; max-width: 22ch; text-wrap: pretty;">Discuss your family law needs with our dedicated team.</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: rgba(237,232,223,0.7); max-width: 56ch; margin: 0 auto 40px; text-wrap: pretty;">After a consultation you will walk away with answers specific to your situation, a clear plan around timelines and costs, and the confidence to tackle what comes next.</p>
+      <a href="#" style="display: inline-block; background: {{ accent }}; color: #FCFBF8; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; padding: 16px 40px; border-radius: 2px; transition: all 180ms ease-out;" style-hover="background: {{ accentHover }}; color: #FCFBF8; text-decoration: none; transform: translateY(-1px);">Schedule a Consultation</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer data-screen-label="Footer" style="background: #0D1B29; border-top: 1px solid rgba(237,232,223,0.1);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 48px; display: flex; flex-wrap: wrap; gap: 48px 96px;">
+      <div style="flex: 2 1 280px;">
+        <div style="font-family: 'Newsreader', serif; font-size: 26px; font-weight: 500; color: #EDE8DF; line-height: 1;">Nolan</div>
+        <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(237,232,223,0.5); margin: 6px 0 24px;">Family Law &amp; Mediation</div>
+        <p style="font-size: 14px; line-height: 1.6; color: rgba(237,232,223,0.6); max-width: 36ch; margin: 0;">Award-winning family law and mediation specialists in Sydney &amp; Melbourne.</p>
+      </div>
+      <div style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,223,0.45); margin-bottom: 8px;">Quick Links</div>
+        <a href="#" style="color: rgba(237,232,223,0.75); font-size: 14px;">Our Team</a>
+        <a href="#" style="color: rgba(237,232,223,0.75); font-size: 14px;">Family Law Services</a>
+        <a href="#" style="color: rgba(237,232,223,0.75); font-size: 14px;">Mediation Services</a>
+        <a href="#" style="color: rgba(237,232,223,0.75); font-size: 14px;">Contact</a>
+      </div>
+      <div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 24px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,223,0.45); margin-bottom: 8px;">Sydney</div>
+          <div style="font-size: 14px; line-height: 1.6; color: rgba(237,232,223,0.75);">Suite 3, Level 22, 25 Bligh St<br>Sydney NSW 2000<br>(02) 8014 5883</div>
+        </div>
+        <sc-if value="{{ showMelbourne }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(237,232,223,0.45); margin-bottom: 8px;">Melbourne</div>
+            <div style="font-size: 14px; line-height: 1.6; color: rgba(237,232,223,0.75);">Level 23/385 Bourke St<br>Melbourne VIC 3000<br>(03) 9088 8889</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(237,232,223,0.1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;">
+      <span style="font-size: 13px; color: rgba(237,232,223,0.4);">© Nolan Family Law &amp; Mediation. All rights reserved.</span>
+      <a href="#" style="font-size: 13px; color: rgba(237,232,223,0.4);">Privacy Policy</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#A9552F&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#A9552F&quot;, &quot;#8A6D3B&quot;, &quot;#3E5C76&quot;], &quot;section&quot;: &quot;Brand&quot; },
+  &quot;showDoylesStrip&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot; },
+  &quot;showMelbourne&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#A9552F';
+    return {
+      accent,
+      accentHover: this.darken(accent),
+      showDoylesStrip: this.props.showDoylesStrip ?? true,
+      showMelbourne: this.props.showMelbourne ?? true,
+    };
+  }
+  darken(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    const f = (v) => Math.max(0, Math.round(v * 0.82));
+    const r = f((n >> 16) & 255), g = f((n >> 8) & 255), b = f(n & 255);
+    return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+  }
+}
+</script>
+</body>
+</html>

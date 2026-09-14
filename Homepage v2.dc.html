@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta charset="utf-8">
+  <title>Nolan Family Lawyers &amp; Mediation — Sydney</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #FFFFFF; }
+    body { font-family: 'Instrument Sans', sans-serif; color: #1C2B3A; -webkit-font-smoothing: antialiased; }
+    a { color: #3E5C76; text-decoration: none; }
+    a:hover { color: #2C455C; text-decoration: underline; text-underline-offset: 3px; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: #3E5C76; color: #FFFFFF; }
+    :focus-visible { outline: 2px solid #3E5C76; outline-offset: 3px; border-radius: 2px; }
+    [data-hero-img] { animation: heroSettle 1600ms cubic-bezier(0.23,1,0.32,1) both; }
+    @keyframes heroSettle { from { transform: scale(1.06); } to { transform: scale(1); } }
+    [data-navlink] { position: relative; }
+    [data-navlink]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: #3E5C76; transform: scaleX(0); transform-origin: left; transition: transform 220ms cubic-bezier(0.23,1,0.32,1); }
+    [data-navlink]:hover { text-decoration: none; }
+    [data-nav][data-scrolled] [data-navbar] { height: 64px; }
+    [data-nav][data-scrolled] { box-shadow: 0 8px 28px rgba(15,32,51,0.07); }
+    [data-zoom] { overflow: hidden; min-width: 0; }
+    [data-section] > div > div, [data-section] > div { min-width: 0; }
+    [data-zoom] > * { transition: transform 640ms cubic-bezier(0.23,1,0.32,1); }
+    @media (hover: hover) and (pointer: fine) {
+      [data-navlink]:hover::after { transform: scaleX(1); }
+      [data-zoom]:hover > * { transform: scale(1.03); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-hero-img] { animation: none; }
+      [data-zoom]:hover > * { transform: none; }
+    }
+    [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity 520ms cubic-bezier(0.23,1,0.32,1), transform 520ms cubic-bezier(0.23,1,0.32,1); }
+    [data-reveal][data-in] { opacity: 1; transform: none; }
+    [data-clip] { clip-path: inset(0 0 100% 0); transition: clip-path 760ms cubic-bezier(0.23,1,0.32,1); }
+    [data-clip][data-in] { clip-path: inset(0 0 0 0); }
+    [data-press] { transition: transform 160ms cubic-bezier(0.23,1,0.32,1), background-color 160ms ease, color 160ms ease, border-color 160ms ease; }
+    [data-press]:active { transform: scale(0.975); }
+    @media (hover: hover) and (pointer: fine) {
+      [data-card]:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(15,32,51,0.10); border-color: rgba(62,92,118,0.45); }
+      [data-card]:hover [data-arrow] { transform: translateX(4px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { transform: none; transition: opacity 220ms ease; }
+      [data-clip] { clip-path: none; transition: none; }
+      [data-card]:hover { transform: none !important; }
+    }
+    @media (max-width: 900px) {
+      [data-nav-links] { display: none !important; }
+      [data-section] { padding-top: 80px !important; padding-bottom: 80px !important; }
+    }
+  </style>
+</helmet>
+
+<div style="background: #FFFFFF; min-width: 320px; overflow-x: hidden;">
+
+  <header data-screen-label="Navigation" data-nav="true" style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid #E3EAF0; transition: box-shadow 240ms cubic-bezier(0.23,1,0.32,1);">
+    <div data-navbar="true" style="max-width: 1240px; margin: 0 auto; padding: 0 24px; height: 78px; transition: height 240ms cubic-bezier(0.23,1,0.32,1); display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+      <div style="display: flex; flex-direction: column; line-height: 1;">
+        <span style="font-family: 'Newsreader', serif; font-size: 28px; font-weight: 500; color: #16283A; letter-spacing: 0.01em;">Nolan</span>
+        <span style="font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #5A6875; margin-top: 5px;">Family Law &amp; Mediation</span>
+      </div>
+      <nav data-nav-links="true" style="display: flex; align-items: center; gap: 34px;">
+        <a href="#" data-navlink="true" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">About</a>
+        <a href="#" data-navlink="true" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Services</a>
+        <a href="#" data-navlink="true" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Mediation</a>
+        <a href="#" data-navlink="true" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Resources</a>
+        <a href="#" data-navlink="true" style="color: #1C2B3A; font-size: 15px; font-weight: 500;">Contact</a>
+      </nav>
+      <a href="#" data-press="true" style="background: #3E5C76; color: #FFFFFF; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; padding: 12px 24px; border-radius: 2px; white-space: nowrap;" style-hover="background: #2C455C; color: #FFFFFF; text-decoration: none;">Book a Consultation</a>
+    </div>
+  </header>
+
+  <section data-screen-label="Hero" style="position: relative; min-height: 660px; height: 84vh; max-height: 860px; display: flex; align-items: flex-end; background: #0F2033;">
+    <div data-hero-img="true" style="position: absolute; inset: 0; overflow: hidden;">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="hero-sydney-family" src="./placeholders/hero-sydney-family.png" shape="rect" placeholder="Wide hero — a family together, Sydney light (harbour, terrace street, park). Warm, candid, not corporate." hint-size="100%,100%"></x-import>
+    </div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,32,51,0.72) 0%, rgba(15,32,51,0.42) 38%, rgba(15,32,51,0.88) 100%);"></div>
+    <div style="position: relative; width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px 96px;">
+      <div data-reveal="true" style="font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #A9C4D8; margin-bottom: 24px;">Family Law &amp; Mediation · Sydney &amp; Melbourne</div>
+      <h1 data-reveal="true" style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(48px, 7vw, 82px); line-height: 1.02; letter-spacing: -0.015em; color: #FFFFFF; margin: 0 0 28px; max-width: 14ch; text-wrap: pretty;">Clarity. Compassion. Resolution.</h1>
+      <p data-reveal="true" style="font-size: 19px; line-height: 1.65; color: rgba(230,237,243,0.86); max-width: 50ch; margin: 0 0 40px; text-wrap: pretty;">For twenty years we have guided families in Sydney and Melbourne through separation with steady advice and genuine care — recognised by Doyle's Guide every year since 2023.</p>
+      <div data-reveal="true" style="display: flex; flex-wrap: wrap; gap: 14px;">
+        <a href="#" data-press="true" style="background: #FFFFFF; color: #16283A; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; padding: 17px 34px; border-radius: 2px;" style-hover="background: #E6EDF3; color: #16283A; text-decoration: none;">Book a Consultation</a>
+        <a href="#" data-press="true" style="border: 1px solid rgba(255,255,255,0.45); color: #FFFFFF; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; padding: 17px 34px; border-radius: 2px;" style-hover="background: rgba(255,255,255,0.12); color: #FFFFFF; text-decoration: none; border-color: rgba(255,255,255,0.8);">How mediation works</a>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showDoylesStrip }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Recognition strip" style="background: #16283A;">
+      <div style="max-width: 1240px; margin: 0 auto; padding: 26px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 48px;">
+        <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #8FB0C9;">Recognised by Doyle's Guide</span>
+        <span style="font-family: 'Newsreader', serif; font-size: 19px; color: #FFFFFF; letter-spacing: 0.04em;">2023 · 2024 · 2025 · 2026</span>
+        <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(230,237,243,0.6);">Family Law · Parenting · Property</span>
+      </div>
+    </section>
+  </sc-if>
+
+  <section data-screen-label="Introduction" data-section="true" style="max-width: 1240px; margin: 0 auto; padding: 128px 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 72px; align-items: center; min-width: 0;">
+      <div data-reveal="true">
+        <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #3E5C76; margin-bottom: 22px;">The Firm</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(32px, 4vw, 44px); line-height: 1.18; color: #16283A; margin: 0 0 24px; text-wrap: pretty;">Behind every matter is a person having a very hard year.</h2>
+        <p style="font-size: 19px; line-height: 1.68; color: #5A6875; margin: 0 0 20px; max-width: 52ch; text-wrap: pretty;">We prepare every matter as though a judge will read it — so whether you settle at the kitchen table or advance to court, you are strategically positioned from day one.</p>
+        <p style="font-size: 19px; line-height: 1.68; color: #5A6875; margin: 0 0 32px; max-width: 52ch; text-wrap: pretty;">But rigour is only half the job. The other half is answering the call, explaining the next step plainly, and making sure you never feel like a file number.</p>
+        <a href="#" style="font-size: 15px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">Meet the team <span data-arrow="true" style="display: inline-block; transition: transform 200ms cubic-bezier(0.23,1,0.32,1);">→</span></a>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; min-width: 0;">
+        <div data-clip="true" data-zoom="true" data-minw="true" style="grid-row: span 2; height: 480px; border-radius: 3px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="intro-parent-child" src="./placeholders/intro-parent-child.png" shape="rounded" radius="3" placeholder="Parent and child, quiet moment — natural light" hint-size="100%,480px"></x-import>
+        </div>
+        <div data-clip="true" style="height: 232px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="intro-consult" src="./placeholders/intro-consult.png" shape="rounded" radius="3" placeholder="Lawyer listening to a client across a table" hint-size="100%,232px"></x-import>
+        </div>
+        <div data-clip="true" style="height: 232px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="intro-sydney" src="./placeholders/intro-sydney.png" shape="rounded" radius="3" placeholder="Sydney detail — Bligh St, harbour, or inner-west street" hint-size="100%,232px"></x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Practice areas" data-section="true" style="background: #F1F5F8; border-top: 1px solid #E3EAF0; border-bottom: 1px solid #E3EAF0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px;">
+      <div data-reveal="true" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 56px;">
+        <div>
+          <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #3E5C76; margin-bottom: 22px;">Practice Areas</div>
+          <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(32px, 4vw, 44px); line-height: 1.18; color: #16283A; margin: 0;">How we can help</h2>
+        </div>
+        <a href="#" style="font-size: 15px; font-weight: 500;">All family law services →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px;">
+        <div data-reveal="true" data-card="true" style="background: #FFFFFF; border: 1px solid #DCE4EB; border-radius: 3px; padding: 32px; transition: transform 220ms cubic-bezier(0.23,1,0.32,1), box-shadow 220ms cubic-bezier(0.23,1,0.32,1), border-color 220ms ease, opacity 520ms cubic-bezier(0.23,1,0.32,1);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Parenting &amp; Children</h3>
+          <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0 0 24px;">Arrangements that hold up — built around your children first, including high-conflict and relocation matters.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500; display: inline-flex; gap: 8px;">Learn more <span data-arrow="true" style="display: inline-block; transition: transform 200ms cubic-bezier(0.23,1,0.32,1);">→</span></a>
+        </div>
+        <div data-reveal="true" data-card="true" style="background: #FFFFFF; border: 1px solid #DCE4EB; border-radius: 3px; padding: 32px; transition: transform 220ms cubic-bezier(0.23,1,0.32,1), box-shadow 220ms cubic-bezier(0.23,1,0.32,1), border-color 220ms ease, opacity 520ms cubic-bezier(0.23,1,0.32,1);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Property Settlements</h3>
+          <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0 0 24px;">Complex financial settlements handled with rigour — family homes, business interests, trusts and super.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500; display: inline-flex; gap: 8px;">Learn more <span data-arrow="true" style="display: inline-block; transition: transform 200ms cubic-bezier(0.23,1,0.32,1);">→</span></a>
+        </div>
+        <div data-reveal="true" data-card="true" style="background: #FFFFFF; border: 1px solid #DCE4EB; border-radius: 3px; padding: 32px; transition: transform 220ms cubic-bezier(0.23,1,0.32,1), box-shadow 220ms cubic-bezier(0.23,1,0.32,1), border-color 220ms ease, opacity 520ms cubic-bezier(0.23,1,0.32,1);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Mediation</h3>
+          <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0 0 24px;">Resolve matters without a final hearing wherever possible, guided by nationally accredited mediators.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500; display: inline-flex; gap: 8px;">Learn more <span data-arrow="true" style="display: inline-block; transition: transform 200ms cubic-bezier(0.23,1,0.32,1);">→</span></a>
+        </div>
+        <div data-reveal="true" data-card="true" style="background: #FFFFFF; border: 1px solid #DCE4EB; border-radius: 3px; padding: 32px; transition: transform 220ms cubic-bezier(0.23,1,0.32,1), box-shadow 220ms cubic-bezier(0.23,1,0.32,1), border-color 220ms ease, opacity 520ms cubic-bezier(0.23,1,0.32,1);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Divorce &amp; Separation</h3>
+          <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0 0 24px;">Clear guidance through the practical and legal steps, at a pace you can actually manage.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500; display: inline-flex; gap: 8px;">Learn more <span data-arrow="true" style="display: inline-block; transition: transform 200ms cubic-bezier(0.23,1,0.32,1);">→</span></a>
+        </div>
+        <div data-reveal="true" data-card="true" style="background: #FFFFFF; border: 1px solid #DCE4EB; border-radius: 3px; padding: 32px; transition: transform 220ms cubic-bezier(0.23,1,0.32,1), box-shadow 220ms cubic-bezier(0.23,1,0.32,1), border-color 220ms ease, opacity 520ms cubic-bezier(0.23,1,0.32,1);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">Financial Agreements</h3>
+          <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0 0 24px;">Binding financial and pre-nuptial agreements, drafted to withstand scrutiny years from now.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500; display: inline-flex; gap: 8px;">Learn more <span data-arrow="true" style="display: inline-block; transition: transform 200ms cubic-bezier(0.23,1,0.32,1);">→</span></a>
+        </div>
+        <div data-reveal="true" data-card="true" style="background: #FFFFFF; border: 1px solid #DCE4EB; border-radius: 3px; padding: 32px; transition: transform 220ms cubic-bezier(0.23,1,0.32,1), box-shadow 220ms cubic-bezier(0.23,1,0.32,1), border-color 220ms ease, opacity 520ms cubic-bezier(0.23,1,0.32,1);">
+          <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; color: #16283A; margin: 0 0 12px;">De Facto Relationships</h3>
+          <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0 0 24px;">The added complexity of de facto matters, handled so you receive a fair settlement.</p>
+          <a href="#" style="font-size: 15px; font-weight: 500; display: inline-flex; gap: 8px;">Learn more <span data-arrow="true" style="display: inline-block; transition: transform 200ms cubic-bezier(0.23,1,0.32,1);">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Who we act for" data-section="true" style="max-width: 1240px; margin: 0 auto; padding: 128px 24px;">
+    <div data-reveal="true" style="max-width: 720px; margin: 0 0 56px;">
+      <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #3E5C76; margin-bottom: 22px;">Who we act for</div>
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(32px, 4vw, 44px); line-height: 1.18; color: #16283A; margin: 0; text-wrap: pretty;">Sydney and Melbourne families, in every shape they come.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div data-reveal="true">
+        <div data-clip="true" data-zoom="true" data-minw="true" style="height: 380px; margin-bottom: 20px; border-radius: 3px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="people-coparents" src="./placeholders/people-coparents.png" shape="rounded" radius="3" placeholder="Co-parents at a school gate or park handover" hint-size="100%,380px"></x-import>
+        </div>
+        <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 21px; color: #16283A; margin: 0 0 8px;">Parents finding a new normal</h3>
+        <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0; max-width: 40ch;">Week-about, school holidays, changeovers that don't turn into arguments.</p>
+      </div>
+      <div data-reveal="true">
+        <div data-clip="true" data-zoom="true" data-minw="true" style="height: 380px; margin-bottom: 20px; border-radius: 3px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="people-partners" src="./placeholders/people-partners.png" shape="rounded" radius="3" placeholder="Person alone at home, considered — beginning a separation" hint-size="100%,380px"></x-import>
+        </div>
+        <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 21px; color: #16283A; margin: 0 0 8px;">Partners starting again</h3>
+        <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0; max-width: 40ch;">Married or de facto — a fair split of the home, the super and the business.</p>
+      </div>
+      <div data-reveal="true">
+        <div data-clip="true" data-zoom="true" data-minw="true" style="height: 380px; margin-bottom: 20px; border-radius: 3px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="people-grandparents" src="./placeholders/people-grandparents.png" shape="rounded" radius="3" placeholder="Grandparent with grandchild, Sydney backyard" hint-size="100%,380px"></x-import>
+        </div>
+        <h3 style="font-family: 'Newsreader', serif; font-weight: 500; font-size: 21px; color: #16283A; margin: 0 0 8px;">Grandparents and carers</h3>
+        <p style="font-size: 16px; line-height: 1.62; color: #5A6875; margin: 0; max-width: 40ch;">Standing to be heard when a child's care sits outside the parents.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Recognition" data-section="true" style="background: #0F2033;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 72px;">
+      <div data-reveal="true">
+        <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #8FB0C9; margin-bottom: 22px;">Recognition</div>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(32px, 4vw, 44px); line-height: 1.18; color: #FFFFFF; margin: 0 0 24px; text-wrap: pretty;">Recognised by our peers, every year since 2023.</h2>
+        <p style="font-size: 17px; line-height: 1.68; color: rgba(230,237,243,0.7); margin: 0 0 40px; max-width: 50ch; text-wrap: pretty;">Doyle's Guide rankings reflect our standing within the profession and the trust placed in us by peers and clients alike. Our Principal, Tash Nolan, has been individually recognised each year.</p>
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="tash-portrait" src="./placeholders/tash-portrait.png" shape="circle" placeholder="Portrait" style="width: 76px; height: 76px; flex: none;" hint-size="76px,76px"></x-import>
+          <div>
+            <div style="font-family: 'Newsreader', serif; font-size: 20px; color: #FFFFFF;">Tash Nolan</div>
+            <div style="font-size: 14px; color: rgba(230,237,243,0.6);">Principal · Accredited Family Law Specialist</div>
+          </div>
+        </div>
+      </div>
+      <div data-reveal="true" style="display: flex; flex-direction: column; justify-content: center;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(143,176,201,0.28);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #FFFFFF; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2026</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(230,237,243,0.62); text-align: right;">Recommended — Family &amp; Parenting Law</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(143,176,201,0.28);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #FFFFFF; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2025</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(230,237,243,0.62); text-align: right;">Leading — Parenting &amp; Children's Matters</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(143,176,201,0.28);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #FFFFFF; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2024</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(230,237,243,0.62); text-align: right;">Leading — Family Law, Sydney</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(143,176,201,0.28); border-bottom: 1px solid rgba(143,176,201,0.28);">
+          <span style="font-family: 'Newsreader', serif; font-size: 28px; color: #FFFFFF; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;">2023</span>
+          <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(230,237,243,0.62); text-align: right;">Recommended — Family Law, Sydney</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Testimonial" data-section="true" style="background: #FFFFFF;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 112px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 64px; align-items: center;">
+      <div data-clip="true" data-zoom="true" data-minw="true" style="height: 460px; border-radius: 3px;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="testimonial-client" src="./placeholders/testimonial-client.png" shape="rounded" radius="3" placeholder="Client portrait or hands over paperwork — soft, human, anonymous is fine" hint-size="100%,460px"></x-import>
+      </div>
+      <div data-reveal="true">
+        <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #3E5C76; margin-bottom: 28px;">Client experiences</div>
+        <blockquote style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.38; color: #16283A; margin: 0 0 28px; text-wrap: pretty;">"Incredibly patient and understanding through a very difficult time. I always felt informed and in control of my own matter."</blockquote>
+        <div style="font-size: 14px; color: #5A6875;">Google review · ★★★★★ · 5.0 from verified clients</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Consultation CTA" data-section="true" style="position: relative; background: #DCE7F0; overflow: hidden; border-top: 1px solid #E3EAF0;">
+    <div style="position: absolute; inset: 0;">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="cta-sydney" src="./placeholders/cta-sydney.png" shape="rect" placeholder="Sydney at dusk, or a family walking away together — wide, quiet" hint-size="100%,100%"></x-import>
+    </div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(220,231,240,0.97) 0%, rgba(220,231,240,0.90) 52%, rgba(220,231,240,0.55) 100%);"></div>
+    <div data-reveal="true" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 120px 24px;">
+      <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(34px, 4.6vw, 48px); line-height: 1.14; color: #16283A; margin: 0 0 24px; max-width: 20ch; text-wrap: pretty;">Talk it through with someone who has seen it before.</h2>
+      <p style="font-size: 17px; line-height: 1.68; color: #4A5A69; max-width: 52ch; margin: 0 0 40px; text-wrap: pretty;">You will leave your first consultation with answers specific to your situation, a clear view of timelines and costs, and a plan for what comes next.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+        <a href="#" data-press="true" style="background: #16283A; color: #FFFFFF; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; padding: 17px 36px; border-radius: 2px;" style-hover="background: #0F2033; color: #FFFFFF; text-decoration: none;">Book a Consultation</a>
+        <span style="color: #4A5A69; font-size: 15px;">or call <a href="tel:0280145883" style="font-weight: 500;">Sydney (02) 8014 5883</a> · <a href="tel:0390888889" style="font-weight: 500;">Melbourne (03) 9088 8889</a></span>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer" style="background: #0F2033; border-top: 1px solid rgba(230,237,243,0.1);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 80px 24px 48px; display: flex; flex-wrap: wrap; gap: 48px 96px;">
+      <div style="flex: 2 1 280px;">
+        <div style="font-family: 'Newsreader', serif; font-size: 26px; font-weight: 500; color: #FFFFFF; line-height: 1;">Nolan</div>
+        <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(230,237,243,0.5); margin: 6px 0 24px;">Family Law &amp; Mediation</div>
+        <p style="font-size: 14px; line-height: 1.6; color: rgba(230,237,243,0.6); max-width: 36ch; margin: 0;">Award-winning family law and mediation specialists, with offices in Sydney and Melbourne.</p>
+      </div>
+      <div style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(230,237,243,0.45); margin-bottom: 8px;">Quick Links</div>
+        <a href="#" style="color: rgba(230,237,243,0.75); font-size: 14px;">Our Team</a>
+        <a href="#" style="color: rgba(230,237,243,0.75); font-size: 14px;">Family Law Services</a>
+        <a href="#" style="color: rgba(230,237,243,0.75); font-size: 14px;">Mediation Services</a>
+        <a href="#" style="color: rgba(230,237,243,0.75); font-size: 14px;">Contact</a>
+      </div>
+      <div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 24px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(230,237,243,0.45); margin-bottom: 8px;">Sydney</div>
+          <div style="font-size: 14px; line-height: 1.6; color: rgba(230,237,243,0.75);">Suite 3, Level 22, 25 Bligh St<br>Sydney NSW 2000<br>(02) 8014 5883</div>
+        </div>
+        <sc-if value="{{ showMelbourne }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(230,237,243,0.45); margin-bottom: 8px;">Melbourne</div>
+            <div style="font-size: 14px; line-height: 1.6; color: rgba(230,237,243,0.75);">Level 23/385 Bourke St<br>Melbourne VIC 3000<br>(03) 9088 8889</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="max-width: 1240px; margin: 0 auto; padding: 24px; border-top: 1px solid rgba(230,237,243,0.1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px;">
+      <span style="font-size: 13px; color: rgba(230,237,243,0.4);">© Nolan Family Law &amp; Mediation. All rights reserved.</span>
+      <a href="#" style="font-size: 13px; color: rgba(230,237,243,0.4);">Privacy Policy</a>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showDoylesStrip&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot; },
+  &quot;showMelbourne&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot; },
+  &quot;scrollReveal&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Motion&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showDoylesStrip: this.props.showDoylesStrip ?? true,
+      showMelbourne: this.props.showMelbourne ?? true,
+    };
+  }
+  componentDidMount() {
+    this.observe();
+    this.onScroll = () => {
+      const nav = document.querySelector('[data-nav]');
+      if (!nav) return;
+      if (window.scrollY > 24) nav.setAttribute('data-scrolled', ''); else nav.removeAttribute('data-scrolled');
+    };
+    this.sweep = () => {
+      if (this.sweepQueued) return;
+      this.sweepQueued = true;
+      requestAnimationFrame(() => {
+        this.sweepQueued = false;
+        document.querySelectorAll('[data-reveal]:not([data-in]), [data-clip]:not([data-in])').forEach((n) => {
+          if (n.getBoundingClientRect().top < window.innerHeight * 0.92) {
+            n.setAttribute('data-in', '');
+            if (this.io) this.io.unobserve(n);
+          }
+        });
+      });
+    };
+    window.addEventListener('scroll', this.sweep, { passive: true });
+    window.addEventListener('resize', this.sweep, { passive: true });
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentDidUpdate() { this.observe(); }
+  componentWillUnmount() { if (this.io) this.io.disconnect(); if (this.onScroll) window.removeEventListener('scroll', this.onScroll); if (this.sweep) { window.removeEventListener('scroll', this.sweep); window.removeEventListener('resize', this.sweep); } }
+  observe() {
+    const root = this.rootEl || document;
+    const nodes = Array.from(root.querySelectorAll('[data-reveal]:not([data-in]), [data-clip]:not([data-in])'));
+    if (!nodes.length) return;
+    const motionOff = (this.props.scrollReveal ?? true) === false;
+    if (motionOff) { nodes.forEach(n => n.setAttribute('data-in', '')); return; }
+    if (!this.io) {
+      this.io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) {
+            if (e.boundingClientRect.top < 0) { e.target.setAttribute('data-in', ''); this.io.unobserve(e.target); }
+            return;
+          }
+          const group = e.target.parentElement ? Array.from(e.target.parentElement.children).filter(c => c.hasAttribute('data-reveal') || c.hasAttribute('data-clip')) : [];
+          const i = Math.max(0, group.indexOf(e.target));
+          e.target.style.transitionDelay = Math.min(i, 5) * 55 + 'ms';
+          e.target.setAttribute('data-in', '');
+          this.io.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }
+    nodes.forEach(n => {
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.92) n.setAttribute('data-in', '');
+      else this.io.observe(n);
+    });
+  }
+}
+
+</script>
+</body>
+</html>
