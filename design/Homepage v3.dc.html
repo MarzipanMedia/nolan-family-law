@@ -107,7 +107,7 @@
 <div style="background: #F9F6F0; min-width: 320px; overflow-x: hidden;">
 
   <sc-if value="{{ showExitButton }}" hint-placeholder-val="{{ true }}">
-    <button type="button" data-press="true" onClick="{{ quickExit }}" aria-label="Quickly leave this site" style="position: fixed; z-index: 90; right: 16px; bottom: 20px; display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 20px; border: none; border-radius: 26px; background: #9E3B36; color: #FFFFFF; font-family: 'Open Sans', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; box-shadow: 0 10px 28px rgba(26,46,64,0.28);" style-hover="background: #8A322D;">
+    <button type="button" data-press="true" onClick="{{ quickExit }}" aria-label="Quickly leave this site" style="position: fixed; z-index: 90; right: 16px; bottom: 35px; display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 20px; border: none; border-radius: 26px; background: #9E3B36; color: #FFFFFF; font-family: 'Open Sans', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; box-shadow: 0 10px 28px rgba(26,46,64,0.28);" style-hover="background: #8A322D;">
       <span aria-hidden="true" style="font-size: 17px; line-height: 1;">✕</span>
       Quick exit
     </button>
@@ -562,8 +562,8 @@ class Component extends DCLogic {
       showMelbourne: this.props.showMelbourne ?? true,
       showExitButton: this.props.showExitButton ?? true,
       quickExit: () => {
-        try { window.location.replace('https://google.com.au'); }
-        catch (e) { window.location.href = 'https://google.com.au'; }
+        try { window.location.replace('https://google.com'); }
+        catch (e) { window.location.href = 'https://google.com'; }
       },
     };
   }
@@ -644,7 +644,7 @@ class Component extends DCLogic {
     this.observe();
     this.loadRating();
     this.onKey = (e) => {
-      if (e.key === 'Escape' && (this.props.showExitButton ?? true)) window.location.replace('https://google.com.au');
+      if (e.key === 'Escape' && (this.props.showExitButton ?? true)) window.location.replace('https://google.com');
     };
     this.onScroll = () => {
       const nav = document.querySelector('[data-nav]');
