@@ -209,6 +209,32 @@ Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-
 **Melbourne hub approved and exported** (`melbourne-family-law.html`, Melbourne hub and City hub template sections in `BUILD-NOTES.md`). Title "Family Lawyers & Mediation Melbourne | Nolan Family Law", H1 "Family lawyers and mediation in Melbourne", chosen to keep the page-one mediation rankings while lifting the head terms off page two (baseline above).
 *Watch:* the Melbourne baseline queries weekly from launch, especially "family mediation melbourne" (2.2) and "family lawyers melbourne" (13.8).
 
+### D-33 · 12 Nov 2026 · Ben · Decided (revisit in January)
+**The homepage keeps the live title and H1 word for word.** Title: "Doyles-Recommended Family Lawyers Sydney | Mediation Service". H1: "Nolan Family Lawyers & Mediation is an award-winning family law firm in Sydney." The H1 is set as a smaller line above the prototype's headline, "Navigating family change with complete clarity.", which stays as the large display line but is not the H1. Both are visible. This applies D-17; the homepage prototype had changed both.
+*Evidence:* The homepage earns 48% of Google clicks and holds "family lawyers sydney" at 1.7 to 2.6. The prototype's title and H1 dropped "family lawyers", "Sydney" and "mediation". Design, platform and URLs already change at launch, so the title and H1 are held steady.
+*To revisit in January:* the live H1 says "Nolan Family Lawyers & Mediation" while the new site uses "Nolan Family Law & Mediation"; whether Melbourne belongs in the title; the meta description (the live one says "specialists", D-05, so a new one is written for launch).
+*Watch:* Homepage clicks and "family lawyers sydney" position daily for two weeks after launch.
+
+### D-34 · 12 Nov 2026 · Ben and Claude Code · Decided
+**The build is Next.js on Vercel, in the `nolan-family-law` GitHub repo.** Pages are pre-rendered. Styling is plain CSS from the DESIGN.md tokens (the prototypes are hand-written CSS). Fonts are self-hosted. `export/`, `mediation-assets/` and `melbourne-assets/` stay in the repo as reference and are never deployed. The September false start is parked in `_archive/`.
+*Evidence:* Build plan agreed 12 Nov.
+
+### D-35 · 12 Nov 2026 · Ben · Decided (answers Q-5)
+**Articles and profiles are imported once from WordPress into the repo.** A script reads the WordPress content API, rewrites internal links to launch URLs (D-25) and copies uploads to the same `/wp-content/uploads/` paths. It can be re-run until the 9 December freeze. WordPress is not a content source after launch.
+*Trade-off:* the firm loses the WordPress editor; later edits come through Marzipan.
+*Watch:* The link check (no internal link points at a redirect) and the redirect test at go/no-go.
+
+### D-36 · 12 Nov 2026 · Ben and Claude Code · Decided
+**Redirects are resolved in one place, as a single 301.** One piece of middleware, generated from `REDIRECT-MAP.csv`, resolves host, trailing slash and path together. The build fails if a redirect target is not a real route. Known limit, to confirm on staging: Vercel upgrades `http://` to `https://` itself before the site sees the request, so an `http://` URL may take two hops. If confirmed, this is accepted (every URL Google has indexed is `https://`).
+*Map changes:* rows added for `/disclaimer/` (new page, linked from the footer, does not exist on the live site) and for the five `/sydney/` carry-over pages that were only redirect targets. `NEW` rows are tested as: 200 if the page is built; otherwise nothing on the site may link to it.
+
+### D-37 · 12 Nov 2026 · Ben and Claude Code · Decided
+**The Google rating and review count are never written in the build, including in headings.** The homepage prototype's "Rated 4.9 out of 5 from 155 Google reviews" and DESIGN.md's "show the 4.9 rating" become live values. If Google is unavailable, the page shows no number.
+
+### D-38 · 12 Nov 2026 · Ben and Claude Code · Decided
+**Tracking names.** Phone taps push `call_click` (the GA4 baseline name, not `phone_call_click` from the older call brief) with `office`, `click_location` and `cta_position`. A sent enquiry pushes `enquiry_submit` with the topic only, never field values, and shows the success state in the page. `/thanks-enquiry/` stays alive for `/lp/`. The older brief's sticky mobile call bar is superseded by D-30.
+*Still needed from Ben:* which of the two live GTM containers survives (`GTM-5LNPVM7G`, `GTM-NRSK8FD`).
+
 ---
 
 ## Open questions (become decisions when answered)
@@ -218,10 +244,11 @@ Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-
 | ~~Q-2~~ | ~~Sydney hub URL~~ Answered 12 Nov: `/sydney/family-law/` (D-24) | Ben |
 | Q-3 | Does `/consent-orders/` redirect to property settlement, stay as a hub, or split? | Ben |
 | Q-4 | Melbourne address: Level 23 or Level 33, 385 Bourke St | Ben, against the GBP |
-| Q-5 | Articles: import into the new site, or keep WordPress as the content source? | Ben, with Claude Code |
+| ~~Q-5~~ | ~~Articles: import or keep WordPress~~ Answered 12 Nov: import once (D-35) | Ben, with Claude Code |
 | Q-6 | Does Nolan offer shuttle mediation? Does the firm decline to act for either party after mediating? | Tash |
 | ~~Q-7~~ | ~~Does the Melbourne office offer mediation?~~ Answered 12 Nov: yes (D-27). Who mediates there is still to confirm | Chad |
 | ~~Q-8~~ | ~~Property master text~~ Answered 10 Nov: Ben supplied it (see `claude/property-settlement-page-build-notes-nov-2026.md`) | Ben |
 | Q-9 | Rank Math may hold redirects we haven't seen. Export them (Rank Math → Redirections → Export) so they can be merged into the map | Ben |
 | Q-11 | Who mediates in Melbourne, and what accreditations do they hold? | Chad |
+| Q-12 | Which GTM container survives: `GTM-5LNPVM7G` or `GTM-NRSK8FD`? (D-38) | Ben |
 | Q-10 | Restore the "Ultimate Divorce Checklist" PDF (it still gets search traffic), or redirect it? | Ben |
