@@ -1,0 +1,82 @@
+{
+  "A": {
+    "redirects": {
+      "/family-law-services/": "/family-lawyer/",
+      "/child-custody-lawyer/": "/child-custody-lawyer-sydney/",
+      "/prenuptial-agreements/": "/prenuptial-agreement-sydney/",
+      "/30-minute-consultation-2/": "/contact/",
+      "/prenuptial-agreement-melbourne/": "/melbourne-family-law/prenuptial-agreement-melbourne/",
+      "/property-settlements/": "/property-settlement/",
+      "/our-team/our-team/": "/our-team/",
+      "/wp-content/uploads/2023/10/The-Ultimate-Divorce-Checklist-A-Step-By-Step-Guide-To-Divorce.pdf": "/your-essential-checklist-when-getting-a-divorce/",
+      "/divorce/": "/divorce-lawyer/",
+      "/was-it-a-loan-or-a-gift-big-difference-2/": "/was-it-a-loan-or-a-gift-big-difference/",
+      "/liam-terry/": "/our-team/",
+      "/30-minute-consultation/": "/contact/",
+      "/parenting-agreements/": "/child-custody-lawyer-sydney/",
+      "/mediation/": "/sydney-family-law-mediation/",
+      "/sydney/child-custody-lawyer/": "/child-custody-lawyer-sydney/",
+      "/sydney/property-settlement/": "/property-settlement/",
+      "/sydney/prenuptial-agreements/": "/prenuptial-agreement-sydney/",
+      "/sydney/mediation/": "/sydney-family-law-mediation/",
+      "/sydney/family-law/": "/family-lawyer/",
+      "/melbourne/family-law/": "/melbourne-family-law/",
+      "/melbourne/child-custody-lawyer/": "/melbourne-family-law/child-custody-lawyer-melbourne/",
+      "/melbourne/property-settlement/": "/melbourne-family-law/property-settlement-melbourne/",
+      "/melbourne/prenuptial-agreements/": "/melbourne-family-law/prenuptial-agreement-melbourne/",
+      "/privacy/": "/privacy-policy/",
+      "/sydney/divorce-lawyer/": "/divorce-lawyer/",
+      "/sydney/de-facto-relationship-lawyer/": "/de-facto-relationship-lawyer/",
+      "/sydney/domestic-violence/": "/domestic-violence/",
+      "/sydney/collaborative-family-law/": "/collaborative-family-lawyer-sydney/",
+      "/sydney/consent-orders/": "/consent-orders/"
+    },
+    "gone": [
+      "/our-work-grid-2/",
+      "/our-work-with-filter/",
+      "/services-with-tabs/",
+      "/testimonials-page/",
+      "/layout-2/"
+    ]
+  },
+  "B": {
+    "redirects": {
+      "/melbourne-family-law/": "/melbourne/family-law/",
+      "/family-lawyer/": "/sydney/family-law/",
+      "/prenuptial-agreement-sydney/": "/sydney/prenuptial-agreements/",
+      "/de-facto-relationship-lawyer/": "/sydney/de-facto-relationship-lawyer/",
+      "/divorce-lawyer/": "/sydney/divorce-lawyer/",
+      "/family-law-services/": "/sydney/family-law/",
+      "/sydney-family-law-mediation/": "/sydney/mediation/",
+      "/child-custody-lawyer-sydney/": "/sydney/child-custody-lawyer/",
+      "/child-custody-lawyer/": "/sydney/child-custody-lawyer/",
+      "/melbourne-family-law/prenuptial-agreement-melbourne/": "/melbourne/prenuptial-agreements/",
+      "/prenuptial-agreements/": "/sydney/prenuptial-agreements/",
+      "/melbourne-family-law/property-settlement-melbourne/": "/melbourne/property-settlement/",
+      "/30-minute-consultation-2/": "/contact/",
+      "/consent-orders/": "/sydney/consent-orders/",
+      "/prenuptial-agreement-melbourne/": "/melbourne/prenuptial-agreements/",
+      "/collaborative-family-lawyer-sydney/": "/sydney/collaborative-family-law/",
+      "/melbourne-family-law/child-custody-lawyer-melbourne/": "/melbourne/child-custody-lawyer/",
+      "/property-settlements/": "/sydney/property-settlement/",
+      "/our-team/our-team/": "/our-team/",
+      "/wp-content/uploads/2023/10/The-Ultimate-Divorce-Checklist-A-Step-By-Step-Guide-To-Divorce.pdf": "/your-essential-checklist-when-getting-a-divorce/",
+      "/property-settlement/": "/sydney/property-settlement/",
+      "/domestic-violence/": "/sydney/domestic-violence/",
+      "/divorce/": "/sydney/divorce-lawyer/",
+      "/was-it-a-loan-or-a-gift-big-difference-2/": "/was-it-a-loan-or-a-gift-big-difference/",
+      "/liam-terry/": "/our-team/",
+      "/30-minute-consultation/": "/contact/",
+      "/parenting-agreements/": "/sydney/child-custody-lawyer/",
+      "/mediation/": "/sydney/mediation/",
+      "/privacy/": "/privacy-policy/"
+    },
+    "gone": [
+      "/our-work-grid-2/",
+      "/our-work-with-filter/",
+      "/services-with-tabs/",
+      "/testimonials-page/",
+      "/layout-2/"
+    ]
+  }
+}

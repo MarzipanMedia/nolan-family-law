@@ -360,3 +360,59 @@ Keep the script in the repo so it can run again after option B, or after any fut
 
 ### After launch
 Watch Search Console daily for two weeks, then weekly for six: the Pages report (Not found, Page with redirect, Duplicate without user-selected canonical), and clicks for the homepage, the team profiles and the service pages against the baseline in `DECISIONS.md`. Any new 404 with impressions gets a redirect and a row in the CSV.
+
+---
+
+## Build log (Claude Code)
+**Started 12 Nov 2026 · Branch `claude/affectionate-fermat-700uux` · Backup of this file taken first: `BUILD-NOTES.backup-2026-11-12-pre-build.md`**
+
+How the build is organised is in the repo's `README.md`. Tracking set-up is in `docs/tracking.md`.
+
+### Built (12 Nov 2026)
+| Step | Status |
+|---|---|
+| Housekeeping | September false start parked in `_archive/2026-09-false-start/`. Nothing deleted |
+| Project set-up | Next.js 16 in the repo root. Staging is `noindex` (header and robots.txt) and password-protected by `STAGING_USER` / `STAGING_PASSWORD`. **Vercel project not yet created (needs Ben)** |
+| Routes file | `src/config/routes.ts`, `URL_MODE=B`. One page route serves every URL from it, so switching mode renames nothing |
+| Office config | `src/config/offices.ts`. Melbourne has no level (Q-4) |
+| Redirects | Generated from `REDIRECT-MAP.csv` into one handler: host, slash, case and path in a single 301, query string kept, 410 for the five theme demo pages. The build fails if the map and the routes file disagree (both modes currently agree) |
+| Redirect test | `npm run test:redirects`. Run locally only so far. All redirect mechanics pass. The remaining failures are three pages that do not exist yet (below) |
+| Site shell | Header with the D-30 phone strip, phone link and Call button (no overflow at 320, 381, 390, 900, 901, 1100, 1320, 1321, 1366, 1440px); mobile menu; footer; PhoneLink; GTM (one container); scroll reveal with the sweep; CTA band; enquiry form; schema generator |
+| Templates | Inner-page blocks, article, profile, carry-over |
+| Pages | Homepage, Sydney child custody, Sydney mediation, Sydney property settlement, Melbourne hub. Each passes at 1440px and 390px: no overflow, one H1, valid JSON-LD, no console errors, every reveal appears |
+| Import (D-35) | 37 articles, 24 profiles and 22 carry-over pages from WordPress, read-only. Report: `src/content/imported/import-report.json` |
+| Generic pages | Our people, Resources and Contact, generated, with the live titles and descriptions, until their designs arrive |
+
+### Left to do
+- **Three pages with no content yet:** `/fees/`, `/disclaimer/` (both linked from every footer) and `/melbourne/mediation/` (linked from the Melbourne hub; waits on Q-11). The redirect test fails on these until they exist.
+- **Four Melbourne articles (D-28):** their cards and inline links on the hub are hidden until each article is imported. They appear by themselves once it is.
+- **Placeholder artwork (6):** homepage hero, both "Who we act for" images, the CTA background and the "four partners" photo box; child custody hero. Marked `data-placeholder`. A production build refuses to run while any remain.
+- **Needs Ben:** Vercel project; enquiry destination (`ENQUIRY_WEBHOOK_URL`: until set, staging accepts enquiries and delivers them nowhere, production refuses them); GTM ID (Q-12); Places API key and place IDs; Q-4, Q-9, Q-10.
+- **Not yet tested:** `URL_MODE=A` end to end; host and protocol hops (needs the real domain; see D-36); Core Web Vitals; real phones.
+- **`/wp-content/uploads/`:** only the 153 files that imported content uses are copied (about 32 MB). The WordPress library has 357 items. To decide: copy the rest, or keep them served from WordPress.
+- Sydney hub, prenups, Melbourne service pages, Fees and the designed versions of Our people and Contact, as their prototypes arrive. Each currently serves its carry-over version at its final URL.
+
+### Where the build differs from a prototype, and why
+| Page | Difference | Why |
+|---|---|---|
+| Homepage | Title and H1 are the live site's. The prototype headline is the display line, not the H1 | D-33 |
+| Homepage | New meta description (146 characters) | The prototype had none; the live one says "specialists" (D-05). **Ben to approve the wording** |
+| Homepage | Header has the phone strip and Call button; header button says "Talk to us" and goes to the closing band | D-30. The prototype predates it |
+| Homepage | Schema adds WebSite, WebPage and FAQPage to the two LegalService nodes; Melbourne has no level | D-17 firm-level signals; D-11; Q-4 |
+| Homepage, child custody, Melbourne | Review sections show live Google data, or nothing at all without an API key. No stand-in quotes, numbers or "loads here" boxes | D-37. Homepage line under the rating now reads "Every review here is a verified Google review, shown as it was written." (the prototype's sentence made a claim about every review) |
+| Child custody | No quick exit | D-07 |
+| Child custody | "We have helped hundreds of Sydney families…" is now "We help Sydney families…" | Open item 2 (unverified), same rule as the property page. **Ben to confirm or restore** |
+| Child custody | Review section uses the three-card layout, not the single rotating quote | One shared live component |
+| Child custody | FAQPage schema lists all 10 questions; BreadcrumbList and FAQPage have `@id`s | Generated from the visible FAQ |
+| Mediation | Header button says "Talk to us", not "Book a mediation" | Header width gotcha, and D-30 needs the room |
+| Property | Tash's photo is `tash-mediation.png` | The prototype used a silhouette |
+| Melbourne hub | Four guide cards and four inline links hidden; "Spousal maintenance" left out of the schema's offer catalog | D-28: those articles do not exist yet |
+| All | `/our-people/`, `/privacy`, `/contact`, `/disclaimer`, `/collaborative-family-law/` in prototypes resolve through the routes file | D-25 |
+| All | Phone links use `tel:+61…`; footer note on pages with no city reads "This website is general information about family law…" | Office config; the prototypes only had NSW and Victoria versions |
+| Enquiry form | Requires a phone number or an email as well as a name | Otherwise the firm cannot reply. **Ben to confirm** |
+
+### Things found in imported content (for Ben)
+- **"Specialist" appears in 23 imported files**, including profile titles and roles such as "Accredited Family Law Specialist". It is existing copy, so it was carried over unchanged, but it is now visible on new pages (D-05). Needs a decision per person.
+- **Four profile titles lacked the person's name** (Toby Henson, Nicole Jirathammakul, Thomas Hughes, Amy Sultana; one still said "Liam Terry"). They are now "Name | Nolan Family Law & Mediation" (D-17).
+- **23 internal links in imported content pointed at pages that do not exist.** The words were kept and the links removed. Listed in the import report.
+- Carry-over pages are unedited WordPress copy in the generic template. `/sydney/domestic-violence/` needs the tone check LAUNCH-PLAN asks for.
