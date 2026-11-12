@@ -43,6 +43,9 @@ export function proxy(request: NextRequest) {
     if (header !== expected) return unauthorised();
   }
 
+  // API routes take no part in URL tidying (a redirected POST would lose its body).
+  if (pathname.startsWith('/api/')) return NextResponse.next();
+
   // 1. Slash and case.
   let path = pathname.replace(/\/{2,}/g, '/');
   if (!isFile(path)) {

@@ -104,7 +104,9 @@ export type StaticRouteKey = keyof typeof staticRoutes;
 interface ImportedEntry { slug: string; path: string; title: string; city?: City }
 const importedRoutes: Record<string, RouteDef> = {};
 for (const a of imported.articles as ImportedEntry[]) {
-  importedRoutes[`article:${a.slug}`] = { label: a.title, a: a.path, b: a.path, kind: 'article', city: a.city ?? null, indexable: true, status: 'live' };
+  // Melbourne and Victorian articles lead with the Melbourne office (D-30).
+  const city: City = /melbourne|victoria/.test(a.slug) ? 'melbourne' : null;
+  importedRoutes[`article:${a.slug}`] = { label: a.title, a: a.path, b: a.path, kind: 'article', city, indexable: true, status: 'live' };
 }
 for (const p of imported.profiles as ImportedEntry[]) {
   importedRoutes[`profile:${p.slug}`] = { label: p.title, a: p.path, b: p.path, kind: 'profile', city: p.city ?? null, indexable: true, status: 'live' };

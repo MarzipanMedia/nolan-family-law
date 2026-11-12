@@ -26,8 +26,10 @@ export interface Office {
   phoneSchema: string;
   /** Street address lines as displayed. */
   street: string;
-  /** Short form for the header strip. */
+  /** Short form for the header strip and running copy. */
   streetShort: string;
+  /** Full postal address as written in page copy. */
+  addressDisplay: string;
   suburb: string;
   postcode: string;
   mapUrl: string;
@@ -47,6 +49,7 @@ export const offices: Record<OfficeKey, Office> = {
     phoneSchema: '+61 2 8014 5885',
     street: 'Suite 3, Level 22, 25 Bligh St',
     streetShort: '25 Bligh Street',
+    addressDisplay: 'Suite 3, Level 22, 25 Bligh Street, Sydney NSW 2000',
     suburb: 'Sydney',
     postcode: '2000',
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=Nolan+Family+Law+%26+Mediation+25+Bligh+St+Sydney+NSW+2000',
@@ -64,6 +67,7 @@ export const offices: Record<OfficeKey, Office> = {
     // No level until Ben confirms Level 23 or 33 against the Google Business Profile (Q-4).
     street: '385 Bourke St',
     streetShort: '385 Bourke Street',
+    addressDisplay: '385 Bourke Street, Melbourne VIC 3000',
     suburb: 'Melbourne',
     postcode: '3000',
     mapUrl: 'https://www.google.com/maps/search/?api=1&query=Nolan+Family+Law+%26+Mediation+385+Bourke+St+Melbourne+VIC+3000',
