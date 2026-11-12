@@ -28,6 +28,8 @@ export interface Office {
   street: string;
   /** Short form for the header strip and running copy. */
   streetShort: string;
+  /** The floor, for running copy. Melbourne has none until Q-4 is answered. */
+  level?: string;
   /** Full postal address as written in page copy. */
   addressDisplay: string;
   suburb: string;
@@ -49,6 +51,7 @@ export const offices: Record<OfficeKey, Office> = {
     phoneSchema: '+61 2 8014 5885',
     street: 'Suite 3, Level 22, 25 Bligh St',
     streetShort: '25 Bligh Street',
+    level: 'Level 22',
     addressDisplay: 'Suite 3, Level 22, 25 Bligh Street, Sydney NSW 2000',
     suburb: 'Sydney',
     postcode: '2000',

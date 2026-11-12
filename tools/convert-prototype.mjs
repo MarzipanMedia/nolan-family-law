@@ -197,6 +197,8 @@ function emit(node, depth, siblings = [], index = 0) {
       if (r) {
         props.push(`href={url(${lit(r.key)}${r.hash ? `, ${lit(r.hash)}` : ''})}`);
         const def = routes[r.key];
+        // Inline links to a planned article: after converting, swap <a> for <LiveLink> by hand.
+        if (def.kind === 'article' && def.status !== 'live' && !has(node, 'data-card')) warnings.push(`inline link to planned article ${r.key}: use <LiveLink>`);
         if (def.kind === 'article' && def.status !== 'live' && has(node, 'data-card')) { wrapStart = `{isLive(${lit(r.key)}) && (`; wrapEnd = ')}'; usedIsLive = true; }
       } else props.push(`href=${lit(href)}`);
     } else if (/^\.\//.test(href)) {

@@ -235,6 +235,15 @@ Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-
 **Tracking names.** Phone taps push `call_click` (the GA4 baseline name, not `phone_call_click` from the older call brief) with `office`, `click_location` and `cta_position`. A sent enquiry pushes `enquiry_submit` with the topic only, never field values, and shows the success state in the page. `/thanks-enquiry/` stays alive for `/lp/`. The older brief's sticky mobile call bar is superseded by D-30.
 *Still needed from Ben:* which of the two live GTM containers survives (`GTM-5LNPVM7G`, `GTM-NRSK8FD`).
 
+### D-39 · 12 Nov 2026 · Claude Code (follows from D-22) · Decided, built
+**Every page that exists on WordPress today is imported as a carry-over page and served at its final URL in the generic inner-page template until its design is built.** A designed page replaces it in place by being added to `src/site/registry.ts`. Our people, Resources and Contact are generated generic pages for now. This is D-22's safety net built on day one, so the redirect test can reach 100% without waiting for designs.
+*Evidence:* After the import, 82 URLs are live locally and the redirect test's only failures are three pages with no content anywhere yet (`/fees/`, `/disclaimer/`, `/melbourne/mediation/`).
+*Watch:* Carry-over copy is unedited WordPress copy, and "specialist" appears in 23 imported files (D-05).
+
+### D-40 · 12 Nov 2026 · Claude Code · **Pending Ben**
+**Three small calls made during the build, each easy to reverse:** (1) child custody: "We have helped hundreds of Sydney families" softened to "We help Sydney families" until verified; (2) the enquiry form asks for a phone number or an email as well as a name; (3) the homepage meta description is new: "Doyle's Guide recognised family lawyers in Sydney and Melbourne. Clear, practical advice on divorce, parenting, property settlement and mediation."
+*Evidence:* BUILD-NOTES child custody open item 2 and the property page's rule for the same claim; an enquiry with no contact detail cannot be answered; the live description says "specialists" (D-05).
+
 ---
 
 ## Open questions (become decisions when answered)
@@ -251,4 +260,6 @@ Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-
 | Q-9 | Rank Math may hold redirects we haven't seen. Export them (Rank Math → Redirections → Export) so they can be merged into the map | Ben |
 | Q-11 | Who mediates in Melbourne, and what accreditations do they hold? | Chad |
 | Q-12 | Which GTM container survives: `GTM-5LNPVM7G` or `GTM-NRSK8FD`? (D-38) | Ben |
+| Q-13 | `/wp-content/uploads/`: copy the whole WordPress media library (357 items) into the build, or keep serving it from WordPress? | Ben, with Claude Code |
+| Q-14 | "Specialist" in imported profiles and pages (23 files): keep, reword, or decide per person? (D-05) | Ben |
 | Q-10 | Restore the "Ultimate Divorce Checklist" PDF (it still gets search traffic), or redirect it? | Ben |

@@ -9,6 +9,7 @@ import { offices } from '@/config/offices';
 import { PhoneLink } from '@/components/PhoneLink';
 import { EnquiryForm } from '@/components/EnquiryForm';
 import { Reviews } from '@/components/Reviews';
+import { LiveLink } from '@/components/LiveLink';
 
 export function Content() {
   return (
@@ -366,9 +367,9 @@ export function Content() {
             </p>
             <p data-reveal="true" style={{ fontSize: "18px", lineHeight: "1.7", color: "#2C3E50", maxWidth: "62ch", margin: "0 0 18px", textWrap: "pretty" }}>
               {"Divorce does not divide property or settle arrangements for children. Those are separate, and you do not need to be divorced to deal with them. Once a divorce order takes effect, you generally have 12 months to apply to the court for property orders or spousal maintenance, so it is wise to have your finances resolved, or at least underway, before then. Our guide to "}
-              <a href={url("articleSeparationVsDivorceVictoria")} style={{ fontWeight: "600" }}>
+              <LiveLink to="articleSeparationVsDivorceVictoria" style={{ fontWeight: "600" }}>
                 {"separation and divorce in Victoria"}
-              </a>
+              </LiveLink>
               {" covers the detail."}
             </p>
             <div data-reveal="true" style={{ marginTop: "32px", padding: "24px 26px", background: "#F8F6F2", border: "1px solid #E8E4DC", borderRadius: "3px", maxWidth: "64ch" }}>
@@ -422,9 +423,9 @@ export function Content() {
             </p>
             <p data-reveal="true" style={{ fontSize: "18px", lineHeight: "1.7", color: "#2C3E50", maxWidth: "62ch", margin: "0 0 18px", textWrap: "pretty" }}>
               {"Most Melbourne couples settle by agreement and make it binding through consent orders or a binding financial agreement. Married couples generally have 12 months from when a divorce order takes effect to apply to the court, and de facto couples two years from separation. Spousal maintenance, which is support for a former partner who cannot meet their reasonable needs, follows the same time limits and is covered in our guide to "}
-              <a href={url("articleSpousalMaintenanceMelbourne")} style={{ fontWeight: "600" }}>
+              <LiveLink to="articleSpousalMaintenanceMelbourne" style={{ fontWeight: "600" }}>
                 {"spousal maintenance in Melbourne"}
-              </a>
+              </LiveLink>
               {". Our "}
               <a href={url("melbourneProperty")} style={{ fontWeight: "600" }}>
                 {"Melbourne property settlement"}
@@ -454,9 +455,9 @@ export function Content() {
             </p>
             <p data-reveal="true" style={{ fontSize: "18px", lineHeight: "1.7", color: "#2C3E50", maxWidth: "62ch", margin: "0 0 18px", textWrap: "pretty" }}>
               {"The time limit is two years from separation, and there is no divorce to wait for. Our guide to "}
-              <a href={url("articleDeFactoVictoria")} style={{ fontWeight: "600" }}>
+              <LiveLink to="articleDeFactoVictoria" style={{ fontWeight: "600" }}>
                 {"de facto property rights in Victoria"}
-              </a>
+              </LiveLink>
               {" explains eligibility and the exceptions."}
             </p>
             <div data-reveal="true" style={{ marginTop: "32px", padding: "24px 26px", background: "#F8F6F2", border: "1px solid #E8E4DC", borderRadius: "3px", maxWidth: "64ch" }}>
@@ -540,9 +541,9 @@ export function Content() {
             </p>
             <p data-reveal="true" style={{ fontSize: "18px", lineHeight: "1.7", color: "#2C3E50", maxWidth: "62ch", margin: "0 0 18px", textWrap: "pretty" }}>
               {"Family violence intervention orders are separate. They are made by the Magistrates' Court of Victoria under state law, and they sit alongside any family law case. If you need one, or have been served with one, tell us early, because it shapes how everything else is handled. Our guide to "}
-              <a href={url("articleFamilyViolencePropertyVictoria")} style={{ fontWeight: "600" }}>
+              <LiveLink to="articleFamilyViolencePropertyVictoria" style={{ fontWeight: "600" }}>
                 {"family violence and property settlements in Victoria"}
-              </a>
+              </LiveLink>
               {" explains how the two interact."}
             </p>
             <div data-reveal="true" style={{ marginTop: "32px", padding: "24px 26px", background: "#F8F6F2", border: "1px solid #E8E4DC", borderRadius: "3px", maxWidth: "64ch" }}>

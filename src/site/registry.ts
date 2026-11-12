@@ -9,6 +9,9 @@ import { sydneyChildCustody } from './pages/sydney-child-custody/page';
 import { melbourneHub } from './pages/melbourne-hub/page';
 import { sydneyMediation } from './pages/sydney-mediation/page';
 import { sydneyProperty } from './pages/sydney-property/page';
+import { team } from './pages/team/page';
+import { resources } from './pages/resources/page';
+import { contact } from './pages/contact/page';
 
 export const pages: Partial<Record<StaticRouteKey, PageModule>> = {
   home,
@@ -16,4 +19,7 @@ export const pages: Partial<Record<StaticRouteKey, PageModule>> = {
   melbourneHub,
   sydneyMediation,
   sydneyProperty,
+  team,
+  resources,
+  contact,
 };

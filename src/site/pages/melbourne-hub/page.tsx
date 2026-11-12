@@ -4,7 +4,7 @@
  * Prototype: export/melbourne-family-law.html. Notes: BUILD-NOTES "Melbourne hub".
  */
 import type { PageModule } from '@/site/types';
-import { abs } from '@/config/routes';
+import { abs, isLive } from '@/config/routes';
 import { graph, webPageNode, breadcrumbNode, officeNode, personNode, faqNode, officeId, personId } from '@/lib/schema';
 import { people } from '@/config/people';
 import { Content } from './content';
@@ -34,7 +34,8 @@ export const melbourneHub: PageModule = {
             service('Family law mediation', abs('melbourneMediation')),
             service('Prenuptial and binding financial agreements', abs('melbournePrenups')),
             service('Separation and divorce', abs(key, 'divorce')),
-            service('Spousal maintenance', abs('articleSpousalMaintenanceMelbourne')),
+            // The article is planned (D-28): list the service once its page exists.
+            ...(isLive('articleSpousalMaintenanceMelbourne') ? [service('Spousal maintenance', abs('articleSpousalMaintenanceMelbourne'))] : []),
           ],
         },
       }),

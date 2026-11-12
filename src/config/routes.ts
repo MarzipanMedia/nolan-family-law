@@ -75,12 +75,12 @@ const staticRoutes = {
   melbourneMediation: page('Family law mediation', '/melbourne-mediation/', '/melbourne/mediation/', MEL),
 
   // The firm (same URL under both options, D-21 and D-23)
-  team: page('Our people', '/our-team/'),
+  team: page('Our people', '/our-team/', undefined, LIVE),
   about: page('About us', '/about-us/'),
   doyles: page("Doyle's recommended", '/about-us/doyles-recommended/'),
-  contact: page('Contact', '/contact/'),
+  contact: page('Contact', '/contact/', undefined, LIVE),
   fees: page('Fees', '/fees/'),
-  resources: page('Resources', '/resources/'),
+  resources: page('Resources', '/resources/', undefined, LIVE),
   privacy: page('Privacy policy', '/privacy-policy/'),
   disclaimer: page('Disclaimer', '/disclaimer/'),
 
@@ -110,6 +110,12 @@ for (const a of imported.articles as ImportedEntry[]) {
 }
 for (const p of imported.profiles as ImportedEntry[]) {
   importedRoutes[`profile:${p.slug}`] = { label: p.title, a: p.path, b: p.path, kind: 'profile', city: p.city ?? null, indexable: true, status: 'live' };
+}
+
+// Pages carried over from WordPress (D-22) are live in the generic template until redesigned.
+for (const p of ((imported as { pages?: Array<{ key: string }> }).pages ?? [])) {
+  const def = (staticRoutes as Record<string, RouteDef>)[p.key];
+  if (def) def.status = 'live';
 }
 
 export type RouteKey = StaticRouteKey | `article:${string}` | `profile:${string}`;

@@ -39,7 +39,7 @@ export function ArticleTemplate({ routeKey, article, city }: { routeKey: RouteKe
   return (
     <>
       <PageHero eyebrow={city === 'melbourne' ? 'Melbourne · Family law guide' : 'Family law guide'} title={article.title} />
-      <Breadcrumb trail={[{ key: 'home' }, { key: routeKey, name: article.title }]} meta={<span>Updated {monthYear(article.modified)}</span>} />
+      <Breadcrumb trail={[{ key: 'home' }, { key: 'resources', name: 'Resources' }, { key: routeKey, name: article.title }]} meta={<span>Updated {monthYear(article.modified)}</span>} />
       <Body>
         <article className="prose" dangerouslySetInnerHTML={{ __html: article.html }} />
       </Body>

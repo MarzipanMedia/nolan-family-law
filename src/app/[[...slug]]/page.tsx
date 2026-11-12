@@ -8,7 +8,8 @@ import { allRoutes, routeForPath, abs, type RouteKey } from '@/config/routes';
 import { pages } from '@/site/registry';
 import { PageShell } from '@/components/PageShell';
 import { JsonLd } from '@/components/JsonLd';
-import { getArticle, getProfile } from '@/site/imported';
+import { getArticle, getProfile, getCarryOver } from '@/site/imported';
+import { CarryOverTemplate, carryOverMeta, carryOverSchema } from '@/site/templates/CarryOverTemplate';
 import { ArticleTemplate, articleMeta, articleSchema } from '@/site/templates/ArticleTemplate';
 import { ProfileTemplate, profileMeta, profileSchema } from '@/site/templates/ProfileTemplate';
 
@@ -26,7 +27,10 @@ function resolve(path: string) {
   if (key.startsWith('article:')) { const a = getArticle(key.slice(8)); return a ? { ...hit, article: a } : null; }
   if (key.startsWith('profile:')) { const p = getProfile(key.slice(8)); return p ? { ...hit, profile: p } : null; }
   const page = pages[key as keyof typeof pages];
-  return page ? { ...hit, page } : null;
+  if (page) return { ...hit, page };
+  // No design yet: serve the page carried over from WordPress (D-22).
+  const carry = getCarryOver(key);
+  return carry ? { ...hit, carry } : null;
 }
 
 export function generateStaticParams(): Params[] {
@@ -36,7 +40,7 @@ export function generateStaticParams(): Params[] {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const hit = resolve(pathOf(await params));
   if (!hit) return {};
-  const meta = 'page' in hit ? { title: hit.page.title, description: hit.page.description } : 'article' in hit ? articleMeta(hit.article) : profileMeta(hit.profile);
+  const meta = 'page' in hit ? { title: hit.page.title, description: hit.page.description } : 'carry' in hit ? carryOverMeta(hit.carry) : 'article' in hit ? articleMeta(hit.article) : profileMeta(hit.profile);
   return {
     title: { absolute: meta.title },
     description: meta.description,
@@ -57,6 +61,14 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       <PageShell city={hit.def.city} currentPath={path} menuCta={menuCta}>
         <JsonLd data={schema(key)} />
         <Content />
+      </PageShell>
+    );
+  }
+  if ('carry' in hit) {
+    return (
+      <PageShell city={hit.def.city} currentPath={path}>
+        <JsonLd data={carryOverSchema(key, hit.carry, hit.def.city)} />
+        <CarryOverTemplate routeKey={key} page={hit.carry} city={hit.def.city} />
       </PageShell>
     );
   }

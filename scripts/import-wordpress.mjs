@@ -164,14 +164,34 @@ for (const path of profilePaths) {
 }
 for (const path of articlePaths) { console.error(`  MISSING on WordPress: article ${path}`); process.exitCode = 1; }
 
-for (const kind of ['articles', 'profiles']) { rmSync(`${outDir}/${kind}`, { recursive: true, force: true }); mkdirSync(`${outDir}/${kind}`, { recursive: true }); }
+// Carry-over pages (D-22): every page route that exists on WordPress today is imported too, so
+// a page that has no new design by the content freeze still launches, at its final URL, in the
+// generic inner-page template. A designed page in src/site/registry.ts always takes precedence.
+for (const [key, def] of Object.entries(routes)) {
+  if (def.kind !== 'page' || key === 'home') continue;
+  const item = pages.find((pg) => pathOf(pg) === def.a);
+  if (item) jobs.push({ kind: 'pages', item, path: def.a, key });
+}
+
+for (const kind of ['articles', 'profiles', 'pages']) { rmSync(`${outDir}/${kind}`, { recursive: true, force: true }); mkdirSync(`${outDir}/${kind}`, { recursive: true }); }
 
 const uploads = new Set();
 const titleFixes = [];
-const index = { articles: [], profiles: [] };
-for (const { kind, item, path } of jobs) {
+const index = { articles: [], profiles: [], pages: [], teamOrder: [] };
+for (const { kind, item, path, key } of jobs) {
   const live = await get(ORIGIN + path);
   const meta = headMeta(live ?? '');
+  // The page's own H1, before cleaning turns headings into H2s.
+  const h1 = (item.content.rendered.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) ?? [])[1];
+  if (key === 'team') {
+    // The order people appear in on the live team page.
+    const seen = new Set();
+    for (const [, href] of item.content.rendered.matchAll(/href="([^"]+)"/g)) {
+      let p; try { p = normalisePath(new URL(href, ORIGIN).pathname); } catch { continue; }
+      const k = pendingKeys.get(p);
+      if (k?.startsWith('profile:') && !seen.has(k)) { seen.add(k); index.teamOrder.push(k.slice(8)); }
+    }
+  }
   let html = clean(item.content.rendered, item.slug, uploads);
   const title = decode(item.title.rendered);
   const text = (h) => decode(h.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim().toLowerCase();
@@ -202,10 +222,11 @@ for (const { kind, item, path } of jobs) {
     date: item.date,
     modified: item.modified,
     ...(kind === 'profiles' ? { jobTitle } : {}),
+    ...(kind === 'pages' ? { key, h1: h1 ? decode(h1.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim() : '' } : {}),
     html,
   };
-  writeFileSync(`${outDir}/${kind}/${item.slug}.json`, JSON.stringify(record, null, 2) + '\n');
-  index[kind].push({ slug: item.slug, path, title: record.title });
+  writeFileSync(`${outDir}/${kind}/${kind === 'pages' ? key : item.slug}.json`, JSON.stringify(record, null, 2) + '\n');
+  index[kind].push(kind === 'pages' ? { key, path, title: record.title } : { slug: item.slug, path, title: record.title, ...(kind === 'articles' ? { date: item.date, description: meta.description } : { jobTitle, image }) });
   process.stdout.write('.');
   await sleep(150);
 }
@@ -225,7 +246,7 @@ for (const p of uploads) {
   writeFileSync(dest, buf); copied++;
 }
 
-console.log(`\nImported ${index.articles.length} articles and ${index.profiles.length} profiles. ${copied} uploads copied.`);
+console.log(`\nImported ${index.articles.length} articles, ${index.profiles.length} profiles and ${index.pages.length} carry-over pages. ${copied} uploads copied.`);
 if (missing.length) console.warn(`Uploads that 404 on the live site (${missing.length}):\n  ` + missing.join('\n  '));
 if (unresolved.length) {
   console.warn(`\nInternal links with no route (${unresolved.length}). The words were kept and the link removed:`);

@@ -807,7 +807,9 @@ export function Content() {
               {"Where does mediation take place?"}
             </h2>
             <p data-reveal="true" style={{ fontSize: "17px", lineHeight: "1.7", color: "#2C3E50", maxWidth: "62ch", margin: "0 0 32px", textWrap: "pretty" }}>
-              {"In a calm room, with nothing left to chance. Our offices on Level 22 of "}
+              {"In a calm room, with nothing left to chance. Our offices on "}
+              {offices.sydney.level}
+              {" of "}
               {offices.sydney.streetShort}
               {" have dedicated rooms set up for mediation. They are included when you book your mediation with us."}
             </p>

@@ -33,7 +33,7 @@ function unauthorised() {
 }
 
 export function proxy(request: NextRequest) {
-  const { pathname, search } = new URL(request.url);
+  const { pathname, search, origin: requestOrigin } = new URL(request.url);
   const host = (request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? '').toLowerCase();
 
   // Staging password.
@@ -68,9 +68,9 @@ export function proxy(request: NextRequest) {
   const wrongHost = isProduction && canonicalHost !== '' && host !== canonicalHost && !host.endsWith('.vercel.app') && !host.startsWith('localhost');
 
   if (path !== pathname || wrongHost) {
-    const origin = wrongHost ? `https://${canonicalHost}` : '';
-    // A relative Location keeps the visitor on the host and protocol they used.
-    return new NextResponse(null, { status: 301, headers: { Location: `${origin}${path}${search}` } });
+    // Same host and protocol as the request, unless the host itself is being corrected.
+    const origin = wrongHost ? `https://${canonicalHost}` : requestOrigin;
+    return NextResponse.redirect(`${origin}${path}${search}`, 301);
   }
 
   return NextResponse.next();
