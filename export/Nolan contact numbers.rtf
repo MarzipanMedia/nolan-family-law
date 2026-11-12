@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 I'm building the new website for Nolan Family Law & Mediation (nolanlawyers.com.au)\
+in this repo. Read DESIGN.md and the existing homepage first, and work out the\
+framework, the folder structure and how the components are organised before changing\
+anything. Work on a new branch called feature/call-experience. Show me the plan\
+before writing code.\
+\
+GOAL\
+Build the phone/call experience and call tracking properly, following DESIGN.md.\
+\
+CONTEXT\
+- Two offices:\
+  - Sydney: (02) 8014 5885, Suite 3, Level 22, 25 Bligh St, Sydney NSW 2000\
+  - Melbourne: (03) 9088 8889, L33/385 Bourke St, Melbourne VIC 3000\
+- About half of visitors are on mobile. Visitors are often stressed, so the experience\
+  should feel calm, warm and easy, not salesy.\
+- Problems found on the old site: phone links written several different ways, the\
+  Melbourne pages showed the Sydney number in the header, the phone number on mobile\
+  didn't look tappable, and two GTM containers were firing at once (calls and page\
+  views probably counted twice).\
+\
+WHAT TO BUILD\
+1. Office config: one file (e.g. config/offices.ts or the repo's equivalent) holding\
+   each office's name, the number as displayed, the tel: link (tel:+61280145885 /\
+   tel:+61390888889), address and hours. Nothing else hard-codes a number.\
+2. A useOffice()/getOffice(pathname) helper (or equivalent) that returns Melbourne\
+   for /melbourne-family-law/* and Sydney for everything else.\
+3. A reusable PhoneLink component: takes the office and a "location" prop\
+   (header/sticky/body/footer), renders the correct tel: link and text, has a\
+   proper aria-label (e.g. "Call our Sydney office on 02 8014 5885"), and pushes\
+   the tracking event below.\
+4. Header: the number shown clearly on desktop. On mobile, a clear "Call us"\
+   button on the first screen.\
+5. A sticky "Call us" bar or button on mobile, with a short reassuring line (the\
+   exact offer is to be confirmed with the firm \'97 leave a TODO). Tap target at least\
+   44px. It must not cover content or the cookie banner, and must respect safe areas\
+   at the bottom of the screen.\
+6. Footer: lists both offices with their numbers and addresses.\
+7. Tracking:\
+   - Load ONE Google Tag Manager container, with its ID in an environment variable\
+     (e.g. NEXT_PUBLIC_GTM_ID). Don't hard-code it.\
+   - On phone taps, push to the dataLayer: \{ event: 'phone_call_click', office:\
+     'sydney'|'melbourne', click_location: 'header'|'sticky'|'body'|'footer' \}.\
+   - Write a short note (docs/tracking.md) explaining the GTM setup I need to do:\
+     a GA4 event tag, a Google Ads call conversion tag and the trigger, and UTM\
+     links for each office's Google Business Profile.\
+8. LocalBusiness/LegalService JSON-LD for each office, built from the same config.\
+9. Tests/checks: a unit test for getOffice(), a check that no hard-coded "tel:"\
+   strings exist outside the config/component, and a pre-launch checklist in\
+   docs/tracking.md (test on iPhone and Android, GA4 DebugView, Ads conversion,\
+   Melbourne pages, old GTM container removed).\
+\
+When you're done, summarise what changed in plain language, commit with a clear\
+message, and give me the steps to open a pull request. Use British English in all\
+copy and docs.}
