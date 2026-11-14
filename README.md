@@ -39,11 +39,11 @@ URLs or phone numbers, no "specialist", no fees, no quick exit). It stops if any
 ## Where things are
 
 - `src/site/pages/<page>/` : each designed page (`content.tsx` is the copy, `page.tsx` its title, description and schema).
+- `src/site/city-hubs/` : one entry per city hub (copy, people, badges, guides, FAQ), rendered by the one city hub template in `src/site/templates/CityHubTemplate.tsx`. Never copy the template for a city.
 - `src/site/templates/` : article, profile and carry-over templates. `src/components/` : the shell.
 - `src/content/imported/` : articles, profiles and carry-over pages imported from WordPress (D-35).
-- `tools/` : converting a new prototype from `export/` into a page, and checking a page at 1440px and 390px.
+- `tools/` : converting a new prototype from `export/` into a page, making responsive AVIF/WebP images, and checking a page at 1440px and 390px.
 - `export/`, `mediation-assets/`, `melbourne-assets/` : design references. Never deployed.
-- `_archive/` : the September 2026 false start. Not a source for anything.
 
 ## Settings (Vercel environment variables)
 

@@ -1,5 +1,5 @@
 # Nolan Family Law & Mediation — Build notes
-**4 Nov 2026, updated 12 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template) · Design rules: `DESIGN.md` v2.0**
+**4 Nov 2026, updated 14 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template), Sydney hub · Design rules: `DESIGN.md` v2.0**
 
 > **URL structure (decided 12 Nov 2026, D-23):** service pages move to `/sydney/...` and `/melbourne/...` in one hit at launch, with `URL_MODE=B` and the option B columns of `REDIRECT-MAP.csv`. If the redirect test isn't passing 100% at the go/no-go on 11 December, launch with `URL_MODE=A`. Every URL comes from one routes file (D-25). Where older notes below mention today's URLs for a moved page, the routes file wins.
 
@@ -17,10 +17,7 @@
 | `DESIGN.md` | Source of truth for colour, type, layout, components, motion, compliance |
 | `BUILD-NOTES.md` | This file |
 | `LAUNCH-PLAN.md` | Launch schedule (target Tue 15 Dec 2026), URL decisions, pages not being redesigned, QA and launch-day checklists |
-| `HANDOFF-property-settlement.md` | Prompt to start the next page (property settlement, Sydney) in a fresh Claude session |
-| `HANDOFF-melbourne-hub.md` | Prompt to start the next page (Melbourne hub and the city hub template) in a fresh Claude session |
-| `HANDOFF-build-kickoff.md` | Prompt to start the Claude Code build (12 Nov): read order, decided rules, build order, what Ben needs to supply |
-| `HANDOFF-sydney-hub.md` | Prompt to design the Sydney hub from the city hub template in a fresh Claude session |
+| `sydney-family-law.html` | Sydney hub, approved 14 Nov. Plain HTML, images inlined, opens offline. See the Sydney hub section |
 | `DECISIONS.md` | Decision log with evidence and the pre-rebuild baseline. Check it before changing anything |
 | `REDIRECT-MAP.csv` | Every known URL (115) with its launch treatment under option A and option B. See the Redirects section |
 
@@ -310,6 +307,63 @@ Navigation (with the phone strip) · Hero · Accreditations · How can we help y
 
 ---
 
+## Sydney hub: build notes
+**Approved by Ben 14 Nov 2026 · Prototype: `sydney-family-law.html` · Design canvas: "Nolan Sydney Hub" in Claude Design · Decisions D-41 to D-46 · Built from the City hub template (above)**
+
+Second city hub, same template as Melbourne with Sydney content. It replaces two old URLs that rank mostly for head terms the homepage already holds, so the page is positioned on **separation**, not "family lawyers sydney". Treat the title, H1 and the redirects as launch-critical.
+
+### URL, title and meta
+| Item | Value |
+|---|---|
+| URL | `/sydney/family-law/` (D-24). One 301 each from `/family-lawyer/` (page 12267) and `/family-law-services/`. Take it from the routes file |
+| Canonical | `https://www.nolanlawyers.com.au/sydney/family-law/` (self-referential) |
+| Title tag | `Separation Lawyers Sydney \| Nolan Family Law & Mediation` (55 characters) |
+| Meta description | `Separated, or thinking about it? Early decisions are hard to undo and time limits apply. Our Sydney family lawyers can guide you through each step.` (PAS, 147 characters) |
+| H1 | `Separation lawyers in Sydney` |
+| Breadcrumb | Home / Sydney family law. Byline: written and reviewed by Tash Nolan, Principal |
+
+Why: the homepage holds "family lawyers sydney" (2.4), "family lawyer sydney" (2.9) and "divorce lawyer(s) sydney" (2.5 to 3.3). "separation lawyers sydney" (5,764 impressions, 4.6) and "separation lawyer sydney" (5,001, 4.1) also land on the homepage but earn about one click. The hub takes separation and leaves the head and divorce terms alone (D-17, D-41). Baseline in `DECISIONS.md`.
+
+### Section map (`data-screen-label` → anchor id)
+Navigation (phone strip, Sydney first) · Hero · Accreditations · How can we help you (`#help`) · Guide wrapper with sticky "On this page" · Separating (`#separation`) · Time limits (`#timelimits`, new, not on Melbourne) · Divorce (`#divorce`, short, links out) · Children (`#children`) · Property (`#property`) · De facto couples (`#defacto`) · Mid-page prompt · Mediation (`#mediation`) · Going to court (`#court`) · What it costs (`#costs`) · Your Sydney lawyer · Reviews · Melbourne toggle and Sydney guides · FAQ (`#faq`) · Consultation CTA (`#book`) · Trust ribbon · Footer.
+
+### Schema (already in the prototype's head)
+`WebPage` (Tash as `author` and `reviewedBy`, `dateModified` 2026-11-14) · `BreadcrumbList` · `LegalService` for the Sydney office (`@id` `/sydney/family-law/#office`, the same `@id` the Sydney service pages already use; Suite 3, Level 22, 25 Bligh St, Sydney NSW 2000; +61 2 8014 5885) with a `hasOfferCatalog` of six Sydney services (child custody, property, mediation, divorce, prenups and BFAs, de facto) · `Person` for Tash (`@id` `/our-team/tash-nolan/#person`, Principal, her three Doyle's 2026 listings) · `FAQPage` with all 12 questions, worded exactly as on the page. Generate the office from the office config and URLs from the routes file.
+
+### What differs from the Melbourne hub
+| Slot | Sydney |
+|---|---|
+| City lead | Tash Nolan, Principal (portrait from the 450px JPEG on a white ground, blended into the panel with `mix-blend-mode: multiply`). Second card: Jessica Swain, Partner |
+| Routing cards | `/sydney/child-custody-lawyer/`, `/sydney/property-settlement/`, `/sydney/mediation/`, `/sydney/divorce-lawyer/` (replaces Melbourne's in-page separation card), `/sydney/prenuptial-agreements/`, `#book` |
+| Accreditations | Six badges: Doyle's, Law Society of NSW, Law Council, Family Law Section, AACP, Collaborative Professionals (NSW & ACT). The grid is 6 columns at desktop (3 at 1100px and below, 2 at 520px and below) |
+| Law and courts | FCFCOA Sydney registry (Lionel Bowen Commonwealth Law Courts, 97-99 Goulburn St) and Parramatta (Garfield Barwick Commonwealth Law Courts, 1-3 George St). Apprehended violence orders (Local Court). NSW de facto referral, Property (Relationships) Act 1984 for pre-2009 separations, Relationships Register Act 2010 |
+| Location toggle | "In Victoria instead?" to `/melbourne/family-law/` |
+| Guides | Divorce checklist, 11 questions, 50/50 myth, dividing assets, understanding spousal maintenance, family law and dads, all at their current URLs. `/do-i-have-to-pay-spousal-maintenance/` is linked from the property section |
+| De facto | Links to `/sydney/de-facto-relationship-lawyer/` (REDIRECT-MAP option B) |
+| Mid-page prompt | Same place as Melbourne, Tash's photo, `data-cta-position="mid"` (D-31) |
+| Enquiry form | Same form; delivers to the Sydney team |
+
+### Content and compliance decisions (do not undo)
+- Tash is **Principal**, Jessica **Partner** (D-14). Never "specialist" (D-05). Both are named as Nationally Accredited Mediators; no claim to issue section 60I certificates (D-13).
+- No fees or figures (D-02). No quick exit (D-07).
+- The divorce section is deliberately short and links out (D-43). Don't expand it on this page.
+- Parramatta appears only in the court section and one FAQ, as a registry. There is no Parramatta office, so it is not in the serving line or schema (D-44).
+- Law stated for 2026: no presumption of equal shared parental responsibility (from 6 May 2024); property under the Family Law Amendment Act 2024 (from 10 June 2025).
+
+### Testing done (14 Nov 2026)
+1440px and 390px: no horizontal overflow, one H1, valid JSON-LD, no console errors, no quick exit, and every reveal and clip element appears (the scroll sweep from the Melbourne export is kept unchanged). Images are inlined, so the file is self-contained.
+
+### Open items before go-live
+1. **Tash (legal review):** time limits (new section), divorce, best interests and 6 May 2024, section 79 and 10 June 2025, the NSW de facto referral, gateways and geographic requirement, the Parramatta wording and the AVO paragraph, and all 12 FAQ answers. Each has a yellow note.
+2. **Sydney registry address:** confirm 97-99 Goulburn St on the court's NSW registry page (Parramatta already checked).
+3. **Portrait:** a larger original or cut-out of Tash.
+4. **Jessica's summary:** confirm the one line drawn from her Person schema.
+5. **Breadcrumb label:** this page says "Sydney family law", the Sydney mediation export says "Sydney". Pick one in the routes file.
+6. **Articles:** the 50/50, dads and both spousal maintenance articles predate the 2023 and 2024 Acts. Check them before import. Q-10 (the checklist PDF) is still open.
+7. **Launch day:** update the Sydney Google Business Profile website link if it points at `/family-lawyer/` or `/family-law-services/`.
+
+---
+
 ## Redirects and URL safety: build notes
 **Added 10 Nov 2026 · Source: `REDIRECT-MAP.csv` · Decisions D-18 and D-19 in `DECISIONS.md`**
 
@@ -364,14 +418,14 @@ Watch Search Console daily for two weeks, then weekly for six: the Pages report 
 ---
 
 ## Build log (Claude Code)
-**Started 12 Nov 2026 · Branch `claude/affectionate-fermat-700uux` · Backup of this file taken first: `BUILD-NOTES.backup-2026-11-12-pre-build.md`**
+**Started 12 Nov 2026 · Branch `claude/affectionate-fermat-700uux` · Earlier versions of this file are in the git history**
 
 How the build is organised is in the repo's `README.md`. Tracking set-up is in `docs/tracking.md`.
 
 ### Built (12 Nov 2026)
 | Step | Status |
 |---|---|
-| Housekeeping | September false start parked in `_archive/2026-09-false-start/`. Nothing deleted |
+| Housekeeping | September false start parked in `_archive/` (removed 14 Nov; still in the git history) |
 | Project set-up | Next.js 16 in the repo root. Staging is `noindex` (header and robots.txt) and password-protected by `STAGING_USER` / `STAGING_PASSWORD`. **Vercel project not yet created (needs Ben)** |
 | Routes file | `src/config/routes.ts`, `URL_MODE=B`. One page route serves every URL from it, so switching mode renames nothing |
 | Office config | `src/config/offices.ts`. Melbourne has no level (Q-4) |
@@ -383,6 +437,16 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Import (D-35) | 37 articles, 24 profiles and 22 carry-over pages from WordPress, read-only. Report: `src/content/imported/import-report.json` |
 | Generic pages | Our people, Resources and Contact, generated, with the live titles and descriptions, until their designs arrive |
 
+### Built (14 Nov 2026): Sydney hub and the city hub template
+| Step | Status |
+|---|---|
+| City hub template | One template, `src/site/templates/CityHubTemplate.tsx`; one entry per city in `src/site/city-hubs/`. Guide sections are a per-city list. Melbourne moved onto it: visible text, links and layout unchanged (checked against the previous build). See D-47 |
+| Sydney hub | `/sydney/family-law/`, copy word for word from `sydney-family-law.html` (checked section by section, including the contents list and mid-page prompt). Six badges, Tash as lead with Jessica's card, Melbourne toggle, six guides, 12 FAQs |
+| Images | Tash (from the 450px JPEG) and Jessica (from `mediation-assets/`) served as AVIF with WebP fallback at two widths (`tools/make-responsive-image.mjs`, `src/components/Picture.tsx`). Tash's hero uses `mix-blend-mode: multiply`. Badges are the optimised WebPs already in `public/images/` (identical artwork) |
+| Schema | WebPage (Tash as author and reviewer), BreadcrumbList, LegalService `/sydney/family-law/#office` (the same `@id` the child custody, mediation and property pages and the homepage use) with six offers, Person for Tash (her profile's `@id`), FAQPage read from the visible answers. schema.org validator: 0 errors, 0 warnings |
+| Tests | 1440 and 390px: no overflow, one H1, no console errors, all 95 reveal and clip elements appear. Header at 320, 390, 900, 901, 1320, 1321 and 1440px: no overflow, Sydney first. Lighthouse mobile (staging): performance 88, accessibility 100, best practices 100, SEO 69 only because staging is `noindex` (every other SEO audit passes). Redirect test: both old URLs pass every check; the run's only failures are links to the three pages below that do not exist yet |
+| Redirect test | Now also fails if `REDIRECT-MAP.csv` ever loses the 301s from `/family-lawyer/`, `/family-law-services/` or `/melbourne-family-law/` |
+
 ### Left to do
 - **Three pages with no content yet:** `/fees/`, `/disclaimer/` (both linked from every footer) and `/melbourne/mediation/` (linked from the Melbourne hub; waits on Q-11). The redirect test fails on these until they exist.
 - **Four Melbourne articles (D-28):** their cards and inline links on the hub are hidden until each article is imported. They appear by themselves once it is.
@@ -390,7 +454,8 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 - **Needs Ben:** Vercel project; enquiry destination (`ENQUIRY_WEBHOOK_URL`: until set, staging accepts enquiries and delivers them nowhere, production refuses them); GTM ID (Q-12); Places API key and place IDs; Q-4, Q-9, Q-10.
 - **Not yet tested:** `URL_MODE=A` end to end; host and protocol hops (needs the real domain; see D-36); Core Web Vitals; real phones.
 - **`/wp-content/uploads/`:** only the 153 files that imported content uses are copied (about 32 MB). The WordPress library has 357 items. To decide: copy the rest, or keep them served from WordPress.
-- Sydney hub, prenups, Melbourne service pages, Fees and the designed versions of Our people and Contact, as their prototypes arrive. Each currently serves its carry-over version at its final URL.
+- Mobile Largest Contentful Paint on both hubs is 3.5 to 3.7s on Lighthouse's slow-phone setting: the hero paragraph waits for its fade-in. Worth revisiting with the motion rules before launch.
+- Prenups, Melbourne service pages, Fees and the designed versions of Our people and Contact, as their prototypes arrive. Each currently serves its carry-over version at its final URL.
 
 ### Where the build differs from a prototype, and why
 | Page | Difference | Why |

@@ -82,7 +82,7 @@ Each design follows the same routine as the mediation page: search data first, d
 | Mediation (Sydney) | Done | Done | | Notes open |
 | Property settlement (Sydney) | Done (approved 12 Nov) | Done | | Notes open (9 items for Tash) |
 | Melbourne hub (city hub template) | Done (approved 12 Nov) | Done | | Notes open (legal items for Tash; Q-11 mediator) |
-| Sydney hub | Week 3 | | | |
+| Sydney hub | Done (approved 14 Nov) | Done | | Notes open (legal items for Tash; Sydney registry address) |
 | Prenups and BFAs (Sydney) | Week 3 | | | |
 | Our People and profiles | Week 4 | | | |
 | Melbourne child custody, property, prenups | Week 4 | | | |
@@ -101,13 +101,13 @@ To confirm with Ben. Suggested treatment for each:
 | Page | URL | Suggested treatment |
 |---|---|---|
 | Team profiles (about 25) | `/our-team/...` and some at root, e.g. `/kate-frost-riskalla/` | **Launch-critical** (32% of clicks). Rebuild in the profile template at exactly the same URLs |
-| Family lawyer | `/family-lawyer/` | Candidate for the Sydney hub (decision 1a) |
+| Family lawyer | `/family-lawyer/` | 301 to the Sydney hub, `/sydney/family-law/` (D-24) |
 | Divorce lawyer | `/divorce-lawyer/` | Carry over. An expanded draft exists (16051) |
 | De facto relationships | `/de-facto-relationship-lawyer/` | Carry over |
 | Domestic violence | `/domestic-violence/` | Carry over, with care: check the copy against the trauma-informed tone |
 | Collaborative family lawyer | `/collaborative-family-lawyer-sydney/` | Carry over |
 | Consent orders | `/consent-orders/` | Carry over for now. The redirect question from the cannibalisation audit is still open |
-| Family law services | `/family-law-services/` | Redirect to `/` or the Sydney hub |
+| Family law services | `/family-law-services/` | 301 to the Sydney hub, `/sydney/family-law/` (D-24) |
 | About us, Doyle's recommended | `/about-us/`, `/about-us/doyles-recommended/` | Carry over (the Recognition block links to `/about-us/`) |
 | Resources | `/resources/` | Becomes the article index |
 | Google Ads landing page | `/lp/` | **Keep working.** Check with whoever runs the ads before changing it |

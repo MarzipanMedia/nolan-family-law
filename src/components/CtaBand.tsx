@@ -31,7 +31,25 @@ const TOPICS: Array<[string, string]> = [
   ['other', 'Something else'],
 ];
 
-export function CtaBand({ office }: { office: OfficeKey }) {
+const STAGES: Array<[string, string, boolean?]> = [
+  ['recent', 'Recently separated'],
+  ['thinking', 'Thinking about separating'],
+  ['unsure', 'Not sure yet', true],
+];
+
+interface Props {
+  office: OfficeKey;
+  /** The paragraph under the heading. The default suits pages with no state. */
+  lede?: string;
+  /** The address line under the phone number. Defaults to the office's display address. */
+  address?: string;
+  /** Ask "Where are you up to?" (the city hubs do). */
+  askStage?: boolean;
+}
+
+const DEFAULT_LEDE = 'You do not need to have everything worked out before you call. Tell us a little about your situation and we will explain your options, and what each would involve.';
+
+export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false }: Props) {
   const o = offices[office];
   return (
     <section id="book" data-screen-label="Consultation CTA" data-section="true" data-deep="true" style={{ background: '#1C2F40' }}>
@@ -39,7 +57,7 @@ export function CtaBand({ office }: { office: OfficeKey }) {
         <div data-reveal="true" style={{ minWidth: 0 }}>
           <div style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#A9C9DB', marginBottom: '18px' }}>Talk to us</div>
           <h2 style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(32px, 4.6vw, 48px)', lineHeight: 1.14, color: '#FFFFFF', margin: '0 0 22px', maxWidth: '19ch', textWrap: 'pretty' }}>Talk to our {o.city} team.</h2>
-          <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#E3E9EE', maxWidth: '50ch', margin: '0 0 36px', textWrap: 'pretty' }}>You do not need to have everything worked out before you call. Tell us a little about your situation and we will explain your options, and what each would involve.</p>
+          <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#E3E9EE', maxWidth: '50ch', margin: '0 0 36px', textWrap: 'pretty' }}>{lede}</p>
           <div style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#C3D0DC', marginBottom: '14px' }}>When you get in touch, we will</div>
           <ul style={{ listStyle: 'none', margin: '0 0 40px', padding: 0, display: 'flex', flexDirection: 'column', borderTop: '1px solid rgba(195,208,220,0.22)' }}>
             {PROMISES.map((p) => (
@@ -47,7 +65,7 @@ export function CtaBand({ office }: { office: OfficeKey }) {
             ))}
           </ul>
           <PhoneLink office={office} location="body" position="contact" style={{ display: 'inline-block', fontFamily: 'var(--font-serif)', fontSize: '30px', color: '#FFFFFF', marginBottom: '10px' }} />
-          <div style={{ fontSize: '15px', lineHeight: 1.65, color: '#C3D0DC' }}>{o.addressDisplay}<br />In person, by phone or by video</div>
+          <div style={{ fontSize: '15px', lineHeight: 1.65, color: '#C3D0DC' }}>{address ?? o.addressDisplay}<br />In person, by phone or by video</div>
         </div>
         <div data-reveal="true" data-form-card="true" style={{ minWidth: 0, background: '#FEFDFB', borderRadius: '3px', padding: '40px' }}>
           <div data-form-success="" hidden>
@@ -76,6 +94,16 @@ export function CtaBand({ office }: { office: OfficeKey }) {
                   {TOPICS.map(([value, text]) => <option key={value} value={value}>{text}</option>)}
                 </select>
               </label>
+              {askStage && (
+                <fieldset style={fieldset}>
+                  <legend style={legend}>Where are you up to?</legend>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 24px' }}>
+                    {STAGES.map(([value, text, checked]) => (
+                      <label key={value} style={radio}><input type="radio" name="stage" value={value} defaultChecked={checked} style={dot} />{text}</label>
+                    ))}
+                  </div>
+                </fieldset>
+              )}
               <label style={label}>
                 <span>Anything you would like us to know? <span style={{ fontWeight: 400, color: '#4A5A66' }}>Optional. Share only what you are comfortable with.</span></span>
                 <textarea data-field="true" name="message" rows={4} style={{ ...field, lineHeight: 1.55, resize: 'vertical' }} />

@@ -56,7 +56,8 @@ const staticRoutes = {
   home: page('Home', '/', '/', LIVE),
 
   // Sydney
-  sydneyHub: page('Sydney family law', '/family-lawyer/', '/sydney/family-law/', SYD),
+  // The breadcrumb label is set here, once (Q-15: "Sydney family law" or "Sydney").
+  sydneyHub: page('Sydney family law', '/family-lawyer/', '/sydney/family-law/', { ...SYD, ...LIVE }),
   sydneyChildCustody: page('Child custody lawyer', '/child-custody-lawyer-sydney/', '/sydney/child-custody-lawyer/', { ...SYD, ...LIVE }),
   sydneyProperty: page('Property settlement', '/property-settlement/', '/sydney/property-settlement/', { ...SYD, ...LIVE }),
   sydneyMediation: page('Family law mediation', '/sydney-family-law-mediation/', '/sydney/mediation/', { ...SYD, ...LIVE }),
