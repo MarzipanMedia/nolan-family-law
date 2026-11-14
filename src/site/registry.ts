@@ -6,7 +6,7 @@ import type { StaticRouteKey } from '@/config/routes';
 import type { PageModule } from './types';
 import { home } from './pages/home/page';
 import { sydneyChildCustody } from './pages/sydney-child-custody/page';
-import { melbourneHub } from './pages/melbourne-hub/page';
+import { melbourneHub, sydneyHub } from './city-hubs';
 import { sydneyMediation } from './pages/sydney-mediation/page';
 import { sydneyProperty } from './pages/sydney-property/page';
 import { team } from './pages/team/page';
@@ -17,6 +17,7 @@ export const pages: Partial<Record<StaticRouteKey, PageModule>> = {
   home,
   sydneyChildCustody,
   melbourneHub,
+  sydneyHub,
   sydneyMediation,
   sydneyProperty,
   team,

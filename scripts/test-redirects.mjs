@@ -61,6 +61,21 @@ const linksIn = (html) => [...html.matchAll(/href="(\/[^"#?]*)/g)].map((m) => m[
 const rows = readMap(mode);
 console.log(`Testing ${rows.length} rows of REDIRECT-MAP.csv against ${base} (URL_MODE=${mode})\n`);
 
+// Launch-critical rows that must always be in the map (each is then tested like every other
+// 301 below: one hop, with and without the slash, query string kept, target returns 200).
+const MUST_REDIRECT = {
+  B: [
+    ['/family-lawyer/', '/sydney/family-law/'],        // Sydney hub (D-24)
+    ['/family-law-services/', '/sydney/family-law/'],  // Sydney hub (D-24)
+    ['/melbourne-family-law/', '/melbourne/family-law/'], // Melbourne hub (D-23)
+  ],
+  A: [],
+};
+for (const [from, to] of MUST_REDIRECT[mode] ?? []) {
+  const row = rows.find((r) => r.path === from);
+  ok(row?.action === '301' && row.target === to, `REDIRECT-MAP.csv must 301 ${from} → ${to} (found ${row ? `${row.action} ${row.target}` : 'no row'})`);
+}
+
 const pageBodies = new Map();
 const newUnbuilt = [];
 

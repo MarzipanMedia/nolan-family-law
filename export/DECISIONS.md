@@ -60,6 +60,22 @@ Note: the hand-off quoted 24,800 impressions and the redirect map 44,183. The pa
 
 Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-winning family law firm now in Melbourne. Doyle's Guide recognised specialists in complex property settlements, parenting matters & mediation" (uses "specialists", D-05). Focus keyword: "Melbourne Family Law".
 
+### Baseline: Sydney hub (`/family-lawyer/` page 12267 and `/family-law-services/`), recorded 14 Nov 2026, before any change
+Search Console via Windsor.ai, last 12 months to 14 Nov 2026, page-level.
+
+| URL | Clicks | Impressions | Avg position |
+|---|---|---|---|
+| `/family-lawyer/` | 7 | 25,302 | 22.1 |
+| `/family-law-services/` | 3 | 19,549 | 8.8 |
+
+Note: the hand-off quoted 22,900 and 16,000 (the redirect map: 22,932 and 15,981). The figures above cover a later window and supersede both for this page.
+
+**What the two old pages rank for:** almost entirely head terms the homepage holds better. `/family-lawyer/`: "family lawyer sydney" 2,876 impressions at 12.0, "sydney family lawyer" 1,318 at 19.7, "family lawyers sydney" 1,216 at 22.1, "sydney divorce lawyer" 180 at 5.4, "child custody lawyer sydney" 250 at 10.5. `/family-law-services/`: "family lawyer sydney" 2,466 at 4.6, "family law firm sydney" 1,411 at 6.9, "sydney family lawyers" 967 at 3.6, "family law sydney" 770 at 6.0, plus brand ("nolan lawyers" 1,372 at 1.7). Nothing unique is at risk from the 301s.
+
+**Homepage, for comparison (same period):** "family lawyers sydney" 34,259 impressions, 238 clicks, 2.4 · "family lawyer sydney" 18,049, 162 clicks, 2.9 · "divorce lawyers sydney" 22,016 at 2.5 · "divorce lawyer sydney" 16,706, 79 clicks, 3.3 · "family law firm sydney" 21,856 at 3.3.
+
+**Separation queries (the gap):** "separation lawyers sydney" 5,764 at 4.6 and "separation lawyer sydney" 5,001 at 4.1 (homepage, about 1 click between them) · "separation lawyer" 1,241 at 7.8 · "separation lawyers sydney cbd" 823 at 5.2 · "divorce and separation lawyer sydney" 459 at 3.4 · "questions to ask solicitor when separating" 199 at 10.8 (the 11 questions article).
+
 ---
 
 ## Decisions
@@ -244,6 +260,35 @@ Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-
 **Three small calls made during the build, each easy to reverse:** (1) child custody: "We have helped hundreds of Sydney families" softened to "We help Sydney families" until verified; (2) the enquiry form asks for a phone number or an email as well as a name; (3) the homepage meta description is new: "Doyle's Guide recognised family lawyers in Sydney and Melbourne. Clear, practical advice on divorce, parenting, property settlement and mediation."
 *Evidence:* BUILD-NOTES child custody open item 2 and the property page's rule for the same claim; an enquiry with no contact detail cannot be answered; the live description says "specialists" (D-05).
 
+
+**Numbering note (14 Nov 2026):** the six Sydney hub decisions below were logged in the Claude Design copy of this file as D-33 to D-38, at the same time as the build logged its own D-33 to D-40 here. The build's numbers were already cited in the code and the commit history, so the Sydney decisions take the next free numbers: **D-41 to D-46 here = D-33 to D-38 in the Claude Design copy.** From now on this file (in the repo) is the only copy: upload it back to the Claude Design project before the next design session.
+
+### D-41 · 14 Nov 2026 · Ben · Decided
+**The Sydney hub leads with separation. Title "Separation Lawyers Sydney | Nolan Family Law & Mediation", H1 "Separation lawyers in Sydney".** "Family lawyers sydney" and the brand stay with the homepage.
+*Evidence:* Sydney hub baseline above. The old pages' head terms are held better by the homepage (2.4 to 2.9). About 12,000 impressions a year of separation searches sit at positions 4 to 5 on the homepage and earn about one click.
+*Watch:* "separation lawyers sydney" and "separation lawyer sydney" weekly from launch, and "family lawyers sydney" on the homepage for any cannibalisation (D-17).
+
+### D-42 · 14 Nov 2026 · Ben · Decided
+**DESIGN.md v2.0 is the design source for the Sydney hub, following the Melbourne export, not the design-system artifact attached to the Claude Design project.** Confirms D-04.
+
+### D-43 · 14 Nov 2026 · Ben · Decided
+**The hub's divorce section is short and links to `/sydney/divorce-lawyer/`.** A new "time limits after separation" section takes the space instead.
+*Evidence:* The homepage holds "divorce lawyer(s) sydney" at 2.5 to 3.3 (38,700 impressions), and `/sydney/divorce-lawyer/` is the divorce page (D-24).
+
+### D-44 · 14 Nov 2026 · Ben · Decided
+**Parramatta appears on the Sydney hub only as a court registry** (the court section and one FAQ), not in the serving line or schema. There is no Parramatta office.
+
+### D-45 · 14 Nov 2026 · Ben · Decided
+**Tash Nolan is author and reviewer on the Sydney hub; Jessica Swain is the second card. Tash's Doyle's wording is as Ben supplied:** Recommended Lawyer, Family & Divorce Lawyers – Sydney, since 2023; 2026 (fourth year): Leading Family & Divorce Lawyers – Sydney, Leading Parenting & Children's Matters, Leading Family Lawyers – High Net-Worth and Complex Financial Matters.
+
+### D-46 · 14 Nov 2026 · Ben · Decided
+**Sydney hub approved and exported** (`sydney-family-law.html`, Sydney hub section in `BUILD-NOTES.md`). De facto links follow `REDIRECT-MAP.csv` (`/sydney/de-facto-relationship-lawyer/`). The guides grid shows six Sydney articles at their current URLs.
+*Watch:* the Sydney hub baseline queries weekly from launch; clicks to `/sydney/family-law/` against the old pages' combined 10 clicks a year.
+
+### D-47 · 14 Nov 2026 · Claude Code · Decided, built (**Ben to confirm points 3 and 4**)
+**The city hub template is now a real, shared template, and the Sydney hub is its second entry.** The Melbourne hub had been converted straight from its prototype into one page file, so there was nothing to reuse. The layout now lives once in `src/site/templates/CityHubTemplate.tsx`, and each city is one entry in `src/site/city-hubs/` (`melbourne.tsx`, `sydney.tsx`). Guide sections are a per-city list, so Sydney's extra time limits section needs no template change. Melbourne was moved onto it and its visible text, links and layout were checked against the previous build: identical.
+*Small calls made on the way, each easy to reverse:* (1) both hubs' offer catalogs give each service an `areaServed` (the state) and the city lead a `workLocation`, so the two hubs share one schema shape (Sydney's prototype had the first, Melbourne's the second); (2) Tash's Person node keeps the AIFLAM `recognizedBy` on her mediator accreditation, as on every other page; (3) FAQPage text is read from the visible answers on both hubs, so Sydney's cost answer in the schema now ends with "Talk to us about costs." as the page does (the prototype's head left it out), and Melbourne's lost a stray space; (4) the enquiry form's "Thinking about separating" option sends `thinking` on both hubs (the Sydney prototype said `agreed`); (5) Melbourne's hero button now carries `data-cta-position="hero"` like Sydney's (D-31).
+
 ---
 
 ## Open questions (become decisions when answered)
@@ -252,7 +297,7 @@ Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-
 | ~~Q-1~~ | ~~URL structure~~ Answered 12 Nov: option B in one hit at launch (D-23). Let Chad know at the week 2 call | Ben |
 | ~~Q-2~~ | ~~Sydney hub URL~~ Answered 12 Nov: `/sydney/family-law/` (D-24) | Ben |
 | Q-3 | Does `/consent-orders/` redirect to property settlement, stay as a hub, or split? | Ben |
-| Q-4 | Melbourne address: Level 23 or Level 33, 385 Bourke St | Ben, against the GBP |
+| Q-4 | Melbourne address: Level 23 or Level 33, 385 Bourke St (the older call-experience brief, removed 14 Nov, said "L33/385 Bourke St") | Ben, against the GBP |
 | ~~Q-5~~ | ~~Articles: import or keep WordPress~~ Answered 12 Nov: import once (D-35) | Ben, with Claude Code |
 | Q-6 | Does Nolan offer shuttle mediation? Does the firm decline to act for either party after mediating? | Tash |
 | ~~Q-7~~ | ~~Does the Melbourne office offer mediation?~~ Answered 12 Nov: yes (D-27). Who mediates there is still to confirm | Chad |
@@ -262,4 +307,5 @@ Current title: "Melbourne Family Law & Mediation | Nolan Lawyers". Meta: "Award-
 | Q-12 | Which GTM container survives: `GTM-5LNPVM7G` or `GTM-NRSK8FD`? (D-38) | Ben |
 | Q-13 | `/wp-content/uploads/`: copy the whole WordPress media library (357 items) into the build, or keep serving it from WordPress? | Ben, with Claude Code |
 | Q-14 | "Specialist" in imported profiles and pages (23 files): keep, reword, or decide per person? (D-05) | Ben |
+| Q-15 | Sydney hub breadcrumb label: "Sydney family law" (as built) or "Sydney" (the mediation export)? One line in `src/config/routes.ts` (the `sydneyHub` label) changes the breadcrumb and its schema | Ben |
 | Q-10 | Restore the "Ultimate Divorce Checklist" PDF (it still gets search traffic), or redirect it? | Ben |
