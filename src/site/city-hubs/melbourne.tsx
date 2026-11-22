@@ -66,7 +66,7 @@ export const melbourne: CityHubConfig = {
     { title: 'Dividing property and assets', text: 'Property settlement, superannuation and debts in Victoria', to: 'melbourneProperty' },
     { title: 'Resolving it without court', text: 'Family law mediation in Melbourne, for property and parenting', to: 'melbourneMediation' },
     { title: 'Separating or divorcing', text: 'What to do first, and how divorce works in Victoria', to: '#separation' },
-    { title: 'Protecting what I have', text: 'Prenuptial and binding financial agreements in Melbourne', to: 'melbournePrenups' },
+    { title: 'Protecting what I have', text: 'Binding financial agreements in Melbourne', to: 'melbournePrenups' }, // anchor owned by the prenup page (D-54)
     { title: 'I am not sure where to start', text: 'Tell us a little and we will point you the right way', to: '#book' },
   ],
 

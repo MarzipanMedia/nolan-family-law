@@ -289,6 +289,55 @@ Note: the hand-off quoted 22,900 and 16,000 (the redirect map: 22,932 and 15,981
 **The city hub template is now a real, shared template, and the Sydney hub is its second entry.** The Melbourne hub had been converted straight from its prototype into one page file, so there was nothing to reuse. The layout now lives once in `src/site/templates/CityHubTemplate.tsx`, and each city is one entry in `src/site/city-hubs/` (`melbourne.tsx`, `sydney.tsx`). Guide sections are a per-city list, so Sydney's extra time limits section needs no template change. Melbourne was moved onto it and its visible text, links and layout were checked against the previous build: identical.
 *Small calls made on the way, each easy to reverse:* (1) both hubs' offer catalogs give each service an `areaServed` (the state) and the city lead a `workLocation`, so the two hubs share one schema shape (Sydney's prototype had the first, Melbourne's the second); (2) Tash's Person node keeps the AIFLAM `recognizedBy` on her mediator accreditation, as on every other page; (3) FAQPage text is read from the visible answers on both hubs, so Sydney's cost answer in the schema now ends with "Talk to us about costs." as the page does (the prototype's head left it out), and Melbourne's lost a stray space; (4) the enquiry form's "Thinking about separating" option sends `thinking` on both hubs (the Sydney prototype said `agreed`); (5) Melbourne's hero button now carries `data-cta-position="hero"` like Sydney's (D-31).
 
+**Numbering note (22 Nov 2026):** as on 14 Nov, the Claude Design copy of this file logged its own D-33 to D-39 (17 and 22 Nov) while this file already had D-33 to D-47. They take the next free numbers here: **D-48 to D-54 here = D-33 to D-39 in the Claude Design copy**, and the design copy's Q-12 and Q-13 are **Q-16 and Q-17** here (this file's Q-12 is GTM and Q-13 is uploads). `melbourne-prenup-draft-v2.md` and `HANDOFF-city-aware-nav.md` cite the old numbers: D-30 and D-31 are unchanged; their D-34 = D-49, D-36 = D-51, D-37 = D-52, D-38 = D-53, Q-12 = Q-16, Q-13 = Q-17.
+
+### D-48 · 17 Nov 2026 · Ben and Claude · Decided
+**D-23 stands after an outside review: the site moves to `/sydney/` and `/melbourne/` at launch.** The review proposed keeping Sydney services at the root and putting Melbourne under `/locations/melbourne/...`. Not adopted.
+*Evidence:* Tested on staging (nolan-family-law.vercel.app) on 17 Nov. Every old service URL tried reached its new home in one hop, including `/melbourne-family-law/`, `/property-settlements/` and `/prenuptial-agreements/`. The moved pages earn about 5% of Google clicks; the homepage and profiles (about 80%) do not move. The proposed alternative would still move every Melbourne page, adds a level of depth, and makes Melbourne a branch of a Sydney site. The fallback in D-23 (`URL_MODE=A` if the redirect test is not at 100% on 11 Dec) is unchanged.
+*Gaps found and closed here:* `/collaborative-lawyer/` and `/collaborative-family-lawyer/` were missing from `REDIRECT-MAP.csv` (the live homepage links to the first). Both added, 301 to `/sydney/collaborative-family-law/`. Q-9 (Rank Math redirect export) is still open and now blocks the go/no-go.
+*Watch:* the redirect test at go/no-go; Search Console "Not found" for four weeks after launch.
+
+### D-49 · 17 Nov 2026 · Ben · Decided (answers Melbourne hub open item 7)
+**The header navigation follows the city of the page.** On `/melbourne/` pages (and Melbourne articles and Anastasia's profile) every service link in the header and mobile menu goes to the Melbourne page. On Sydney pages and pages with no city it goes to Sydney. A visible city switch links to the same service in the other city, or to that city's hub where there is no twin. Plain server-rendered links from the routes file. No location detection, no cookies, no redirects by IP.
+*Evidence:* On staging, the Melbourne hub's header linked only to `/sydney/` pages (children, property, separation and divorce, prenups, mediation). Melbourne services were reachable only from the footer and the hub body. Google crawls mostly from the United States, so a header that changes by visitor location would show it one version only.
+*Watch:* GA4 navigation clicks on Melbourne pages; internal links to each `/melbourne/` page in Search Console (Links report) a month after launch.
+
+### D-50 · 17 Nov 2026 · Ben · Decided (extends D-27)
+**`/melbourne/mediation/` exists at launch, in the generic inner-page template if it has not been designed by the freeze (D-22).** It is in the sitemap and in the Melbourne navigation.
+*Evidence:* The URL returned 404 on staging on 17 Nov, while the Melbourne hub holds page-one positions for mediation searches ("family mediation melbourne" 2.2, "family law mediation melbourne" 3.4, about 12,100 impressions). With D-49 the Melbourne header needs a mediation destination.
+*Still open:* Q-11, who mediates in Melbourne. The page carries a review note until answered.
+
+### D-51 · 17 Nov 2026 · Ben and Claude · Decided (thresholds confirmed by Ben, 22 Nov 2026)
+**No Melbourne page launches as a city-name swap of its Sydney twin.** The build runs a twin test: main content only, city and state names neutralised, five-word shingles, Jaccard overlap. Service pages must be at or under 30%. City hubs, which share template blocks, at or under 50%. A page over the line either gets rewritten or launches with a canonical to its twin, decided at the go/no-go.
+*Evidence (staging, 17 Nov):* prenuptial agreements 89% · family law hubs 46% · child custody 5% · property settlement 2%.
+*Watch:* the twin test result in the launch checklist; impressions for each Melbourne page against its baseline.
+
+### D-52 · 17 Nov 2026 · Ben · Decided
+**The Melbourne prenuptial agreements page is rewritten as a Victorian page, not taken from the March 2026 brief.** The "Prenups" Google Doc (23 Mar 2026) holds a Sydney and a Melbourne version that are the same text with the city swapped, and it is what staging currently shows for both cities. See `HANDOFF-melbourne-prenup.md`.
+*Evidence:* 89% shared wording. The live Melbourne page (`/melbourne-family-law/prenuptial-agreement-melbourne/`, page 15889) had 13,071 impressions and 26 clicks in 12 months, so it has the most to lose from duplication.
+*The brief also breaks earlier decisions and needs legal fixes, on both city versions:* dollar figures (D-02; nine on the Sydney staging page); "specialists" and "Accredited Family Law Specialists" (D-05); the office level (Q-4); em dashes and heavy bullets; "hundreds of couples" and "50% of marriages" (unverified); witnessing listed as a section 90G requirement (it is not in the section); consent orders described as a public record; "Child Support Agency"; "different states have different property law rules" (the Family Law Act is federal). All go to Tash or Anastasia for legal review before launch.
+*Watch:* "prenuptial agreement melbourne" and "binding financial agreement melbourne" positions weekly from launch.
+
+### D-53 · 17 Nov 2026 · Ben and Claude · Decided
+**Schema and trust signals state only what is true.** `alumniOf` is used for education only, never for court admission. The Law Institute of Victoria logo goes on Melbourne pages only once membership is confirmed (Q-16). Melbourne pages show Melbourne reviews first where the Google Business Profile has them.
+*Evidence:* The outside review suggested `alumniOf` for admitted jurisdictions and the LIV logo. The Melbourne hub on staging shows national badges only (Doyle's, Law Council, Family Law Section, AACP).
+
+### D-54 · 22 Nov 2026 · Ben · Decided
+**The Melbourne prenup page owns "binding financial agreements melbourne"; Tash reviews it.** Title "Prenup Lawyers Melbourne | Binding Financial Agreements | Nolan", H1 "Prenups and binding financial agreements in Melbourne". The hub keeps one routing card with the anchor "binding financial agreements in Melbourne". Anastasia is author, Tash is reviewer (answers Q-17). Experience copy centres on Anastasia ("more than a decade" until her years are confirmed). Copy draft: `claude/melbourne-prenup-draft-v2.md` in the project, laid out against the property settlement template.
+*Evidence (Search Console, 21 Nov 2025 to 20 Nov 2026, page 15889 and the hub):* the live page sits on page two for its head terms ("prenup lawyer melbourne" 620 impressions, position 13.5; "prenup lawyers melbourne" 552, 13.8; "prenuptial agreement melbourne" 312, 11.8; best is "prenup contract melbourne lawyer" 772, 9.3). "Prenup" wording drew about 10,600 impressions against about 5,700 for "prenuptial"; BFA wording about 200. The hub held "binding financial agreements melbourne" at position 1.0 with 502 impressions and no clicks. "Wills and prenuptial agreements" (55 impressions, position 86) shows unserved demand for the Victorian will angle.
+*Twin check (draft v2 against the live pages, five-word shingles, city names neutralised):* 0.6% against Sydney page 8427, 0.7% against Melbourne page 15889. Rerun against the new Sydney page once it exists.
+*Still open:* Q-16 (Ben believes both the firm and Anastasia are Law Institute of Victoria members; confirm before the logo goes on).
+*Watch:* "prenup lawyer melbourne", "prenuptial agreement melbourne" and "binding financial agreements melbourne" weekly from launch.
+
+### D-55 · 22 Nov 2026 · Ben · Decided
+**Melbourne prenuptial agreements approved and exported** (`prenuptial-agreements-melbourne.html`, Melbourne prenuptial agreements section in `BUILD-NOTES.md`). Copy is `melbourne-prenup-draft-v2.md` word for word, forked from the property settlement template with the Melbourne hub's header, accreditations, lead card, mid-page prompt, toggle and form. No new components. The header follows D-49: Melbourne service links, with "Also in Sydney" as the city switch. No rooms image (no Bourke Street photo on file).
+*Small calls made in the design, each easy to reverse:* (1) where the draft gives no heading (Quick Answer, related reading, FAQ) the block shows its eyebrow label only, and the lawyer section's H2 is "Your Melbourne lawyer"; (2) fact strip, toggle and related reading cards show titles only; (3) the form's submit button reads "Book a consultation" and the "Where are you up to?" question is left off, since its options are about separating; (4) the hero and mid-page phone links read "(03) 9088 8889" without "Call".
+*Watch:* as D-54, plus the twin test (D-51) once the Sydney prenup page is rewritten.
+
+### D-56 · 22 Nov 2026 · Ben · Decided
+**The summary box at the top of a service page is called "Quick answer", everywhere.** Not "Quick Answer for AI". It is the on-screen label on the hubs, property, child custody, mediation and Melbourne prenup pages, and the name to use in briefs, drafts and notes. The box's purpose (a short, quotable answer that AI search and Google can lift, D-11) is unchanged; only the name is settled.
+*Evidence:* every built page already labelled it "Quick answer"; only house-style notes said "for AI", which raised a check on the Melbourne prenup draft. That check is closed and its review notes removed.
+
 ---
 
 ## Open questions (become decisions when answered)
@@ -308,4 +357,6 @@ Note: the hand-off quoted 22,900 and 16,000 (the redirect map: 22,932 and 15,981
 | Q-13 | `/wp-content/uploads/`: copy the whole WordPress media library (357 items) into the build, or keep serving it from WordPress? | Ben, with Claude Code |
 | Q-14 | "Specialist" in imported profiles and pages (23 files): keep, reword, or decide per person? (D-05) | Ben |
 | Q-15 | Sydney hub breadcrumb label: "Sydney family law" (as built) or "Sydney" (the mediation export)? One line in `src/config/routes.ts` (the `sydneyHub` label) changes the breadcrumb and its schema | Ben |
+| Q-16 | Is the firm or Anastasia a member of the Law Institute of Victoria (for the Melbourne accreditation strip)? (D-53) | Chad |
+| ~~Q-17~~ | ~~Who reviews the Melbourne prenup page for legal accuracy and is named as reviewer: Anastasia or Tash?~~ Answered 22 Nov: Tash (D-54) | Ben, with Chad |
 | Q-10 | Restore the "Ultimate Divorce Checklist" PDF (it still gets search traffic), or redirect it? | Ben |

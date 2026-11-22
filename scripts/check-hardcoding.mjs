@@ -26,6 +26,8 @@ const files = [];
 
 const ALLOW_PHONE = new Set(['src/config/offices.ts']);
 const ALLOW_URL = new Set(['src/config/routes.ts', 'src/proxy.ts']);
+// The one staging-only note component (it renders nothing in production).
+const ALLOW_NOTE = new Set(['src/components/ReviewNote.tsx']);
 const errors = [], placeholders = [];
 const isComment = (line) => /^\s*(\*|\/\/|\/\*|\{\/\*)/.test(line);
 
@@ -50,7 +52,7 @@ for (const file of files) {
     if (/quick exit/i.test(line)) errors.push(`${at}: quick exit (D-07)`);
     if (/—/.test(line)) errors.push(`${at}: em dash`);
     if (/\$\d/.test(line) && !/\$\{|\\\$/.test(line)) errors.push(`${at}: dollar figure (D-02)`);
-    if (/#FFF4D6|data-review-note/.test(line)) errors.push(`${at}: review note left in`);
+    if (/#FFF4D6|data-review-note/.test(line) && !ALLOW_NOTE.has(rel)) errors.push(`${at}: review note left in`);
   });
 }
 

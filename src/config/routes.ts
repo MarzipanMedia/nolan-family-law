@@ -72,8 +72,10 @@ const staticRoutes = {
   melbourneHub: page('Melbourne family law', '/melbourne-family-law/', '/melbourne/family-law/', { ...MEL, ...LIVE }),
   melbourneChildCustody: page('Child custody lawyer', '/melbourne-family-law/child-custody-lawyer-melbourne/', '/melbourne/child-custody-lawyer/', MEL),
   melbourneProperty: page('Property settlement', '/melbourne-family-law/property-settlement-melbourne/', '/melbourne/property-settlement/', MEL),
-  melbournePrenups: page('Prenuptial agreements', '/melbourne-family-law/prenuptial-agreement-melbourne/', '/melbourne/prenuptial-agreements/', MEL),
-  melbourneMediation: page('Family law mediation', '/melbourne-mediation/', '/melbourne/mediation/', MEL),
+  // Breadcrumb label for the designed page (D-55): "Prenups and binding financial agreements".
+  melbournePrenups: page('Prenups and binding financial agreements', '/melbourne-family-law/prenuptial-agreement-melbourne/', '/melbourne/prenuptial-agreements/', { ...MEL, ...LIVE }),
+  // Generic inner-page stub at launch (D-50); designed in January.
+  melbourneMediation: page('Family mediation', '/melbourne-mediation/', '/melbourne/mediation/', { ...MEL, ...LIVE }),
 
   // The firm (same URL under both options, D-21 and D-23)
   team: page('Our people', '/our-team/', undefined, LIVE),

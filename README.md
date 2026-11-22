@@ -34,6 +34,8 @@ npm run test:redirects -- --base https://<staging-address> --auth user:password 
 `npm run build` first regenerates the redirect table and checks the rules (no hand-written
 URLs or phone numbers, no "specialist", no fees, no quick exit). It stops if any rule is broken.
 `npm run test:redirects` is the go/no-go test: it must pass 100% on staging before launch.
+Run `npm run test:twins` (D-51: no Melbourne page is a city-name swap of its Sydney twin) and
+`npm run test:nav` (D-49: the header follows the page's city) beside it, with the same `--base` and `--auth`.
 `npm run import` re-reads articles, profiles and carry-over pages from WordPress (read-only).
 
 ## Where things are
@@ -42,7 +44,7 @@ URLs or phone numbers, no "specialist", no fees, no quick exit). It stops if any
 - `src/site/city-hubs/` : one entry per city hub (copy, people, badges, guides, FAQ), rendered by the one city hub template in `src/site/templates/CityHubTemplate.tsx`. Never copy the template for a city.
 - `src/site/templates/` : article, profile and carry-over templates. `src/components/` : the shell.
 - `src/content/imported/` : articles, profiles and carry-over pages imported from WordPress (D-35).
-- `tools/` : converting a new prototype from `export/` into a page, making responsive AVIF/WebP images, and checking a page at 1440px and 390px.
+- `tools/` : converting a new prototype from `export/` into a page (`--notes` keeps its review notes for staging), making responsive AVIF/WebP images, and checking a page at 1440px and 390px.
 - `export/`, `mediation-assets/`, `melbourne-assets/` : design references. Never deployed.
 
 ## Settings (Vercel environment variables)

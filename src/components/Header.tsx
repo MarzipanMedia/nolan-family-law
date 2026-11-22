@@ -7,10 +7,15 @@
  *   ≤900      a Call button beside Menu (icon only under 381px)
  * The breakpoints live in globals.css. Keep "Talk to us" short: the bar overflows at 1440px
  * if the button grows or the phone moves inline.
+ *
+ * The links follow the page's city (D-49): Melbourne pages link to Melbourne services. The
+ * city switch ("Also in Sydney") links to the same service in the other city, in the strip at
+ * ≥1321px and at the top of the mobile menu below that. Pages with no city link to both hubs.
+ * Every link is a plain <a href> from the routes file: no location detection of any kind.
  */
-import { url, type City } from '@/config/routes';
+import { url, routeForPath, type City } from '@/config/routes';
 import { leadOffice, otherOffice } from '@/config/offices';
-import { mainNav } from '@/config/nav';
+import { mainNavFor, citySwitchFor } from '@/config/nav';
 import { PhoneLink } from './PhoneLink';
 import { PhoneIcon } from './icons';
 
@@ -27,6 +32,11 @@ const menuLink = { display: 'flex', alignItems: 'center', minHeight: '56px', fon
 export function Header({ city, currentPath, menuCta = 'Talk to us' }: Props) {
   const lead = leadOffice(city);
   const other = otherOffice(lead);
+  const nav = mainNavFor(city);
+  const key = routeForPath(currentPath)?.key;
+  const sw = key ? citySwitchFor(key, city) : null;
+  const switchLabel = sw ? `Also in ${sw.city === 'sydney' ? 'Sydney' : 'Melbourne'}` : '';
+  const current = (to: Parameters<typeof url>[0]) => (url(to) === currentPath ? 'page' : undefined);
   return (
     <>
       <div data-phone-strip="true" style={{ background: '#F8F6F2', borderBottom: '1px solid #E8E4DC' }}>
@@ -38,6 +48,14 @@ export function Header({ city, currentPath, menuCta = 'Talk to us' }: Props) {
           <PhoneLink office={other.key} location="header" position="strip" style={{ color: '#4A5A66' }}>
             {other.city} {other.phoneDisplay}
           </PhoneLink>
+          {sw ? (
+            <a href={url(sw.to)} data-city-switch="true" style={{ color: '#3A6D8C', fontWeight: 600 }}>{switchLabel} <span aria-hidden="true">→</span></a>
+          ) : (
+            <span data-city-switch="true" style={{ display: 'inline-flex', gap: '16px' }}>
+              <a href={url('sydneyHub')} style={{ color: '#3A6D8C', fontWeight: 600 }}>Sydney</a>
+              <a href={url('melbourneHub')} style={{ color: '#3A6D8C', fontWeight: 600 }}>Melbourne</a>
+            </span>
+          )}
         </div>
       </div>
       <header data-screen-label="Navigation" data-nav="true" style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(248,246,242,0.92)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', borderBottom: '1px solid #E8E4DC' }}>
@@ -46,8 +64,8 @@ export function Header({ city, currentPath, menuCta = 'Talk to us' }: Props) {
             <img data-logo="true" src="/images/nolan-logo.webp" alt="Nolan Family Law & Mediation" width={449} height={166} style={{ display: 'block', height: '54px', width: 'auto', transition: 'height 240ms cubic-bezier(0.23,1,0.32,1)' }} />
           </a>
           <nav data-nav-links="true" aria-label="Main" style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-            {mainNav.map((item) => (
-              <a key={item.to} href={url(item.to)} data-navlink="true" aria-current={url(item.to) === currentPath ? 'page' : undefined} style={navLink}>{item.label}</a>
+            {nav.map((item) => (
+              <a key={item.label} href={url(item.to)} data-navlink="true" aria-current={current(item.to)} style={navLink}>{item.label}</a>
             ))}
           </nav>
           <PhoneLink office={lead.key} location="header" position="nav" data-nav-phone="true" style={{ alignItems: 'center', gap: '8px', color: '#1A2E40', fontSize: '15px', fontWeight: 600, whiteSpace: 'nowrap', textDecoration: 'none', flex: 'none' }}>
@@ -71,8 +89,16 @@ export function Header({ city, currentPath, menuCta = 'Talk to us' }: Props) {
         <div data-menu-wrap="" id="site-menu" hidden>
           <div data-mobile-menu="true" style={{ borderTop: '1px solid #E8E4DC', background: '#F8F6F2', maxHeight: 'calc(100vh - 82px)', overflowY: 'auto' }}>
             <nav aria-label="Main menu" style={{ display: 'flex', flexDirection: 'column', padding: '8px 24px 24px' }}>
-              {mainNav.map((item) => (
-                <a key={item.to} href={url(item.to)} aria-current={url(item.to) === currentPath ? 'page' : undefined} style={menuLink}>{item.label}</a>
+              {sw ? (
+                <a href={url(sw.to)} data-city-switch="true" style={{ ...menuLink, minHeight: '48px', fontSize: '15px', fontWeight: 600, color: '#3A6D8C' }}>{switchLabel} <span aria-hidden="true" style={{ marginLeft: '8px' }}>→</span></a>
+              ) : (
+                <div data-city-switch="true" style={{ display: 'flex', gap: '24px', minHeight: '48px', alignItems: 'center', borderBottom: '1px solid #E8E4DC', fontSize: '15px', fontWeight: 600 }}>
+                  <a href={url('sydneyHub')} style={{ color: '#3A6D8C' }}>Sydney</a>
+                  <a href={url('melbourneHub')} style={{ color: '#3A6D8C' }}>Melbourne</a>
+                </div>
+              )}
+              {nav.map((item) => (
+                <a key={item.label} href={url(item.to)} aria-current={current(item.to)} style={menuLink}>{item.label}</a>
               ))}
               <a href="#book" data-action="closeMenu" data-press="true" data-cta-position="menu" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '56px', marginTop: '18px', background: '#B4552F', color: '#FFFFFF', fontSize: '16px', fontWeight: 600, borderRadius: '2px', textDecoration: 'none' }}>{menuCta}</a>
               <PhoneLink office={lead.key} location="header" position="menu" style={{ display: 'flex', alignItems: 'center', minHeight: '52px', fontSize: '16px', fontWeight: 600, color: '#1A2E40' }}>
