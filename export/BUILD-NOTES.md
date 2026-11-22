@@ -21,8 +21,8 @@
 | `prenuptial-agreements-melbourne.html` | Melbourne prenuptial agreements, approved 22 Nov. Plain HTML, images inlined, opens offline. See the Melbourne prenuptial agreements section |
 | `melbourne-prenup-draft-v2.md` | The approved copy for that page, with section map, anchors, routing cards and schema. The page follows it word for word |
 | `melbourne-family-law.html` | Melbourne hub prototype, approved 12 Nov (restored to the repo 22 Nov; the build's comments refer to it) |
-| `HANDOFF-city-aware-nav.md` | Prompt for the city-aware header (D-49), the Melbourne mediation stub (D-50) and the twin test (D-51). Uses the design log's old numbers (D-34 to D-36) |
-| `HANDOFF-build-melbourne-prenup.md` | Prompt to build the Melbourne prenuptial agreements page in Claude Code |
+
+The two hand-off prompts used on 22 Nov (city-aware nav, and building the Melbourne prenup page) were removed once built. They are in the git history.
 | `DECISIONS.md` | Decision log with evidence and the pre-rebuild baseline. Check it before changing anything |
 | `REDIRECT-MAP.csv` | Every known URL (115) with its launch treatment under option A and option B. See the Redirects section |
 
