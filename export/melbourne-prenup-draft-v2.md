@@ -50,8 +50,6 @@ Written with Anastasia Simes, Partner · Reviewed by Tash Nolan, Principal · Up
 
 **Quick answer:** In Victoria, a prenup is a binding financial agreement made under the federal Family Law Act 1975. It records how property, money and superannuation will be divided if a marriage or de facto relationship ends. It is binding only if both partners receive independent legal advice from separate lawyers before signing and the other formal requirements of the Act are met. Signing well before a wedding, with full financial disclosure, makes an agreement far harder to challenge. A prenup does not cover parenting arrangements and it does not take the place of a will.
 
-> CHECK (Ben): house style calls this box "Quick Answer for AI" in places. The hub and property pages label it on screen as "Quick answer". Keep consistent with them.
-
 ## [Accreditations]
 
 The Melbourne hub's four badges: Doyle's, Law Council of Australia, Family Law Section, AACP. Add the Law Institute of Victoria only once Q-12 is confirmed (Ben believes both the firm and Anastasia are members, 22 Nov).

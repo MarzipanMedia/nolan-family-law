@@ -1,7 +1,7 @@
 /**
  * Converts an approved HTML prototype (export/*.html) into page components.
  *
- *   node tools/convert-prototype.mjs <prototype.html> <page-folder> --office sydney|melbourne
+ *   node tools/convert-prototype.mjs <prototype.html> <page-folder> --office sydney|melbourne [--notes]
  *
  * It writes src/site/pages/<page-folder>/content.tsx (the page's sections) and faq.ts
  * (the FAQ as data, for the FAQPage schema), and saves inlined images as WebP in public/images/.
@@ -10,7 +10,9 @@
  *  - every internal link becomes url('<routeKey>') from the routes file (D-25);
  *  - every office phone link becomes <PhoneLink>, and office numbers and addresses in the
  *    copy come from the office config;
- *  - review notes, the notes toggle and scripts are dropped (they never ship);
+ *  - review notes, the notes toggle and scripts are dropped (they never ship), unless --notes
+ *    is given: then each note becomes <ReviewNote>, which shows on staging and renders nothing
+ *    when SITE_ENV=production;
  *  - cards that link to an article that is not live yet are hidden until it is (D-28);
  *  - the header, trust ribbon and footer are left out: the shared shell supplies them.
  *
@@ -27,6 +29,9 @@ import { readMap, normalisePath } from '../scripts/lib/csv.mjs';
 const [input, pageDir, ...rest] = process.argv.slice(2);
 const opt = (n, d) => { const i = rest.indexOf(`--${n}`); return i === -1 ? d : rest[i + 1]; };
 const officeKey = opt('office', 'sydney');
+// --notes keeps the yellow review notes as <ReviewNote> (shown on staging, never in production).
+const keepNotes = rest.includes('--notes');
+let usesNotes = false;
 if (!input || !pageDir) { console.error('usage: convert-prototype.mjs <html> <page-folder> --office sydney|melbourne'); process.exit(1); }
 
 const root = new URL('..', import.meta.url).pathname;
@@ -169,6 +174,12 @@ function emit(node, depth, siblings = [], index = 0) {
   if (node.nodeName === '#comment' || !node.tagName) return;
   let tag = node.tagName;
   if (tag === 'script' || tag === 'style' || tag === 'template' || tag === 'x-dc' || tag === 'helmet') return;
+  if (has(node, 'data-review-note') && keepNotes) {
+    const noteText = (n) => (n.nodeName === '#text' ? n.value : (n.childNodes ?? []).map(noteText).join(n.tagName && BLOCK.has(n.tagName) ? ' ' : ''));
+    const text = noteText(node).replace(/\s+/g, ' ').trim();
+    if (text) { usesNotes = true; out.push(`${pad(depth)}<ReviewNote>{${lit(text)}}</ReviewNote>`); }
+    return;
+  }
   if (has(node, 'data-review-note') || has(node, 'data-notes-toggle')) return;
   if (attr(node, 'role') === 'group' && attr(node, 'aria-label') === 'Review options') return; // design-tool controls
   if (/quick.?exit|quickly leave/i.test(attr(node, 'aria-label') ?? '') || (tag === 'a' || tag === 'button') && /quick exit/i.test(textOf(node)) || /quick.?exit/i.test(attr(node, 'aria-label') ?? '') || /quick.?exit/i.test(attr(node, 'data-action') ?? '') || (tag === 'a' || tag === 'button') && /^\s*quick exit/i.test(textOf(node))) { warnings.push('dropped a quick exit control (D-07)'); return; }
@@ -177,7 +188,7 @@ function emit(node, depth, siblings = [], index = 0) {
   const isNote = (n) => has(n, 'data-review-note') || /#FFF4D6|rgb\(255, 244, 214\)/i.test(attr(n, 'style') ?? '');
   if (isNote(node)) return;
   const elKids = (node.childNodes ?? []).filter((c) => c.tagName);
-  if (elKids.length && elKids.every(isNote) && textOf(node).trim() === elKids.map(textOf).join('').trim()) return; // a wrapper holding only notes
+  if (elKids.length && elKids.every(isNote) && textOf(node).trim() === elKids.map(textOf).join('').trim() && !(keepNotes && elKids.some((k) => has(k, 'data-review-note')))) return; // a wrapper holding only notes
 
   const label = attr(node, 'data-screen-label');
   if (label) { section = label; out.push('', `${pad(depth)}{/* ── ${label} ── */}`); }
@@ -299,6 +310,7 @@ const imports = [
   usesOffices || /offices\./.test(jsx) ? `import { offices } from '@/config/offices';` : '',
   /<PhoneLink/.test(jsx) ? `import { PhoneLink } from '@/components/PhoneLink';` : '',
   usesForm ? `import { EnquiryForm } from '@/components/EnquiryForm';` : '',
+  usesNotes ? `import { ReviewNote } from '@/components/ReviewNote';` : '',
 ].filter(Boolean).join('\n');
 
 writeFileSync(`${outDir}/content.tsx`, `/**

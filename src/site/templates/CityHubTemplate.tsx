@@ -14,6 +14,7 @@ import { Reviews } from '@/components/Reviews';
 import { LiveLink } from '@/components/LiveLink';
 import { CtaBand } from '@/components/CtaBand';
 import { Picture } from '@/components/Picture';
+import { MidPrompt } from '@/components/MidPrompt';
 import type { CityHubConfig, Destination } from '@/site/city-hubs/types';
 
 // ── Shared styles (DESIGN.md v2.0) ───────────────────────────────────────────────────────
@@ -274,30 +275,7 @@ function GuideBlock({ hub, section: s, first }: { hub: CityHubConfig; section: C
           <p style={S.inShortP}>{s.inShort}</p>
         </div>
       </section>
-      {s.id === hub.midAfter && <MidPrompt hub={hub} />}
+      {s.id === hub.midAfter && <MidPrompt office={hub.office} img={hub.mid.img} objectPosition={hub.mid.objectPosition} text={hub.mid.text} cta={hub.cta} eyebrow="Every situation is different" phonePrefix="or call " />}
     </>
-  );
-}
-
-/** The one mid-page prompt (D-31). Its links carry data-cta-position="mid". */
-function MidPrompt({ hub }: { hub: CityHubConfig }) {
-  const o = offices[hub.office];
-  return (
-    <aside aria-labelledby="mid-cta-title" data-mid-cta="true" data-reveal="true" style={{ margin: '8px 0 0', padding: '40px', background: '#F8F6F2', border: '1px solid #E8E4DC', borderRadius: '3px', display: 'grid', gridTemplateColumns: 'minmax(0,1fr)', gap: '22px', maxWidth: '760px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-        <Picture img={hub.mid.img} alt="" sizes="64px" style={{ flex: 'none', width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', objectPosition: hub.mid.objectPosition, background: '#DCE9F0' }} />
-        <div style={{ minWidth: '0' }}>
-          <div style={{ ...S.eyebrow, marginBottom: '6px' }}>Every situation is different</div>
-          <h2 id="mid-cta-title" style={{ fontFamily: 'var(--font-serif)', fontWeight: '400', fontSize: '28px', lineHeight: '1.25', color: '#1A2E40', margin: '0', textWrap: 'pretty' }}>Not sure how this applies to you?</h2>
-        </div>
-      </div>
-      <p style={{ fontSize: '17px', lineHeight: '1.7', color: '#2C3E50', margin: '0', maxWidth: '58ch', textWrap: 'pretty' }}>{hub.mid.text}</p>
-      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '14px 28px' }}>
-        <a href="#book" data-press="true" data-cta-position="mid" style={S.primary}>{hub.cta}</a>{' '}
-        <PhoneLink office={hub.office} location="body" position="mid" style={{ fontSize: '16px', fontWeight: '600', color: '#1A2E40' }}>
-          {'or call '}{o.phoneDisplay}
-        </PhoneLink>
-      </div>
-    </aside>
   );
 }

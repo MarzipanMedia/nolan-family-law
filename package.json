@@ -11,7 +11,9 @@
     "typecheck": "tsc --noEmit",
     "test:redirects": "node scripts/test-redirects.mjs",
     "check": "node scripts/check-hardcoding.mjs",
-    "import": "node scripts/import-wordpress.mjs"
+    "import": "node scripts/import-wordpress.mjs",
+    "test:twins": "node scripts/test-twins.mjs",
+    "test:nav": "node scripts/test-nav.mjs"
   },
   "dependencies": {
     "next": "^16.4.6",

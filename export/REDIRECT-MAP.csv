@@ -125,3 +125,5 @@ old_path,type,status_today,redirects_to_today,gsc_clicks_12m,gsc_impressions_12m
 /sydney/collaborative-family-law/,prototype path,404,,,,301,/collaborative-family-lawyer-sydney/,KEEP,/sydney/collaborative-family-law/,"Carry-over page at its option B URL. Row added 12 Nov so the test covers it (D-36)"
 /sydney/consent-orders/,prototype path,404,,,,301,/consent-orders/,KEEP,/sydney/consent-orders/,"Carry-over page at its option B URL (until Q-3). Row added 12 Nov so the test covers it (D-36)"
 /disclaimer/,new page,404,,,,NEW,/disclaimer/,NEW,/disclaimer/,"New page: the footer links to it and it does not exist on the live site (D-36)"
+/collaborative-lawyer/,page,404,,,,301,/collaborative-family-lawyer-sydney/,301,/sydney/collaborative-family-law/,"Added 17 Nov (D-48): the live homepage links here and it returned 404 on staging"
+/collaborative-family-lawyer/,page,404,,,,301,/collaborative-family-lawyer-sydney/,301,/sydney/collaborative-family-law/,"Added 17 Nov (D-48)"

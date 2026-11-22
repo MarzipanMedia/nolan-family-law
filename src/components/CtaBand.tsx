@@ -45,18 +45,24 @@ interface Props {
   address?: string;
   /** Ask "Where are you up to?" (the city hubs do). */
   askStage?: boolean;
+  /** The heading. Defaults to "Talk to our <city> team." */
+  heading?: string;
+  /** The topic chosen when the page loads, e.g. "bfa" on the prenup pages. */
+  topic?: string;
+  /** The submit button's label. */
+  submitLabel?: string;
 }
 
 const DEFAULT_LEDE = 'You do not need to have everything worked out before you call. Tell us a little about your situation and we will explain your options, and what each would involve.';
 
-export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false }: Props) {
+export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false, heading, topic, submitLabel = 'Send confidentially' }: Props) {
   const o = offices[office];
   return (
     <section id="book" data-screen-label="Consultation CTA" data-section="true" data-deep="true" style={{ background: '#1C2F40' }}>
       <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '120px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: '56px 80px', alignItems: 'start' }}>
         <div data-reveal="true" style={{ minWidth: 0 }}>
           <div style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#A9C9DB', marginBottom: '18px' }}>Talk to us</div>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(32px, 4.6vw, 48px)', lineHeight: 1.14, color: '#FFFFFF', margin: '0 0 22px', maxWidth: '19ch', textWrap: 'pretty' }}>Talk to our {o.city} team.</h2>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontWeight: 400, fontSize: 'clamp(32px, 4.6vw, 48px)', lineHeight: 1.14, color: '#FFFFFF', margin: '0 0 22px', maxWidth: '19ch', textWrap: 'pretty' }}>{heading ?? `Talk to our ${o.city} team.`}</h2>
           <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#E3E9EE', maxWidth: '50ch', margin: '0 0 36px', textWrap: 'pretty' }}>{lede}</p>
           <div style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#C3D0DC', marginBottom: '14px' }}>When you get in touch, we will</div>
           <ul style={{ listStyle: 'none', margin: '0 0 40px', padding: 0, display: 'flex', flexDirection: 'column', borderTop: '1px solid rgba(195,208,220,0.22)' }}>
@@ -90,7 +96,7 @@ export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false
                 </label>
               </div>
               <label style={label}>What would you like to talk about?
-                <select data-field="true" name="topic" style={{ ...field, minHeight: '52px' }}>
+                <select data-field="true" name="topic" defaultValue={topic} style={{ ...field, minHeight: '52px' }}>
                   {TOPICS.map(([value, text]) => <option key={value} value={value}>{text}</option>)}
                 </select>
               </label>
@@ -115,7 +121,7 @@ export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false
                   <label style={radio}><input type="radio" name="safe" value="no" style={dot} />No, please only speak to me</label>
                 </div>
               </fieldset>
-              <button type="submit" data-press="true" style={{ minHeight: '56px', padding: '18px 34px', border: 'none', borderRadius: '2px', background: '#B4552F', color: '#FFFFFF', fontFamily: 'var(--font-sans)', fontSize: '16px', fontWeight: 600, letterSpacing: '0.02em', cursor: 'pointer' }}>Send confidentially</button>
+              <button type="submit" data-press="true" style={{ minHeight: '56px', padding: '18px 34px', border: 'none', borderRadius: '2px', background: '#B4552F', color: '#FFFFFF', fontFamily: 'var(--font-sans)', fontSize: '16px', fontWeight: 600, letterSpacing: '0.02em', cursor: 'pointer' }}>{submitLabel}</button>
               <p style={{ fontSize: '14px', lineHeight: 1.55, color: '#4A5A66', margin: 0 }}>Your enquiry is confidential and goes only to our {o.city} team. Sending it does not commit you or the other party to anything.</p>
             </EnquiryForm>
           </div>

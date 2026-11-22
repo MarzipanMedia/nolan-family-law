@@ -29,7 +29,9 @@
       "/sydney/de-facto-relationship-lawyer/": "/de-facto-relationship-lawyer/",
       "/sydney/domestic-violence/": "/domestic-violence/",
       "/sydney/collaborative-family-law/": "/collaborative-family-lawyer-sydney/",
-      "/sydney/consent-orders/": "/consent-orders/"
+      "/sydney/consent-orders/": "/consent-orders/",
+      "/collaborative-lawyer/": "/collaborative-family-lawyer-sydney/",
+      "/collaborative-family-lawyer/": "/collaborative-family-lawyer-sydney/"
     },
     "gone": [
       "/our-work-grid-2/",
@@ -69,7 +71,9 @@
       "/30-minute-consultation/": "/contact/",
       "/parenting-agreements/": "/sydney/child-custody-lawyer/",
       "/mediation/": "/sydney/mediation/",
-      "/privacy/": "/privacy-policy/"
+      "/privacy/": "/privacy-policy/",
+      "/collaborative-lawyer/": "/sydney/collaborative-family-law/",
+      "/collaborative-family-lawyer/": "/sydney/collaborative-family-law/"
     },
     "gone": [
       "/our-work-grid-2/",
