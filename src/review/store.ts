@@ -31,10 +31,17 @@ export const storeConfigured = () => useMemory || (supabaseUrl !== '' && supabas
 
 const headers = () => ({ apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}`, 'content-type': 'application/json' });
 
+/** Supabase's own reason for a failed request (status, error code and message; never a key). */
+async function reason(res: Response): Promise<string> {
+  let detail = '';
+  try { const body = await res.json(); detail = [body.code, body.message ?? body.msg ?? body.error, body.hint].filter(Boolean).join(': '); } catch { /* not JSON */ }
+  return `${res.status}${detail ? ` ${detail}` : ''}`.slice(0, 300);
+}
+
 export async function listEntries(): Promise<Entry[]> {
   if (useMemory) return [...memory];
   const res = await fetch(`${supabaseUrl}/rest/v1/review_feedback?select=*&order=created_at.asc`, { headers: headers(), cache: 'no-store' });
-  if (!res.ok) throw new Error(`Supabase read failed: ${res.status}`);
+  if (!res.ok) throw new Error(`Supabase read failed: ${await reason(res)}`);
   return res.json();
 }
 
@@ -45,7 +52,7 @@ export async function addEntry(entry: Pick<Entry, 'item_id' | 'author' | 'kind' 
     return saved;
   }
   const res = await fetch(`${supabaseUrl}/rest/v1/review_feedback`, { method: 'POST', headers: { ...headers(), Prefer: 'return=representation' }, body: JSON.stringify(entry), cache: 'no-store' });
-  if (!res.ok) throw new Error(`Supabase write failed: ${res.status}`);
+  if (!res.ok) throw new Error(`Supabase write failed: ${await reason(res)}`);
   const [saved] = await res.json();
   return saved;
 }
@@ -71,4 +78,45 @@ ${entry.body ? `<blockquote style="margin:0 0 16px;padding:12px 16px;background:
   } catch {
     return false;
   }
+}
+
+/**
+ * A health check for /api/review?check=1 (staging only). Reads from Supabase and asks Resend
+ * whether its key is valid, without saving anything or sending an email. Never returns a key.
+ */
+export async function healthCheck() {
+  const supabase: Record<string, unknown> = { urlSet: supabaseUrl !== '', keySet: supabaseKey !== '' };
+  if (useMemory) supabase.mode = 'memory';
+  else if (supabaseUrl && supabaseKey) {
+    const warnings: string[] = [];
+    supabase.warnings = warnings;
+    if (/\/rest\/v1/.test(supabaseUrl)) warnings.push( 'SUPABASE_URL should be the project URL only, without /rest/v1 on the end');
+    else if (!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(supabaseUrl)) warnings.push('SUPABASE_URL does not look like https://<project>.supabase.co');
+    const keyRole = (() => { try { return JSON.parse(atob(supabaseKey.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).role as string; } catch { return supabaseKey.startsWith('sb_secret_') ? 'secret' : supabaseKey.startsWith('sb_publishable_') ? 'publishable' : 'unknown'; } })();
+    supabase.keyType = keyRole;
+    if (keyRole === 'anon' || keyRole === 'publishable') warnings.push('SUPABASE_SERVICE_ROLE_KEY is the public (anon/publishable) key. Use the service_role (secret) key');
+    try {
+      const res = await fetch(`${supabaseUrl}/rest/v1/review_feedback?select=id&limit=1`, { headers: headers(), cache: 'no-store' });
+      supabase.ok = res.ok;
+      supabase.result = res.ok ? 'table found and readable' : await reason(res);
+    } catch (e) {
+      supabase.ok = false;
+      supabase.result = `could not reach Supabase: ${(e as Error).message}`;
+    }
+  }
+  const key = process.env.RESEND_API_KEY ?? '';
+  const resend: Record<string, unknown> = { keySet: key !== '', notifyEmailSet: (process.env.REVIEW_NOTIFY_EMAIL ?? '') !== '', fromEmailSet: (process.env.REVIEW_FROM_EMAIL ?? '') !== '' };
+  if (key) {
+    try {
+      const res = await fetch('https://api.resend.com/domains', { headers: { Authorization: `Bearer ${key}` }, cache: 'no-store' });
+      const body = await res.json().catch(() => ({}));
+      // A sending-only key cannot list domains, but saying so proves the key itself is valid.
+      resend.ok = res.ok || body?.name === 'restricted_api_key';
+      resend.result = res.ok ? 'key valid' : body?.name === 'restricted_api_key' ? 'key valid (sending only)' : `${res.status} ${body?.name ?? ''}: ${body?.message ?? ''}`.trim();
+    } catch (e) {
+      resend.ok = false;
+      resend.result = `could not reach Resend: ${(e as Error).message}`;
+    }
+  }
+  return { siteEnv: process.env.SITE_ENV ?? '', stagingPasswordSet: (process.env.STAGING_PASSWORD ?? '') !== '', supabase, resend };
 }

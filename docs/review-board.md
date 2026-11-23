@@ -61,8 +61,11 @@ verify the domain in Resend and set `REVIEW_FROM_EMAIL`, e.g. `Nolan review boar
 
 ### 3. Vercel
 
-In the Vercel project, Settings → Environment Variables, add these for **Preview** (staging) only,
-never Production:
+In the Vercel project, Settings → Environment Variables, add these to every environment that serves
+staging. Until launch that includes Vercel's **Production** environment, because `main` deploys
+there and is staging until `SITE_ENV` is set to `production` (nolan-family-law.vercel.app). The
+board and its API switch themselves off when `SITE_ENV=production`, so the variables can stay put
+at launch.
 
 | Name | Value |
 |---|---|
@@ -72,7 +75,17 @@ never Production:
 | `REVIEW_NOTIFY_EMAIL` | Where the emails go. Several addresses can be separated by commas |
 | `REVIEW_FROM_EMAIL` | Optional, see above |
 
-Redeploy, then open `/review/` on staging.
+Redeploy, then open `/api/review?check=1` on staging. It checks both connections without saving
+anything or sending an email, and says what is wrong if something is (never showing a key):
+
+```json
+{ "supabase": { "ok": true, "result": "table found and readable" }, "resend": { "ok": true, "result": "key valid" } }
+```
+
+Then open `/review/`, tick something and add a note to check the email arrives.
+
+Also set `STAGING_USER` and `STAGING_PASSWORD` in the same environment, so staging (and the board)
+asks for a password. The check reports `"stagingPasswordSet": false` until they are set.
 
 ## Testing locally
 

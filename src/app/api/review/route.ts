@@ -2,6 +2,7 @@
  * The review board's ticks and notes (staging only; see src/review/board.ts).
  *
  *   GET   every entry so far, oldest first
+ *   GET   ?check=1  a health check of the Supabase and Resend settings (saves and sends nothing)
  *   POST  { itemId, author, kind: 'approve' | 'unapprove' | 'note', body? } adds one, and emails Ben
  *
  * On the live site (SITE_ENV=production) this route does not exist. On staging it sits behind
@@ -9,7 +10,7 @@
  */
 import { NextResponse } from 'next/server';
 import { buildBoard, REVIEWERS, type Reviewer } from '@/review/board';
-import { addEntry, listEntries, notify, storeConfigured, type EntryKind } from '@/review/store';
+import { addEntry, healthCheck, listEntries, notify, storeConfigured, type EntryKind } from '@/review/store';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,13 +18,14 @@ const isProduction = process.env.SITE_ENV === 'production';
 const notFound = () => new NextResponse('Not found', { status: 404 });
 const clean = (v: unknown, max: number) => String(v ?? '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '').trim().slice(0, max);
 
-export async function GET() {
+export async function GET(request: Request) {
   if (isProduction) return notFound();
+  if (new URL(request.url).searchParams.has('check')) return NextResponse.json(await healthCheck());
   if (!storeConfigured()) return NextResponse.json({ configured: false, entries: [] });
   try {
     return NextResponse.json({ configured: true, entries: await listEntries() });
-  } catch {
-    return NextResponse.json({ message: 'Sorry, the feedback could not be loaded just now.' }, { status: 502 });
+  } catch (e) {
+    return NextResponse.json({ message: 'Sorry, the feedback could not be loaded just now.', detail: (e as Error).message }, { status: 502 });
   }
 }
 
@@ -49,7 +51,7 @@ export async function POST(request: Request) {
     const link = `${new URL(request.url).origin}/review/#${encodeURIComponent(item.id)}`;
     const emailed = await notify(entry, item.title, link);
     return NextResponse.json({ ok: true, entry, emailed });
-  } catch {
-    return NextResponse.json({ message: 'Sorry, that could not be saved just now. Please try again.' }, { status: 502 });
+  } catch (e) {
+    return NextResponse.json({ message: 'Sorry, that could not be saved just now. Please try again.', detail: (e as Error).message }, { status: 502 });
   }
 }
