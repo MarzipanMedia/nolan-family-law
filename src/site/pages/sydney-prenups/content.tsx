@@ -872,7 +872,7 @@ export function Content() {
             </p>
           </div>
         </div>
-        <ReviewNote>{"CHECK · Ben, Chad: all claims are taken from Tash's live profile (23 Nov). Three things to settle at review: her title (the profile says \"Director\", the site rebuild uses \"Principal\"); \"nearly 17 years\" (update if the profile changes); the \"before focusing on family law\" wording, which reads her profile's list of past work as a sequence. Also whether Jessica Swain or another Sydney lawyer appears here beside Tash."}</ReviewNote>
+        <ReviewNote>{"CHECK · Ben, Chad: all claims are taken from Tash's live profile (23 Nov). Her title is Principal (Ben, 23 Nov). Two things to settle at review: \"nearly 17 years\" (update if the profile changes); the \"before focusing on family law\" wording, which reads her profile's list of past work as a sequence. Also whether Jessica Swain or another Sydney lawyer appears here beside Tash."}</ReviewNote>
       </div>
     </section>
 

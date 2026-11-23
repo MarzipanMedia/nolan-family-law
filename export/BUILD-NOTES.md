@@ -482,7 +482,7 @@ As the draft: Hero · Breadcrumb and byline · Quick Answer · Accreditations ·
 
 ### Open items before go-live
 1. **Tash (legal review):** every yellow LEGAL REVIEW note, especially the section 90 table, 90G and 90K, Thorne v Kennedy, Succession Act sections 12, 13, 57, 74 to 80 and 95, section 90SB and NSW registration, Duties Act section 68, section 90F, the registry wording, and all 12 FAQ answers.
-2. **Ben and Chad, checks:** Tash's title ("Director" on her profile, "Principal" here); "nearly 17 years"; that she leads BFAs and is happy to be named for wills; whether the firm prepares wills and holds originals; "can act for" or "regularly acts for" the partner asked to sign; whether Jessica Swain appears beside Tash; the new short labels above.
+2. **Ben and Chad, checks:** "nearly 17 years"; that she leads BFAs and is happy to be named for wills; whether the firm prepares wills and holds originals; "can act for" or "regularly acts for" the partner asked to sign; whether Jessica Swain appears beside Tash; the new short labels above.
 3. **The hero photograph** (Chad to confirm the brief).
 4. Q-3 (`/consent-orders/`) is unchanged by this page.
 
@@ -623,6 +623,7 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Property | Tash's photo is `tash-mediation.png` | The prototype used a silhouette |
 | Melbourne hub | Four guide cards and four inline links hidden; "Spousal maintenance" left out of the schema's offer catalog | D-28: those articles do not exist yet |
 | Sydney prenups | Hero shows a marked placeholder for the couple photograph | D-57; production build blocked until replaced |
+| Sydney prenups | Tash is "Principal", as everywhere on the new site (Ben, 23 Nov; her live profile says "Director") | D-57 |
 | Sydney prenups | Tash's photos are `images.tashSmall`, not the prototype's silhouette | As the property page |
 | Sydney prenups | Mid-page prompt and consultation band are the shared components; the page's trust ribbon is the footer's | Reuse, don't fork |
 | Sydney prenups | The BFA article card links to its real URL from the routes file | The prototype guessed the slug |
