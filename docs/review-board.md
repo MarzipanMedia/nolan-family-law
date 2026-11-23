@@ -14,7 +14,7 @@ return 404. On staging it sits behind the staging password like every other page
 |---|---|
 | Ready for your review | Live routes with a designed page in `src/site/registry.ts`, plus any listed in `ASSUME_DESIGNED` (pages being built right now) |
 | Questions only you can answer | `QUESTIONS` in `board.ts` (copied from the open questions in `export/DECISIONS.md`) |
-| Still to be designed | Live routes still in the temporary carry-over, article or profile templates. Every one will be designed |
+| Still to be designed | Live pages still in the temporary carry-over template. Every one will be designed. Team profiles and articles are not on the board |
 | Coming next | Routes still marked `planned` |
 | Decisions so far | `export/DECISIONS.md`, copied into `src/generated/decisions.json` by `scripts/generate-decisions.mjs` before every build and dev start |
 

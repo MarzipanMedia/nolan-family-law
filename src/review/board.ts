@@ -3,8 +3,8 @@
  *
  * Most of the board is read straight from the routes file, so it can never drift from the build:
  *   a designed page (one with an entry in src/site/registry.ts)  → "Ready for your review"
- *   a page still in the temporary carry-over layout, an article
- *   or a profile (every one of them will be designed)            → "Still to be designed"
+ *   a page still in the temporary carry-over layout (every page
+ *   will be designed)                                            → "Still to be designed"
  *   a route that is still 'planned'                               → "Coming next"
  *
  * The only things written by hand here are:
@@ -23,7 +23,7 @@ export type Reviewer = 'Tash' | 'Chad' | 'Ben';
 export const REVIEWERS: Reviewer[] = ['Tash', 'Chad', 'Ben'];
 
 export type Stage = 'general' | 'review' | 'design' | 'coming';
-export type Group = 'General' | 'Pages' | 'Team profiles' | 'Articles' | 'Questions';
+export type Group = 'General' | 'Pages' | 'Questions';
 
 export interface BoardItem {
   id: string;
@@ -73,7 +73,8 @@ export function buildBoard(): BoardItem[] {
   ];
   for (const { key, def, path } of allRoutes()) {
     if (!def.indexable) continue; // the ads landing page and thank-you page need no review
-    const group: Group = def.kind === 'profile' ? 'Team profiles' : def.kind === 'article' ? 'Articles' : 'Pages';
+    if (def.kind !== 'page') continue; // team profiles and articles use their own templates and are not on the board
+    const group: Group = 'Pages';
     const designed = def.kind === 'page' && (key in pages || (ASSUME_DESIGNED as string[]).includes(key));
     const live = def.status === 'live' || designed;
     const stage: Stage = !live ? 'coming' : designed ? 'review' : 'design';

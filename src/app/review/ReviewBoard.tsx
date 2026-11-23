@@ -78,8 +78,6 @@ export function ReviewBoard({ items, dates, reviewers, decisions }: { items: Boa
   const questions = items.filter((i) => i.group === 'Questions');
   const general = items.filter((i) => i.stage === 'general');
   const designPages = items.filter((i) => i.stage === 'design' && i.group === 'Pages');
-  const profiles = items.filter((i) => i.stage === 'design' && i.group === 'Team profiles');
-  const articles = items.filter((i) => i.stage === 'design' && i.group === 'Articles');
   const coming = items.filter((i) => i.stage === 'coming');
   const toReview = [...review, ...questions];
   const doneCount = toReview.filter((i) => approved(i.id)).length;
@@ -152,10 +150,8 @@ export function ReviewBoard({ items, dates, reviewers, decisions }: { items: Boa
 
         {!mineOnly && (
           <>
-            <Section title="Still to be designed" intro="Every one of these pages will be designed for the new site. Nothing is left out. Until each one is done, it sits in a temporary layout on staging so that every page and link keeps working. There is no need to review them yet, but a note is welcome if you already know something should change." count={designPages.length + profiles.length + articles.length}>
+            <Section title="Still to be designed" intro="Every one of these pages will be designed for the new site. Nothing is left out. Until each one is done, it sits in a temporary layout on staging so that every page and link keeps working. There is no need to review them yet, but a note is welcome if you already know something should change." count={designPages.length}>
               {designPages.map(card)}
-              <Folder title="Team profiles" count={profiles.length}>{profiles.map(card)}</Folder>
-              <Folder title="Articles" count={articles.length}>{articles.map(card)}</Folder>
             </Section>
             <Section title="Coming next" intro="Planned for launch or soon after, but not built yet. You can leave a note now if there is something we should know." count={coming.length}>
               {coming.map(card)}
