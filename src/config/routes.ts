@@ -61,7 +61,8 @@ const staticRoutes = {
   sydneyChildCustody: page('Child custody lawyer', '/child-custody-lawyer-sydney/', '/sydney/child-custody-lawyer/', { ...SYD, ...LIVE }),
   sydneyProperty: page('Property settlement', '/property-settlement/', '/sydney/property-settlement/', { ...SYD, ...LIVE }),
   sydneyMediation: page('Family law mediation', '/sydney-family-law-mediation/', '/sydney/mediation/', { ...SYD, ...LIVE }),
-  sydneyPrenups: page('Prenuptial agreements', '/prenuptial-agreement-sydney/', '/sydney/prenuptial-agreements/', SYD),
+  // Breadcrumb label for the designed page (D-57): "Prenups and binding financial agreements".
+  sydneyPrenups: page('Prenups and binding financial agreements', '/prenuptial-agreement-sydney/', '/sydney/prenuptial-agreements/', { ...SYD, ...LIVE }),
   sydneyDivorce: page('Divorce lawyer', '/divorce-lawyer/', '/sydney/divorce-lawyer/', SYD),
   sydneyDeFacto: page('De facto relationships', '/de-facto-relationship-lawyer/', '/sydney/de-facto-relationship-lawyer/', SYD),
   sydneyDomesticViolence: page('Domestic violence', '/domestic-violence/', '/sydney/domestic-violence/', SYD),

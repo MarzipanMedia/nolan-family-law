@@ -51,11 +51,17 @@ interface Props {
   topic?: string;
   /** The submit button's label. */
   submitLabel?: string;
+  /** The "When you get in touch, we will" list. Defaults to the hubs' four promises. */
+  promises?: string[];
+  /** The topic options as [value, label]. Defaults to the site-wide list. */
+  topics?: Array<[string, string]>;
+  /** The "Where are you up to?" options as [value, label, checked]. Defaults to the separation ones. */
+  stages?: Array<[string, string, boolean?]>;
 }
 
 const DEFAULT_LEDE = 'You do not need to have everything worked out before you call. Tell us a little about your situation and we will explain your options, and what each would involve.';
 
-export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false, heading, topic, submitLabel = 'Send confidentially' }: Props) {
+export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false, heading, topic, submitLabel = 'Send confidentially', promises = PROMISES, topics = TOPICS, stages = STAGES }: Props) {
   const o = offices[office];
   return (
     <section id="book" data-screen-label="Consultation CTA" data-section="true" data-deep="true" style={{ background: '#1C2F40' }}>
@@ -66,7 +72,7 @@ export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false
           <p style={{ fontSize: '18px', lineHeight: 1.7, color: '#E3E9EE', maxWidth: '50ch', margin: '0 0 36px', textWrap: 'pretty' }}>{lede}</p>
           <div style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#C3D0DC', marginBottom: '14px' }}>When you get in touch, we will</div>
           <ul style={{ listStyle: 'none', margin: '0 0 40px', padding: 0, display: 'flex', flexDirection: 'column', borderTop: '1px solid rgba(195,208,220,0.22)' }}>
-            {PROMISES.map((p) => (
+            {promises.map((p) => (
               <li key={p} style={{ display: 'flex', gap: '14px', padding: '14px 0', borderBottom: '1px solid rgba(195,208,220,0.22)', fontSize: '16px', lineHeight: 1.55, color: '#E3E9EE' }}><span aria-hidden="true" style={{ color: '#A9C9DB' }}>✓</span>{p}</li>
             ))}
           </ul>
@@ -97,14 +103,14 @@ export function CtaBand({ office, lede = DEFAULT_LEDE, address, askStage = false
               </div>
               <label style={label}>What would you like to talk about?
                 <select data-field="true" name="topic" defaultValue={topic} style={{ ...field, minHeight: '52px' }}>
-                  {TOPICS.map(([value, text]) => <option key={value} value={value}>{text}</option>)}
+                  {topics.map(([value, text]) => <option key={value} value={value}>{text}</option>)}
                 </select>
               </label>
               {askStage && (
                 <fieldset style={fieldset}>
                   <legend style={legend}>Where are you up to?</legend>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 24px' }}>
-                    {STAGES.map(([value, text, checked]) => (
+                    {stages.map(([value, text, checked]) => (
                       <label key={value} style={radio}><input type="radio" name="stage" value={value} defaultChecked={checked} style={dot} />{text}</label>
                     ))}
                   </div>

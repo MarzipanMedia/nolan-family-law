@@ -404,7 +404,8 @@ export function Content() {
               {"Tailored advice on financial agreements before, during or after a relationship, including following separation."}
             </p>
             <a href={url("sydneyPrenups")} style={{ fontSize: "16px", fontWeight: "600", display: "inline-flex", gap: "8px" }}>
-              {"Learn more "}
+              {/* Anchor text decided by Ben, 23 Nov (D-57). */}
+              {"Prenup lawyers in Sydney "}
               <span data-arrow="true" style={{ display: "inline-block", transition: "transform 200ms cubic-bezier(0.23, 1, 0.32, 1)" }}>
                 {"→"}
               </span>
