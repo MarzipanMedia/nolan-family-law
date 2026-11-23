@@ -594,6 +594,7 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 |---|---|
 | Sydney prenuptial agreements (D-57) | `/sydney/prenuptial-agreements/`, replacing the carry-over. See the Sydney prenuptial agreements section. Homepage prenup card now reads "Prenup lawyers in Sydney" |
 | `CtaBand` | Optional `promises`, `topics` and `stages`; defaults unchanged |
+| Routing cards | One shared rule in `globals.css` (`data-route-cards` = number of cards) lays out every "How can we help you" grid in even rows: one column on phones, two on tablets (an odd last card spans the row), then four across for four cards and three across otherwise. Fixes 4+2 (Sydney prenups), 4+1 (child custody) and 3+1 at laptop width (property, mediation). Ben, 23 Nov |
 | Uploaded folder | `export/Sydney Prenup/` merged into `export/` and removed. Its `DECISIONS.md` was the Claude Design copy; its one new entry is D-57 here |
 | Tidy | Removed duplicates and unused copies: the four CMYK room photos (the `-rgb` versions are used), the six badge source files and AIFLAM copy in `mediation-assets/` (optimised copies live in `public/`), an unused smaller copy of Anastasia's portrait, and a byte-identical copy of Jessica's photo (the mediation page now uses `jessica-swain-partner-400.webp`). All are in the git history |
 

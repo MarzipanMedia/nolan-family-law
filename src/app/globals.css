@@ -153,3 +153,18 @@ img { max-width: 100%; }
   a[data-press][style*="1px solid #BFC8D2"]:hover, button[data-press][style*="1px solid #BFC8D2"]:hover { border-color: #1A2E40 !important; color: #1A2E40; text-decoration: none; }
 }
 .skip-link:focus { left: 16px !important; top: 12px; z-index: 100; background: #FEFDFB; padding: 12px 16px; border: 1px solid #BFC8D2; border-radius: 2px; font-weight: 600; }
+
+/* Routing cards ("How can we help you"): even rows at every width, whatever the page's own
+   card width. One column on phones, two on tablets (an odd last card spans the row), then
+   four across for four cards and three across for any other number. data-route-cards is
+   the number of cards. */
+@media (max-width: 639px) { [data-route-cards] { grid-template-columns: minmax(0, 1fr) !important; } }
+@media (min-width: 640px) {
+  [data-route-cards] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  [data-route-cards="3"] > :last-child, [data-route-cards="5"] > :last-child, [data-route-cards="7"] > :last-child { grid-column: 1 / -1; }
+}
+@media (min-width: 1000px) {
+  [data-route-cards]:not([data-route-cards="4"]) { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  [data-route-cards] > :last-child { grid-column: auto !important; }
+}
+@media (min-width: 1200px) { [data-route-cards="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }

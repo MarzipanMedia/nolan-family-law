@@ -136,7 +136,7 @@ export function CityHubTemplate({ hub }: { hub: CityHubConfig }) {
             <h2 style={{ ...S.h2, margin: '0 0 20px' }}>Whatever brought you here, start with what matters most.</h2>
             <p style={{ fontSize: '19px', lineHeight: '1.65', color: '#3F5060', maxWidth: '52ch', margin: '0', textWrap: 'pretty' }}>{hub.helpLede}</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '24px' }}>
+          <div data-route-cards={hub.routingCards.length} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '24px' }}>
             {hub.routingCards.map((c) => (
               <a key={c.title} href={href(c.to)} data-card="true" data-reveal="true" style={S.card}>
                 <span style={{ fontFamily: 'var(--font-serif)', fontSize: '22px', lineHeight: '1.3', color: '#1A2E40' }}>{c.title}</span>
