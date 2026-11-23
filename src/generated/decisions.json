@@ -1,5 +1,15 @@
 [
   {
+    "id": "D-57",
+    "num": 57,
+    "date": "23 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 23 Nov",
+    "summary": "The Sydney prenup page (/sydney/prenuptial-agreements/) is a NSW rewrite with its own title, and Tash is author and reviewer.",
+    "detail": "Title \"Prenup Lawyers Sydney | Prenuptial Agreements & BFAs | Nolan\" (60 characters), H1 \"Prenups and binding financial agreements in Sydney\". The homepage prenup card links to the page with the anchor \"prenup lawyers in Sydney\"; the homepage title is unchanged. Tash Nolan is author and reviewedBy, as on the property page. Experience claims come only from her live profile (/our-team/tash-nolan/, read 23 Nov); Chad and Tash review the whole page, and settle the open claims, before launch. Copy: sydney-prenup-draft-v1.md (in this folder), word for word. Prototype: prenuptial-agreements-sydney.html. Hero image (Ben, 23 Nov, in the prototype's notes): a photograph of a Sydney couple aged about 45 or over replaces Tash's portrait in the hero. This overrides the draft's \"no stock imagery of couples or rings\", so it must be a real or commissioned photograph, not stock, and Chad should confirm it. Until it arrives the hero is a marked placeholder, and a production build refuses to run. Tash's portrait stays in the mid-page prompt and the lawyer card.",
+    "evidence": ""
+  },
+  {
     "id": "D-56",
     "num": 56,
     "date": "22 Nov 2026",

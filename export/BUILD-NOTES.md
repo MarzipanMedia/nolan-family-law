@@ -1,5 +1,5 @@
 # Nolan Family Law & Mediation — Build notes
-**4 Nov 2026, updated 22 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template), Sydney hub, Melbourne prenuptial agreements, Melbourne mediation (stub) · Design rules: `DESIGN.md` v2.0**
+**4 Nov 2026, updated 23 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template), Sydney hub, Melbourne prenuptial agreements, Melbourne mediation (stub), Sydney prenuptial agreements · Design rules: `DESIGN.md` v2.0**
 
 > **URL structure (decided 12 Nov 2026, D-23):** service pages move to `/sydney/...` and `/melbourne/...` in one hit at launch, with `URL_MODE=B` and the option B columns of `REDIRECT-MAP.csv`. If the redirect test isn't passing 100% at the go/no-go on 11 December, launch with `URL_MODE=A`. Every URL comes from one routes file (D-25). Where older notes below mention today's URLs for a moved page, the routes file wins.
 
@@ -8,23 +8,25 @@
 ## What's in this folder
 | File | What it is |
 |---|---|
-| `homepage.html` | Approved homepage (Terracotta). Self-contained: images and fonts inlined, opens offline |
-| `child-custody-sydney.html` | Child custody inner page, rebuilt to DESIGN.md §8 inner-page template |
-| `mediation-sydney.html` | Mediation (Sydney) inner page, same template. Plain HTML, images inlined, opens offline. See the Mediation section at the end of this file |
-| `property-settlement-sydney.html` | Property settlement (Sydney), approved 12 Nov. Plain HTML, images inlined, opens offline. See the Property section |
-| `melbourne-family-law.html` | Melbourne hub, approved 12 Nov, and the reference for the city hub template. Plain HTML, images inlined, opens offline. Introduces the site-wide header phone strip (D-30). See the Melbourne hub and City hub template sections |
-| `melbourne-hub-gsc-baseline.csv` | Search Console queries for `/melbourne-family-law/` (749 queries, Nov 2025 to Oct 2026), the hub's baseline |
+| `DECISIONS.md` | Decision log with evidence and the pre-rebuild baseline. Check it before changing anything |
 | `DESIGN.md` | Source of truth for colour, type, layout, components, motion, compliance |
 | `BUILD-NOTES.md` | This file |
 | `LAUNCH-PLAN.md` | Launch schedule (target Tue 15 Dec 2026), URL decisions, pages not being redesigned, QA and launch-day checklists |
-| `sydney-family-law.html` | Sydney hub, approved 14 Nov. Plain HTML, images inlined, opens offline. See the Sydney hub section |
-| `prenuptial-agreements-melbourne.html` | Melbourne prenuptial agreements, approved 22 Nov. Plain HTML, images inlined, opens offline. See the Melbourne prenuptial agreements section |
+| `REDIRECT-MAP.csv` | Every known URL with its launch treatment under option A and option B. See the Redirects section |
+| `homepage.html` | Approved homepage (Terracotta). Self-contained: images and fonts inlined, opens offline |
+| `child-custody-sydney.html` | Child custody inner page, rebuilt to DESIGN.md §8 inner-page template |
+| `mediation-sydney.html` | Mediation (Sydney) inner page, same template. See the Mediation section |
+| `property-settlement-sydney.html` | Property settlement (Sydney), approved 12 Nov. See the Property section |
+| `melbourne-family-law.html` | Melbourne hub, approved 12 Nov, and the reference for the city hub template. Introduces the site-wide header phone strip (D-30). See the Melbourne hub and City hub template sections |
+| `melbourne-hub-gsc-baseline.csv` | Search Console queries for `/melbourne-family-law/` (749 queries, Nov 2025 to Oct 2026), the hub's baseline |
+| `sydney-family-law.html` | Sydney hub, approved 14 Nov. See the Sydney hub section |
+| `prenuptial-agreements-melbourne.html` | Melbourne prenuptial agreements, approved 22 Nov. See the Melbourne prenuptial agreements section |
 | `melbourne-prenup-draft-v2.md` | The approved copy for that page, with section map, anchors, routing cards and schema. The page follows it word for word |
-| `melbourne-family-law.html` | Melbourne hub prototype, approved 12 Nov (restored to the repo 22 Nov; the build's comments refer to it) |
+| `prenuptial-agreements-sydney.html` | Sydney prenuptial agreements, 23 Nov. See the Sydney prenuptial agreements section |
+| `sydney-prenup-draft-v1.md` | The approved copy for that page. The page follows it word for word |
+| `sydney-prenup-gsc-baseline.csv` | Search Console prenup-type queries for page 8427 and `/prenuptial-agreements/` (21 Nov 2025 to 20 Nov 2026), the page's baseline (D-57) |
 
-The two hand-off prompts used on 22 Nov (city-aware nav, and building the Melbourne prenup page) were removed once built. They are in the git history.
-| `DECISIONS.md` | Decision log with evidence and the pre-rebuild baseline. Check it before changing anything |
-| `REDIRECT-MAP.csv` | Every known URL (115) with its launch treatment under option A and option B. See the Redirects section |
+Unless noted, the HTML prototypes are plain HTML with images inlined, and open offline. Uploaded hand-off folders and prompts are merged into this folder and removed once built; they stay in the git history.
 
 The HTML files are design prototypes, not production code. Rebuild them in the site's CMS or theme, using DESIGN.md for values. Each section carries a `data-screen-label` you can reference in tickets.
 
@@ -154,9 +156,9 @@ All are real photos from the firm's site, saved in `Nolan Website/mediation-asse
 | Hero | `room-2-rgb.jpg` | A quiet lounge with a soft sofa and armchair at our Bligh Street offices, next to a mediation room |
 | The day itself | `room-1-rgb.jpg` | A mediation room at Nolan Family Law & Mediation, with a long timber table and city views over the Sydney CBD |
 | Mediators | `tash-mediation.png`, `jessica-swain.jpg` | Tash Nolan, Principal / Jessica Swain, Partner |
-| Accreditation strip | `aiflam.jpg` first, then the same six badges as child custody (7 columns, 3 at ≤1100px, 2 at ≤520px) | As in the prototype |
+| Accreditation strip | AIFLAM badge first (served from `public/wp-content/uploads/2025/12/Aiflam.jpg`), then the same six badges as child custody (7 columns, 3 at ≤1100px, 2 at ≤520px) | As in the prototype |
 
-The originals of the room photos were CMYK JPEGs. The `-rgb` versions are converted, so use those.
+The originals of the room photos were CMYK JPEGs. The `-rgb` versions are converted, so use those (the CMYK copies were removed 23 Nov; they are in the git history).
 
 ### Content and compliance decisions (do not undo)
 - **No fixed fees or dollar figures.** Chad confirmed on 28 Sep 2026 that the firm no longer offers fixed fees, mediation included. The old page's $3,000 / $5,500 / $785 figures are gone. Fees open a conversation.
@@ -441,8 +443,48 @@ There is no "What it costs" section and no rooms image (see Images). Costs are o
 2. **Ben, checks:** Anastasia happy to be named for wills; "regularly acts for the partner who receives an agreement" or soften to "can act for"; Anastasia's years (her live profile says 11).
 3. **Q-16:** Law Institute of Victoria membership for the firm and Anastasia, and official artwork.
 4. The de facto property rights in Victoria article (D-28): the related reading card appears once it is live.
-5. The Sydney twin (own session): same faults as the brief, plus nine dollar figures and no Thorne v Kennedy. Its toggle must link back here.
+5. ~~The Sydney twin~~ Built 23 Nov (D-57). Its toggle links back here; twin test 5.9%.
 6. A Bourke Street photo, if one exists, and a larger portrait of Anastasia.
+
+---
+
+## Sydney prenuptial agreements: build notes
+**Built 23 Nov 2026 · Prototype: `prenuptial-agreements-sydney.html` · Copy: `sydney-prenup-draft-v1.md` · Decision D-57 (D-40 in the Claude Design copy; see the numbering note in `DECISIONS.md`)**
+
+Forked from the property settlement (Sydney) page, with the Sydney header, accreditations, mid-page prompt, location toggle and enquiry form. **No new components.** A NSW rewrite, not a city swap of the Melbourne page: the local substance is wills under the Succession Act 2006 (sections 12, 13 and 95), notional estate, relationship registration, the Property (Relationships) Act, Duties Act section 68 and the Sydney and Parramatta registries.
+
+### URL, title and meta
+| Item | Value |
+|---|---|
+| URL | `/sydney/prenuptial-agreements/` (`sydneyPrenups` in the routes file). 301s from `/prenuptial-agreement-sydney/` (WP 8427) and `/prenuptial-agreements/`, one hop each, already in `REDIRECT-MAP.csv` |
+| Title tag | `Prenup Lawyers Sydney \| Prenuptial Agreements & BFAs \| Nolan` (60 characters) |
+| Meta description | `Bringing a home, business or family trust into a marriage? In NSW, marrying can also cancel your will. Our Sydney team helps you plan both properly.` (148 characters) |
+| H1 | `Prenups and binding financial agreements in Sydney` |
+| Breadcrumb | Home / Sydney / Prenups and binding financial agreements. Byline: written and reviewed by Tash Nolan, Principal · updated November 2026 |
+| Homepage | The prenup card's link text is now "Prenup lawyers in Sydney" (was "Learn more"). Homepage title unchanged |
+
+### Section map
+As the draft: Hero · Breadcrumb and byline · Quick Answer · Accreditations · `#help` · guide (`#when`, `#law`, `#hold`, `#will`, `#notional`, mid-page prompt, `#defacto`, `#trusts`, `#duty`, `#outside`, `#handed`, `#cost`, `#process`, `#court`) · Your lawyers · Melbourne toggle and related reading · Rooms image · `#faq` (12) · `#book`.
+
+### Schema
+`WebPage` (Tash as author and `reviewedBy`, `dateModified` 2026-11-23) · `BreadcrumbList` · `LegalService` `/sydney/family-law/#office` (repeated, as on the property page) · `Service` "Binding financial agreements", alternateName "Prenuptial agreements", `areaServed` New South Wales · `Person` Tash (the property page's awards) · `FAQPage` read from the visible answers. No `priceRange`, no `alumniOf`.
+
+### How it was built
+`tools/convert-prototype.mjs --notes`, then by hand: the shared `MidPrompt` (eyebrow "Every situation is different", topic BFA) and `CtaBand`. `CtaBand` gained optional `promises`, `topics` and `stages`, so this page's four promises, five topics ("A prenup or binding financial agreement", "I've been asked to sign one", "Wills alongside an agreement", "Fees and how this works", "Something else") and three stages ("A wedding date is set", "Moving in or registering", "Just exploring") use the one form; every other page is unchanged. The page's own trust ribbon is left to the footer. Tash's photo is `images.tashSmall` (the prototype used a silhouette). The BFA article link comes from the routes file (the prototype guessed its slug). All 23 review notes show on staging only.
+
+### Content and compliance decisions (do not undo)
+- Copy is `sydney-prenup-draft-v1.md` word for word (checked by script, every sentence present). The prototype adds a few short labels the draft did not give (fact-strip sub-lines, Quick answer heading, table caption, related reading sub-lines, FAQ heading); each has a CHECK note for Ben.
+- No fees or figures (D-02), no "specialist" (D-05), no quick exit (D-07), no office level. Thorne v Kennedy is the reason for the timing advice; no promised timeframes.
+- **Hero image:** a placeholder for a real or commissioned photograph of a Sydney couple aged about 45 or over (Ben, 23 Nov; D-57). It is marked `data-placeholder`, so a production build refuses to run until it is replaced.
+
+### Testing done (23 Nov 2026, local build)
+1440 and 390px: no overflow, one H1, valid JSON-LD, no console errors, all 123 reveal and clip elements appear; height within 46px of the prototype at 1440. No overflow at 320, 381, 900, 901, 1320 and 1321px. Twin test 5.9% against Melbourne (limit 30%). Nav check ok (85 pages). Redirect test: both old URLs reach the page in one 301; the only failures are the known footer links to `/fees/` and `/disclaimer/`.
+
+### Open items before go-live
+1. **Tash (legal review):** every yellow LEGAL REVIEW note, especially the section 90 table, 90G and 90K, Thorne v Kennedy, Succession Act sections 12, 13, 57, 74 to 80 and 95, section 90SB and NSW registration, Duties Act section 68, section 90F, the registry wording, and all 12 FAQ answers.
+2. **Ben and Chad, checks:** Tash's title ("Director" on her profile, "Principal" here); "nearly 17 years"; that she leads BFAs and is happy to be named for wills; whether the firm prepares wills and holds originals; "can act for" or "regularly acts for" the partner asked to sign; whether Jessica Swain appears beside Tash; the new short labels above.
+3. **The hero photograph** (Chad to confirm the brief).
+4. Q-3 (`/consent-orders/`) is unchanged by this page.
 
 ---
 
@@ -547,6 +589,14 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Redirect test | Local build: 2,289 checks, 172 failed, every one a footer link to `/fees/` or `/disclaimer/` (not built yet). Both old prenup URLs (`/melbourne-family-law/prenuptial-agreement-melbourne/` and `/prenuptial-agreement-melbourne/`, with and without the slash) and `/collaborative-lawyer/` reach their pages in one 301 |
 | "Quick answer" (D-56) | The name everywhere. The CHECK note about it is removed from the prototype and the draft |
 
+### Built (23 Nov 2026): Sydney prenuptial agreements and a tidy-up
+| Step | Status |
+|---|---|
+| Sydney prenuptial agreements (D-57) | `/sydney/prenuptial-agreements/`, replacing the carry-over. See the Sydney prenuptial agreements section. Homepage prenup card now reads "Prenup lawyers in Sydney" |
+| `CtaBand` | Optional `promises`, `topics` and `stages`; defaults unchanged |
+| Uploaded folder | `export/Sydney Prenup/` merged into `export/` and removed. Its `DECISIONS.md` was the Claude Design copy; its one new entry is D-57 here |
+| Tidy | Removed duplicates and unused copies: the four CMYK room photos (the `-rgb` versions are used), the six badge source files and AIFLAM copy in `mediation-assets/` (optimised copies live in `public/`), an unused smaller copy of Anastasia's portrait, and a byte-identical copy of Jessica's photo (the mediation page now uses `jessica-swain-partner-400.webp`). All are in the git history |
+
 ### Left to do
 - **Two pages with no content yet:** `/fees/` and `/disclaimer/` (both linked from every footer). The redirect test fails on these until they exist. (`/melbourne/mediation/` was built 22 Nov as a stub; its designed version follows in January.)
 - **Four Melbourne articles (D-28):** their cards and inline links on the hub are hidden until each article is imported. They appear by themselves once it is.
@@ -555,7 +605,7 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 - **Not yet tested:** `URL_MODE=A` end to end; host and protocol hops (needs the real domain; see D-36); Core Web Vitals; real phones.
 - **`/wp-content/uploads/`:** only the 153 files that imported content uses are copied (about 32 MB). The WordPress library has 357 items. To decide: copy the rest, or keep them served from WordPress.
 - Mobile Largest Contentful Paint on both hubs is 3.5 to 3.7s on Lighthouse's slow-phone setting: the hero paragraph waits for its fade-in. Worth revisiting with the motion rules before launch.
-- The Sydney prenup rewrite, the other Melbourne service pages, Fees and the designed versions of Our people and Contact, as their prototypes arrive. Each currently serves its carry-over version at its final URL.
+- The other Melbourne service pages, Fees and the designed versions of Our people and Contact, as their prototypes arrive. Each currently serves its carry-over version at its final URL.
 
 ### Where the build differs from a prototype, and why
 | Page | Difference | Why |
@@ -572,6 +622,10 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Mediation | Header button says "Talk to us", not "Book a mediation" | Header width gotcha, and D-30 needs the room |
 | Property | Tash's photo is `tash-mediation.png` | The prototype used a silhouette |
 | Melbourne hub | Four guide cards and four inline links hidden; "Spousal maintenance" left out of the schema's offer catalog | D-28: those articles do not exist yet |
+| Sydney prenups | Hero shows a marked placeholder for the couple photograph | D-57; production build blocked until replaced |
+| Sydney prenups | Tash's photos are `images.tashSmall`, not the prototype's silhouette | As the property page |
+| Sydney prenups | Mid-page prompt and consultation band are the shared components; the page's trust ribbon is the footer's | Reuse, don't fork |
+| Sydney prenups | The BFA article card links to its real URL from the routes file | The prototype guessed the slug |
 | All | `/our-people/`, `/privacy`, `/contact`, `/disclaimer`, `/collaborative-family-law/` in prototypes resolve through the routes file | D-25 |
 | All | Phone links use `tel:+61…`; footer note on pages with no city reads "This website is general information about family law…" | Office config; the prototypes only had NSW and Victoria versions |
 | Enquiry form | Requires a phone number or an email as well as a name | Otherwise the firm cannot reply. **Ben to confirm** |

@@ -770,7 +770,7 @@ export function Content() {
                 </div>
               </div>
               <div data-person="true" data-reveal="true" style={{ display: "grid", gridTemplateColumns: "148px minmax(0,1fr)", gap: "32px", alignItems: "start", padding: "32px", background: "#F8F6F2", border: "1px solid #E8E4DC", borderRadius: "3px" }}>
-                <img src="/images/jessica-swain-partner-7a082fba.webp" width={400} height={400} alt="Jessica Swain, Partner" loading="lazy" style={{ display: "block", width: "148px", height: "148px", objectFit: "cover", borderRadius: "3px", background: "#FFFFFF" }} decoding="async" />
+                <img src="/images/jessica-swain-partner-400.webp" width={400} height={400} alt="Jessica Swain, Partner" loading="lazy" style={{ display: "block", width: "148px", height: "148px", objectFit: "cover", borderRadius: "3px", background: "#FFFFFF" }} decoding="async" />
                 <div style={{ minWidth: "0" }}>
                   <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "26px", lineHeight: "1.25", color: "#1A2E40", margin: "0 0 4px" }}>
                     {"Jessica Swain"}
