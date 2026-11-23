@@ -50,7 +50,7 @@ alter table review_feedback enable row level security;
 Rows are only ever added, never changed or deleted, so the table is also a record of who approved
 what and when. Taking back an approval adds an `unapprove` row.
 
-Then, from Project Settings → API, copy the Project URL and the `service_role` key.
+Then copy the Project URL, and from Project Settings → API Keys the **secret** key (`sb_secret_...`), or the legacy `service_role` key (`eyJ...`). Never the publishable or anon key: the check below will say so if it is.
 
 ### 2. Resend (the email to Ben)
 

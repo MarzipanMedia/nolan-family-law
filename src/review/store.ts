@@ -29,7 +29,11 @@ const memory: Entry[] = [];
 
 export const storeConfigured = () => useMemory || (supabaseUrl !== '' && supabaseKey !== '');
 
-const headers = () => ({ apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}`, 'content-type': 'application/json' });
+// Newer Supabase secret keys (sb_secret_...) go in the apikey header only; the older service_role
+// keys are JWTs and also go in Authorization. Both work.
+const headers = (): Record<string, string> => supabaseKey.startsWith('sb_')
+  ? { apikey: supabaseKey, 'content-type': 'application/json' }
+  : { apikey: supabaseKey, Authorization: `Bearer ${supabaseKey}`, 'content-type': 'application/json' };
 
 /** Supabase's own reason for a failed request (status, error code and message; never a key). */
 async function reason(res: Response): Promise<string> {
