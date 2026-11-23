@@ -43,8 +43,12 @@ create table review_feedback (
 );
 create index review_feedback_item on review_feedback (item_id, created_at);
 
--- Only the server can read or write (it uses the service role key, which skips these rules).
+-- Only the server can read or write (it uses the secret key, which skips these rules).
 alter table review_feedback enable row level security;
+
+-- Newer Supabase projects do not grant table access automatically. Read and add only:
+-- nothing is ever changed or deleted.
+grant select, insert on public.review_feedback to service_role;
 ```
 
 Rows are only ever added, never changed or deleted, so the table is also a record of who approved
