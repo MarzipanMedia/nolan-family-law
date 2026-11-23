@@ -12,9 +12,9 @@ return 404. On staging it sits behind the staging password like every other page
 
 | On the board | Comes from |
 |---|---|
-| Ready for your review | Live routes with a designed page in `src/site/registry.ts` |
+| Ready for your review | Live routes with a designed page in `src/site/registry.ts`, plus any listed in `ASSUME_DESIGNED` (pages being built right now) |
 | Questions only you can answer | `QUESTIONS` in `board.ts` (copied from the open questions in `export/DECISIONS.md`) |
-| Built and carried over | Live routes served by the carry-over, article or profile templates |
+| Still to be designed | Live pages still in the temporary carry-over template. Every one will be designed. Team profiles and articles are not on the board |
 | Coming next | Routes still marked `planned` |
 | Decisions so far | `export/DECISIONS.md`, copied into `src/generated/decisions.json` by `scripts/generate-decisions.mjs` before every build and dev start |
 
@@ -50,7 +50,7 @@ alter table review_feedback enable row level security;
 Rows are only ever added, never changed or deleted, so the table is also a record of who approved
 what and when. Taking back an approval adds an `unapprove` row.
 
-Then, from Project Settings → API, copy the Project URL and the `service_role` key.
+Then copy the Project URL, and from Project Settings → API Keys the **secret** key (`sb_secret_...`), or the legacy `service_role` key (`eyJ...`). Never the publishable or anon key: the check below will say so if it is.
 
 ### 2. Resend (the email to Ben)
 
@@ -61,8 +61,11 @@ verify the domain in Resend and set `REVIEW_FROM_EMAIL`, e.g. `Nolan review boar
 
 ### 3. Vercel
 
-In the Vercel project, Settings → Environment Variables, add these for **Preview** (staging) only,
-never Production:
+In the Vercel project, Settings → Environment Variables, add these to every environment that serves
+staging. Until launch that includes Vercel's **Production** environment, because `main` deploys
+there and is staging until `SITE_ENV` is set to `production` (nolan-family-law.vercel.app). The
+board and its API switch themselves off when `SITE_ENV=production`, so the variables can stay put
+at launch.
 
 | Name | Value |
 |---|---|
@@ -72,7 +75,17 @@ never Production:
 | `REVIEW_NOTIFY_EMAIL` | Where the emails go. Several addresses can be separated by commas |
 | `REVIEW_FROM_EMAIL` | Optional, see above |
 
-Redeploy, then open `/review/` on staging.
+Redeploy, then open `/api/review?check=1` on staging. It checks both connections without saving
+anything or sending an email, and says what is wrong if something is (never showing a key):
+
+```json
+{ "supabase": { "ok": true, "result": "table found and readable" }, "resend": { "ok": true, "result": "key valid" } }
+```
+
+Then open `/review/`, tick something and add a note to check the email arrives.
+
+Also set `STAGING_USER` and `STAGING_PASSWORD` in the same environment, so staging (and the board)
+asks for a password. The check reports `"stagingPasswordSet": false` until they are set.
 
 ## Testing locally
 
