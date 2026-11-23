@@ -1,11 +1,13 @@
 /**
  * The review board: what is built, what needs Chad's or Tash's eyes, and what is coming.
  * Staging only. On the live site (SITE_ENV=production) this page does not exist.
- * The list itself comes from src/review/board.ts; ticks and notes from /api/review.
+ * The list comes from src/review/board.ts, decisions from export/DECISIONS.md (via
+ * scripts/generate-decisions.mjs), and ticks and notes from /api/review.
  */
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { buildBoard, DATES, REVIEWERS } from '@/review/board';
+import decisions from '@/generated/decisions.json';
 import { ReviewBoard } from './ReviewBoard';
 
 export const metadata: Metadata = {
@@ -15,5 +17,5 @@ export const metadata: Metadata = {
 
 export default function ReviewPage() {
   if (process.env.SITE_ENV === 'production') notFound();
-  return <ReviewBoard items={buildBoard()} dates={DATES} reviewers={REVIEWERS} />;
+  return <ReviewBoard items={buildBoard()} dates={DATES} reviewers={REVIEWERS} decisions={decisions} />;
 }

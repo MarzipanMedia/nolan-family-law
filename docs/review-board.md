@@ -16,6 +16,11 @@ return 404. On staging it sits behind the staging password like every other page
 | Questions only you can answer | `QUESTIONS` in `board.ts` (copied from the open questions in `export/DECISIONS.md`) |
 | Built and carried over | Live routes served by the carry-over, article or profile templates |
 | Coming next | Routes still marked `planned` |
+| Decisions so far | `export/DECISIONS.md`, copied into `src/generated/decisions.json` by `scripts/generate-decisions.mjs` before every build and dev start |
+
+`DECISIONS.md` stays the only place a decision is written. Add or change a decision there, keep
+the `### D-nn · date · who · status` heading and bold summary line, and the board picks it up on the
+next deploy. Decisions made with Chad or Tash are labelled "Decided with you".
 
 The only hand-written parts are `NOTES` (what to look at on a page, and who should look) and
 `QUESTIONS`. When a question is answered, record the answer in `DECISIONS.md` and remove it from

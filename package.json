@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-redirects.mjs && node scripts/check-hardcoding.mjs",
-    "predev": "node scripts/generate-redirects.mjs",
+    "prebuild": "node scripts/generate-redirects.mjs && node scripts/generate-decisions.mjs && node scripts/check-hardcoding.mjs",
+    "predev": "node scripts/generate-redirects.mjs && node scripts/generate-decisions.mjs",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",

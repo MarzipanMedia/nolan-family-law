@@ -29,7 +29,10 @@ const cityName = (c: BoardItem['city']) => (c === 'sydney' ? 'Sydney' : c === 'm
 
 interface ItemState { approval: Entry | null; notes: Entry[] }
 
-export function ReviewBoard({ items, dates, reviewers }: { items: BoardItem[]; dates: Array<{ label: string; date: string }>; reviewers: Reviewer[] }) {
+export interface Decision { id: string; date: string; who: string; status: string; summary: string; detail: string; evidence: string }
+const RECENT_DECISIONS = 6;
+
+export function ReviewBoard({ items, dates, reviewers, decisions }: { items: BoardItem[]; dates: Array<{ label: string; date: string }>; reviewers: Reviewer[]; decisions: Decision[] }) {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [configured, setConfigured] = useState<boolean | null>(null);
   const [loadError, setLoadError] = useState('');
@@ -154,10 +157,42 @@ export function ReviewBoard({ items, dates, reviewers }: { items: BoardItem[]; d
             <Section title="Coming next" intro="Planned for launch or soon after, but not built yet. You can leave a note now if there is something we should know." count={coming.length}>
               {coming.map(card)}
             </Section>
+            <Section title="Decisions so far" intro="What has been settled for the new site, newest first, and why. These are copied from the project's decision log, so they update as decisions are made. If something here does not look right, add a note to the page it affects, or mention it to Ben." count={decisions.length}>
+              {decisions.slice(0, RECENT_DECISIONS).map((d) => <DecisionRow key={d.id} d={d} />)}
+              <Folder title="Earlier decisions" count={Math.max(0, decisions.length - RECENT_DECISIONS)}>
+                {decisions.slice(RECENT_DECISIONS).map((d) => <DecisionRow key={d.id} d={d} />)}
+              </Folder>
+            </Section>
           </>
         )}
       </main>
     </div>
+  );
+}
+
+function DecisionRow({ d }: { d: Decision }) {
+  const withClient = /Chad|Tash/.test(d.who);
+  return (
+    <details id={d.id.toLowerCase()} style={{ background: PAPER, border: `1px solid ${STONE}`, borderRadius: '3px' }}>
+      <summary style={{ padding: '18px 24px', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', gap: '16px', alignItems: 'start' }}>
+        <span style={{ minWidth: 0 }}>
+          <span style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '8px', fontSize: '13px', fontWeight: 600, color: MUTED }}>
+            <span style={{ color: ACCENT, letterSpacing: '0.06em' }}>{d.id}</span>
+            <span>{d.date}</span>
+            <span>·</span>
+            <span>{d.who}</span>
+            {withClient && <span style={{ ...tag, background: TINT, borderColor: TINT, color: INK }}>Decided with you</span>}
+          </span>
+          <span style={{ display: 'block', fontSize: '17px', lineHeight: 1.55, fontWeight: 600, color: INK }}>{d.summary}</span>
+        </span>
+        <span data-faq-plus="true" aria-hidden="true" style={{ fontSize: '22px', lineHeight: 1, color: ACCENT, transition: 'transform 220ms cubic-bezier(0.23,1,0.32,1)' }}>+</span>
+      </summary>
+      <div style={{ padding: '0 24px 20px', display: 'grid', gap: '10px', maxWidth: '70ch' }}>
+        {d.detail && <p style={{ fontSize: '16px', lineHeight: 1.65, margin: 0 }}>{d.detail}</p>}
+        {d.evidence && <p style={{ fontSize: '15px', lineHeight: 1.6, color: MUTED, margin: 0 }}><strong style={{ color: INK }}>Why: </strong>{d.evidence}</p>}
+        {d.status !== 'Decided' && <p style={{ fontSize: '14px', color: MUTED, margin: 0 }}>Status: {d.status}</p>}
+      </div>
+    </details>
   );
 }
 
