@@ -12,9 +12,9 @@ return 404. On staging it sits behind the staging password like every other page
 
 | On the board | Comes from |
 |---|---|
-| Ready for your review | Live routes with a designed page in `src/site/registry.ts` |
+| Ready for your review | Live routes with a designed page in `src/site/registry.ts`, plus any listed in `ASSUME_DESIGNED` (pages being built right now) |
 | Questions only you can answer | `QUESTIONS` in `board.ts` (copied from the open questions in `export/DECISIONS.md`) |
-| Built and carried over | Live routes served by the carry-over, article or profile templates |
+| Still to be designed | Live routes still in the temporary carry-over, article or profile templates. Every one will be designed |
 | Coming next | Routes still marked `planned` |
 | Decisions so far | `export/DECISIONS.md`, copied into `src/generated/decisions.json` by `scripts/generate-decisions.mjs` before every build and dev start |
 

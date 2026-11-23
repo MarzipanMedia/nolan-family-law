@@ -76,16 +76,17 @@ export function ReviewBoard({ items, dates, reviewers, decisions }: { items: Boa
 
   const review = items.filter((i) => i.stage === 'review' && i.group !== 'Questions');
   const questions = items.filter((i) => i.group === 'Questions');
-  const builtPages = items.filter((i) => i.stage === 'built' && i.group === 'Pages');
-  const profiles = items.filter((i) => i.stage === 'built' && i.group === 'Team profiles');
-  const articles = items.filter((i) => i.stage === 'built' && i.group === 'Articles');
+  const general = items.filter((i) => i.stage === 'general');
+  const designPages = items.filter((i) => i.stage === 'design' && i.group === 'Pages');
+  const profiles = items.filter((i) => i.stage === 'design' && i.group === 'Team profiles');
+  const articles = items.filter((i) => i.stage === 'design' && i.group === 'Articles');
   const coming = items.filter((i) => i.stage === 'coming');
   const toReview = [...review, ...questions];
   const doneCount = toReview.filter((i) => approved(i.id)).length;
   const readOnly = configured === false || !!loadError;
 
   const order = (list: BoardItem[]) => [...list].filter(visible).sort((a, b) => Number(approved(a.id)) - Number(approved(b.id)));
-  const card = (i: BoardItem) => <ItemCard key={i.id} item={i} state={state.get(i.id)} me={me} readOnly={readOnly} canApprove={i.stage !== 'coming'} onSave={save} />;
+  const card = (i: BoardItem) => <ItemCard key={i.id} item={i} state={state.get(i.id)} me={me} readOnly={readOnly} canApprove={i.stage === 'review'} onSave={save} />;
 
   return (
     <div data-root="true" style={{ minHeight: '100vh', background: BONE, color: BODY }}>
@@ -133,6 +134,8 @@ export function ReviewBoard({ items, dates, reviewers, decisions }: { items: Boa
           </p>
         </section>
 
+        {!mineOnly && general.length > 0 && <div style={{ marginTop: '20px' }}>{general.map(card)}</div>}
+
         {configured === false && <Banner>Saving is not switched on yet, so ticks and notes cannot be added for now. Everything below is up to date.</Banner>}
         {loadError && <Banner>{loadError} Please refresh the page in a moment.</Banner>}
 
@@ -149,8 +152,8 @@ export function ReviewBoard({ items, dates, reviewers, decisions }: { items: Boa
 
         {!mineOnly && (
           <>
-            <Section title="Built and carried over" intro="These pages have moved across from the current site as they are, into the new layout. They will be redesigned in place after launch. A note is welcome if anything looks wrong." count={builtPages.length + profiles.length + articles.length}>
-              {builtPages.map(card)}
+            <Section title="Still to be designed" intro="Every one of these pages will be designed for the new site. Nothing is left out. Until each one is done, it sits in a temporary layout on staging so that every page and link keeps working. There is no need to review them yet, but a note is welcome if you already know something should change." count={designPages.length + profiles.length + articles.length}>
+              {designPages.map(card)}
               <Folder title="Team profiles" count={profiles.length}>{profiles.map(card)}</Folder>
               <Folder title="Articles" count={articles.length}>{articles.map(card)}</Folder>
             </Section>
@@ -229,7 +232,6 @@ function ItemCard({ item, state, me, readOnly, canApprove, onSave }: { item: Boa
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [open, setOpen] = useState(false);
   const approval = state?.approval ?? null;
   const isApproved = approval?.kind === 'approve';
   const notes = state?.notes ?? [];
@@ -239,7 +241,7 @@ function ItemCard({ item, state, me, readOnly, canApprove, onSave }: { item: Boa
     setBusy(true); setError('');
     const problem = await onSave(item.id, kind, body);
     setBusy(false);
-    if (problem) setError(problem); else if (kind === 'note') { setDraft(''); setOpen(false); }
+    if (problem) setError(problem); else if (kind === 'note') setDraft('');
   };
 
   return (
@@ -248,7 +250,7 @@ function ItemCard({ item, state, me, readOnly, canApprove, onSave }: { item: Boa
         <div style={{ minWidth: 0, flex: '1 1 320px' }}>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '10px' }}>
             {city && <span style={tag}>{city}</span>}
-            {item.origin === 'carried over' && <span style={tag}>Carried over</span>}
+            {item.origin === 'temporary' && <span style={tag}>Temporary layout</span>}
             {item.who?.map((w) => <span key={w} style={{ ...tag, background: TINT, borderColor: TINT, color: INK }}>For {w}</span>)}
           </div>
           <h3 style={{ ...serif, fontSize: '22px', lineHeight: 1.3 }}>{item.title}</h3>
@@ -274,6 +276,7 @@ function ItemCard({ item, state, me, readOnly, canApprove, onSave }: { item: Boa
         </ol>
       )}
 
+      {(canApprove || approval) && (
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px 20px', flexWrap: 'wrap', marginTop: '18px', paddingTop: '16px', borderTop: `1px solid ${STONE}` }}>
         {canApprove && (
           <label style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontSize: '16px', fontWeight: 600, color: INK, cursor: readOnly ? 'default' : 'pointer', minHeight: '44px' }}>
@@ -286,21 +289,18 @@ function ItemCard({ item, state, me, readOnly, canApprove, onSave }: { item: Boa
             {isApproved ? 'Approved' : 'Approval taken back'} by {approval.author}, {when(approval.created_at)}
           </span>
         )}
-        {!readOnly && !open && (
-          <button type="button" data-press="true" onClick={() => setOpen(true)} style={{ ...secondaryButton, marginLeft: 'auto' }}>Add a note</button>
-        )}
       </div>
+      )}
 
-      {open && (
+      {!readOnly && (
         <div style={{ marginTop: '14px' }}>
           <label htmlFor={`note-${item.id}`} style={{ display: 'block', fontSize: '15px', fontWeight: 600, color: INK, marginBottom: '8px' }}>
-            Your note{me ? ` (from ${me})` : ''}
+            Notes{me ? ` from ${me}` : ''}
           </label>
-          <textarea id={`note-${item.id}`} data-field="true" rows={3} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="What would you like changed, or anything we should know?" style={{ width: '100%', boxSizing: 'border-box', padding: '14px 16px', border: `1px solid ${STONE}`, borderRadius: '2px', background: PAPER, fontFamily: 'var(--font-sans)', fontSize: '16px', lineHeight: 1.6, color: BODY, resize: 'vertical' }} />
-          <div style={{ display: 'flex', gap: '12px', marginTop: '10px', flexWrap: 'wrap' }}>
-            <button type="button" data-press="true" disabled={busy || !draft.trim()} onClick={() => run('note', draft)} style={{ ...secondaryButton, background: INK, color: '#FFFFFF', borderColor: INK, opacity: busy || !draft.trim() ? 0.45 : 1 }}>{busy ? 'Saving' : 'Save note'}</button>
-            <button type="button" data-press="true" onClick={() => { setOpen(false); setDraft(''); setError(''); }} style={secondaryButton}>Cancel</button>
-          </div>
+          <textarea id={`note-${item.id}`} data-field="true" rows={2} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="What would you like changed, or anything we should know?" style={{ width: '100%', boxSizing: 'border-box', padding: '12px 16px', border: `1px solid ${STONE}`, borderRadius: '2px', background: PAPER, fontFamily: 'var(--font-sans)', fontSize: '16px', lineHeight: 1.6, color: BODY, resize: 'vertical' }} />
+          {draft.trim() && (
+            <button type="button" data-press="true" disabled={busy} onClick={() => run('note', draft)} style={{ ...secondaryButton, marginTop: '10px', background: INK, color: '#FFFFFF', borderColor: INK, opacity: busy ? 0.45 : 1 }}>{busy ? 'Saving' : 'Save note'}</button>
+          )}
         </div>
       )}
       {error && <p role="alert" style={{ fontSize: '15px', color: '#8A2E1F', margin: '10px 0 0' }}>{error}</p>}
