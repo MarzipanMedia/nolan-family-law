@@ -1,5 +1,5 @@
 # Nolan Family Law & Mediation — Build notes
-**4 Nov 2026, updated 27 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template), Sydney hub, Melbourne prenuptial agreements, Melbourne mediation (stub), Sydney prenuptial agreements, Sydney divorce · Design rules: `DESIGN.md` v2.0**
+**4 Nov 2026, updated 27 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template), Sydney hub, Melbourne prenuptial agreements, Melbourne mediation (stub), Sydney prenuptial agreements, Sydney divorce, Sydney de facto relationships · Design rules: `DESIGN.md` v2.0**
 
 > **URL structure (decided 12 Nov 2026, D-23):** service pages move to `/sydney/...` and `/melbourne/...` in one hit at launch, with `URL_MODE=B` and the option B columns of `REDIRECT-MAP.csv`. If the redirect test isn't passing 100% at the go/no-go on 11 December, launch with `URL_MODE=A`. Every URL comes from one routes file (D-25). Where older notes below mention today's URLs for a moved page, the routes file wins.
 
@@ -28,6 +28,9 @@
 | `sydney-divorce-lawyer.html` | Sydney divorce, 27 Nov. See the Sydney divorce section. Add `?notes=0` to hide the review notes |
 | `sydney-divorce-draft-v1.md` | The approved copy for that page. The page follows it word for word |
 | `sydney-divorce-gsc-baseline.csv` | **Not yet uploaded.** Search Console baseline for divorce queries and page 8327 (27 Nov 2025 to 26 Nov 2026), the page's baseline (D-58) |
+| `sydney-de-facto-relationship-lawyer.html` | Sydney de facto relationships, 27 Nov. See the Sydney de facto relationships section. Add `?notes=0` to hide the review notes |
+| `sydney-de-facto-draft-v1.md` | The approved copy for that page. The page follows it word for word |
+| `sydney-de-facto-gsc-baseline.csv` | Search Console baseline: every query for page 8287, plus every "facto" query on other pages (27 Nov 2025 to 26 Nov 2026), the page's baseline (D-60) |
 
 Unless noted, the HTML prototypes are plain HTML with images inlined, and open offline. Uploaded hand-off folders and prompts are merged into this folder and removed once built; they stay in the git history.
 
@@ -540,6 +543,64 @@ As the draft: Hero · Breadcrumb and byline · Quick answer · Accreditations ·
 
 ---
 
+## Sydney de facto relationships: build notes
+**Designed and built 27 Nov 2026 · Prototype: `sydney-de-facto-relationship-lawyer.html` · Copy: `sydney-de-facto-draft-v1.md` · Decisions D-60 to D-62**
+
+Forked from the Sydney divorce page, with the Sydney header and phone strip (D-30, D-49), accreditations, routing cards, sticky "On this page", mid-page prompt, both lawyer cards with Tash's and Jessica's real photos, related reading cards, FAQ, enquiry form, trust ribbon and footer. The location toggle is the hubs' existing card. **No new components.**
+
+**Current law.** Property and maintenance follow the Family Law Act as amended on 10 June 2025 (Family Law Amendment Act 2024): economic effect of family violence, children's housing needs, companion animals, statutory duty of disclosure. Part VIIIAB applies these to de facto couples.
+
+### URL, title and meta
+| Item | Value |
+|---|---|
+| URL | `/sydney/de-facto-relationship-lawyer/` (`sydneyDeFacto` in the routes file, already a carry-over at this URL). One 301 from `/de-facto-relationship-lawyer/` (WP 8287), already in `REDIRECT-MAP.csv`, option B |
+| Title tag | `De Facto Relationship Lawyers Sydney \| Nolan Family Law` (55 characters) |
+| Meta description | `Separated, never married, and unsure what you're entitled to? A two year time limit applies. Our Sydney de facto lawyers explain where you stand.` (145 characters) |
+| H1 | `De facto relationship lawyers in Sydney` |
+| Breadcrumb | Home / Sydney / De facto relationships. Byline: written and reviewed by Tash Nolan, Principal · updated November 2026 |
+| Homepage | The "Separation & Divorce" card keeps "Learn more" to `sydneyHub` and the divorce link (D-58), and gains "De facto relationship lawyers in Sydney →" to `sydneyDeFacto` (`src/site/pages/home/content.tsx`). Homepage title and H1 unchanged (D-33) |
+| Article | `/the-family-court-and-de-facto-relationships/` gets one link to this page with the anchor "de facto relationship lawyers in Sydney" (D-12 pattern), added in the import step |
+| Location toggle | "In Victoria instead?" to `articleDeFactoVictoria`, rendered only when that route is live (D-61) |
+
+### Section map
+Hero · Breadcrumb and byline · Quick answer · Accreditations · `#help` (six routing cards, one of them a safety card) · guide (`#status`, `#whichlaw`, `#claim`, `#evidence`, mid-page prompt, `#property`, `#deadline`, `#maintenance`, `#children`, `#agreements`, `#wills`, `#how`) · Your lawyers (Tash, then Jessica's second card, wording as the divorce page) · Location toggle and related reading (six cards) · Rooms image · `#faq` (12) · `#book` · Trust ribbon · Footer.
+
+### Schema
+`WebPage` (Tash as author and `reviewedBy`, `dateModified` 2026-11-27) · `BreadcrumbList` · `LegalService` `/sydney/family-law/#office` · `Service` "De facto relationships", alternateName "De facto lawyers", "Defacto lawyers", "De facto separation lawyers", `areaServed` New South Wales · `Person` Tash (the divorce page's node, `knowsAbout` led by "De facto relationships") · `Person` Jessica (`/our-team/jessica-swain/#person`) · `FAQPage` with all 12 questions, worded as on the page. No `priceRange`, no `alumniOf`.
+
+### How to build it
+- Reuse the divorce page's components exactly: `MidPrompt` (eyebrow "Every situation is different", topic De facto), `CtaBand` with this page's `promises`, `topics` and `stages`, the routing cards, the related reading grid, the FAQ list and Jessica's second card. The location toggle is the city hubs' toggle card.
+- Form: promises "Run a conflict check before anything else", "Look at whether you were de facto, and whether a claim can be made", "Check the dates, and the two year deadline", "Tell you how our fees work, and put an estimate in writing". Topics: "De facto separation and property" (`defacto`, pre-selected), "Whether we were in a de facto relationship" (`status`), "A former partner has made a claim against me" (`claimed`), "Arrangements for our children" (`children`), "Fees and how this works" (`fees`), "Something else" (`other`). Stages: "Already separated" (`separated`), "Thinking about separating" (`considering`), "Just exploring" (`exploring`, default). Add the new topic values to the enquiry schema if it needs them.
+- `#claim`: the four gateways are four paragraphs, each opening with its first sentence in bold (the divorce page's `<strong>` pattern), not a list.
+- Images: hero is the 25 Bligh Street entrance (`public/images/entrance-to-25-bligh-street-sydney-552a47f9.webp`, 768 × 512; Ben may supply a larger original); Tash is `images.tashSmall`; Jessica is `jessica-swain-partner-160`; the rooms band is the divorce and prenup pages'. Nothing new, no placeholders.
+- Hero, mid-page and both `#book` routing cards carry `data-cta-position` (hero, mid) where the divorce page does, and set the topic to `defacto`. "Talk to us about costs." in the last FAQ sets `fees`.
+- Header: no `aria-current` (de facto is not a nav item). Footer unchanged.
+- Copy is `sydney-de-facto-draft-v1.md` word for word. The prototype adds a few short labels the draft did not give (fact-strip sub-lines, Quick answer heading, related reading heading and sub-lines, FAQ heading, form options); each has a CHECK note.
+
+### Content and compliance decisions (do not undo)
+- No fees or figures (D-02), no "specialist" (D-05), no quick exit (D-07), no office level in copy, no unverified claims. "Parenting arrangements" in body copy.
+- Time limits get one paragraph and link to `/sydney/family-law/#timelimits`; property detail links to the property page; agreements for couples moving in link to the prenup page's `#defacto` (D-60).
+- The safety routing card follows the child custody page's wording ("In an emergency, call 000"). Gentle tone throughout.
+- The two client videos on page 8287 are left out (no video component; consent and currency unknown).
+- "De facto" two words everywhere except once in `#status` and in schema (D-62).
+
+### How it was built (27 Nov 2026)
+`tools/convert-prototype.mjs --notes`, then by hand, as the divorce page: the shared `MidPrompt` (eyebrow "Every situation is different", topic `defacto`) and `CtaBand` with this page's promises, topics and stages; the hero is the existing `entrance-to-25-bligh-street-sydney-552a47f9.webp`, the rooms band the existing Bligh Street rooms file, Tash `images.tashSmall`, Jessica `images.jessica` through `Picture`. The converter's eleven new image copies were not kept. The trust ribbon is the footer's. All 21 review notes show on staging only (one note reworded from "Never \"specialist\"" to "Wording follows D-05", because the rule check reads notes too). The Victoria card is in the page behind `isLive("articleDeFactoVictoria")`, so it is not rendered until that article is imported (D-61).
+- **Enquiry form:** the enquiry route accepts any topic and stage value (cleaned, up to 60 characters), so `defacto`, `status` and `claimed` needed no schema change. The topic buttons use the shared `data-pick-topic` handler.
+- **Article back-link:** `scripts/lib/added-links.mjs` inserts one new sentence after the conclusion paragraph that starts "There are a range of factors": "Our page for de facto relationship lawyers in Sydney explains whether a claim can be made in NSW, how long you have to make it, and how we help." The article had no such words to wrap. **Ben to approve the sentence.** Applied to the imported article now, and by `npm run import` from here on.
+- **Scripts:** `check-hardcoding.mjs`, `generate-decisions.mjs`, `convert-prototype.mjs` and `make-responsive-image.mjs` now find the repo with `fileURLToPath`. Before, a checkout in a folder with a space in its name made the rule check pass on 0 files and the converter write to a `%20` folder.
+
+### Testing done (27 Nov 2026, local staging build)
+1440, 390 and 320px: no horizontal overflow, one H1, valid JSON-LD (WebPage, BreadcrumbList, LegalService, Service, two Person, FAQPage), FAQPage's 12 questions match the 12 on the page, every in-page anchor resolves, no broken images, title, 145-character description and self-referential canonical as above, no `aria-current` in the header. Copy checked against the draft sentence by sentence (the only misses were slot labels and sentences split around links). Twin overlap (built pages, `test:twins` method): 5.1% against the Sydney hub, 3.6% Sydney prenups, 2.8% Sydney property, 8.5% Sydney divorce, 4.3% the Melbourne hub; `npm run test:twins` has no Melbourne de facto twin to pair it with. Nav check ok (85 pages). Redirect test: `/de-facto-relationship-lawyer/` (with and without the slash, any case, query string kept) reaches the page in one 301; the only failures are the known footer links to `/fees/` and `/disclaimer/`. Homepage card and article link render. **Not checked:** the reveal sweep and console errors at each width (Playwright is not installed on this machine, and the in-app browser was hidden, so reveals did not fire there for this page or the divorce page). Run `node tools/check-page.cjs` on staging.
+
+
+### Open items before go-live
+1. **Tash (legal review):** every yellow LEGAL REVIEW note, especially sections 4AA, 44(5) and (6), 90RD, 90SB, 90SE, 90SF, 90SK, 90SM as amended, 90UB to 90UD and 90UJ, the referral and the 1 March 2009 start, the Property (Relationships) Act 1984, Relationships Register Act 2010 registration, companion animals, and Succession Act sections 12 and 13. All 12 FAQ answers.
+2. **Ben and Chad, checks:** the safety card (and 1800RESPECT); that the firm acts for respondents in de facto claims; the new short labels and form options; Jessica's card wording (shared with divorce); a larger entrance photo.
+3. **Homepage card link, article back-link and the Victoria toggle** as above.
+
+---
+
 ## Redirects and URL safety: build notes
 **Added 10 Nov 2026 · Source: `REDIRECT-MAP.csv` · Decisions D-18 and D-19 in `DECISIONS.md`**
 
@@ -660,6 +721,16 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | D-12 | Both mediation articles link to `/sydney/mediation/` with "family law mediation in Sydney" |
 | Uploaded files | The prototype and copy draft are in `export/`. Three hand-off files were not uploaded (see the Sydney divorce section, open item 4) |
 
+### Built (27 Nov 2026): Sydney de facto relationships
+| Step | Status |
+|---|---|
+| Sydney de facto relationships (D-60, D-62) | `/sydney/de-facto-relationship-lawyer/`, replacing the carry-over. See the Sydney de facto relationships section |
+| Homepage | "Separation & Divorce" card gains "De facto relationship lawyers in Sydney →"; "Learn more" and the divorce link unchanged |
+| Article | `/the-family-court-and-de-facto-relationships/` links to the page with the anchor "de facto relationship lawyers in Sydney", added in the import step |
+| Victoria toggle (D-61) | In the page, rendered only once `articleDeFactoVictoria` is live |
+| Uploaded folder | The prototype, copy draft and Search Console baseline are in `export/`; D-60 to D-62 merged; this section added |
+| Scripts | Four scripts now handle a repo path with a space in it |
+
 ### Left to do
 - **Two pages with no content yet:** `/fees/` and `/disclaimer/` (both linked from every footer). The redirect test fails on these until they exist. (`/melbourne/mediation/` was built 22 Nov as a stub; its designed version follows in January.)
 - **Four Melbourne articles (D-28):** their cards and inline links on the hub are hidden until each article is imported. They appear by themselves once it is.
@@ -694,6 +765,9 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Sydney divorce | Hero is the homepage's lobby photo file, not a new copy; Tash and Jessica use the shared photo files | One file per image |
 | Sydney divorce | Mid-page prompt and consultation band are the shared components; the page's trust ribbon is the footer's | Reuse, don't fork |
 | Sydney divorce | Jessica's card links her name, not "Read Jessica's profile" | The prototype follows the hub's second card |
+| Sydney de facto | Hero, rooms band, Tash and Jessica use the shared photo files | One file per image |
+| Sydney de facto | Mid-page prompt and consultation band are the shared components; the page's trust ribbon is the footer's | Reuse, don't fork |
+| Sydney de facto | Jessica's card links her name, not "Read Jessica's profile" | As the divorce page |
 | All | `/our-people/`, `/privacy`, `/contact`, `/disclaimer`, `/collaborative-family-law/` in prototypes resolve through the routes file | D-25 |
 | All | Phone links use `tel:+61…`; footer note on pages with no city reads "This website is general information about family law…" | Office config; the prototypes only had NSW and Victoria versions |
 | Enquiry form | Requires a phone number or an email as well as a name | Otherwise the firm cannot reply. **Ben to confirm** |

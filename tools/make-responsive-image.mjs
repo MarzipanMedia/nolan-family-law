@@ -6,12 +6,13 @@
  * Writes public/images/<name>-<width>.avif and .webp for each width (never wider than the
  * source), then prints the entry to paste into src/site/images.ts.
  */
+import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { mkdirSync } from 'node:fs';
 
 const [src, name, ...ws] = process.argv.slice(2);
 if (!src || !name || !ws.length) { console.error('usage: make-responsive-image.mjs <source> <name> <width> [<width>...]'); process.exit(1); }
-const dir = new URL('../public/images/', import.meta.url).pathname;
+const dir = fileURLToPath(new URL('../public/images/', import.meta.url));
 mkdirSync(dir, { recursive: true });
 
 const meta = await sharp(src).metadata();

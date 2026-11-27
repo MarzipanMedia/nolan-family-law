@@ -10,11 +10,12 @@
  *  - placeholder artwork, when building for production.
  * Imported WordPress content is existing copy, not new copy, so it is reported separately.
  */
+import { fileURLToPath } from 'node:url';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { routes } from '../src/config/routes.ts';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 const files = [];
 (function walk(dir) {
   for (const f of readdirSync(dir)) {

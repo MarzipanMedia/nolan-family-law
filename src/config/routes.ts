@@ -65,7 +65,8 @@ const staticRoutes = {
   sydneyPrenups: page('Prenups and binding financial agreements', '/prenuptial-agreement-sydney/', '/sydney/prenuptial-agreements/', { ...SYD, ...LIVE }),
   // Breadcrumb label for the designed page (D-58): "Divorce".
   sydneyDivorce: page('Divorce', '/divorce-lawyer/', '/sydney/divorce-lawyer/', { ...SYD, ...LIVE }),
-  sydneyDeFacto: page('De facto relationships', '/de-facto-relationship-lawyer/', '/sydney/de-facto-relationship-lawyer/', SYD),
+  // Breadcrumb label for the designed page (D-60): "De facto relationships".
+  sydneyDeFacto: page('De facto relationships', '/de-facto-relationship-lawyer/', '/sydney/de-facto-relationship-lawyer/', { ...SYD, ...LIVE }),
   sydneyDomesticViolence: page('Domestic violence', '/domestic-violence/', '/sydney/domestic-violence/', SYD),
   sydneyCollaborative: page('Collaborative family law', '/collaborative-family-lawyer-sydney/', '/sydney/collaborative-family-law/', SYD),
   sydneyConsentOrders: page('Consent orders', '/consent-orders/', '/sydney/consent-orders/', SYD),

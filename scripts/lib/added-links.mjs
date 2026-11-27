@@ -30,6 +30,15 @@ export const ADDED_LINKS = {
     },
   ],
 
+  // D-60: the de facto article links to /sydney/de-facto-relationship-lawyer/ with the anchor "de facto relationship lawyers in Sydney".
+  'the-family-court-and-de-facto-relationships': [
+    {
+      to: 'sydneyDeFacto', anchor: 'de facto relationship lawyers in Sydney',
+      after: 'There are a range of factors of which the Court must be satisfied',
+      insert: 'Our page for {link} explains whether a claim can be made in NSW, how long you have to make it, and how we help.',
+    },
+  ],
+
   // D-12: both mediation articles link to /sydney/mediation/ with the anchor "family law mediation in Sydney".
   'role-of-the-mediator': [
     {
@@ -47,13 +56,19 @@ export const ADDED_LINKS = {
   ],
 };
 
+const PAGE_LABEL = {
+  sydneyMediation: 'Sydney mediation page (D-12)',
+  sydneyDivorce: 'Sydney divorce page (D-58)',
+  sydneyDeFacto: 'Sydney de facto page (D-60)',
+};
+
 /** Returns { html, missed, notes }: the article with its added links, entries that could not be placed, and notes on new sentences. */
 export function addLinks(slug, html) {
   const missed = [];
   const notes = [];
   for (const e of ADDED_LINKS[slug] ?? []) {
     const link = `<a href="route:${e.to}">${e.anchor}</a>`;
-    if (e.insert) notes.push(`CHECK · Ben: the sentence "${e.insert.replace('{link}', e.anchor)}" is new, added so this article links to the ${e.to === 'sydneyMediation' ? 'Sydney mediation page (D-12)' : 'Sydney divorce page (D-58)'}.`);
+    if (e.insert) notes.push(`CHECK · Ben: the sentence "${e.insert.replace('{link}', e.anchor)}" is new, added so this article links to the ${PAGE_LABEL[e.to]}.`);
     if (html.includes(link)) continue;
     if (e.wrap) {
       const i = html.indexOf(e.wrap);
