@@ -15,6 +15,7 @@ import { contact } from './pages/contact/page';
 import { melbourneMediation } from './pages/melbourne-mediation/page';
 import { melbournePrenups } from './pages/melbourne-prenups/page';
 import { sydneyPrenups } from './pages/sydney-prenups/page';
+import { sydneyDivorce } from './pages/sydney-divorce/page';
 
 export const pages: Partial<Record<StaticRouteKey, PageModule>> = {
   home,
@@ -29,4 +30,5 @@ export const pages: Partial<Record<StaticRouteKey, PageModule>> = {
   melbourneMediation,
   melbournePrenups,
   sydneyPrenups,
+  sydneyDivorce,
 };

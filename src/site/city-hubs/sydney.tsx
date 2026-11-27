@@ -23,7 +23,7 @@ export const sydney: CityHubConfig = {
   office: 'sydney',
   title: 'Separation Lawyers Sydney | Nolan Family Law & Mediation',
   description: 'Separated, or thinking about it? Early decisions are hard to undo and time limits apply. Our Sydney family lawyers can guide you through each step.',
-  dateModified: '2026-11-14',
+  dateModified: '2026-11-27',
   cta: 'Talk to our Sydney team',
 
   author: 'tash',
@@ -103,10 +103,11 @@ export const sydney: CityHubConfig = {
       id: 'divorce', toc: 'Divorce', label: 'Divorce',
       h2: 'When can I apply for divorce in NSW?',
       body: [
-        'Divorce is the formal end of a marriage, and that is all it does. The only ground is that the marriage has broken down irretrievably, shown by at least 12 months of separation, and who was to blame plays no part. If you have been married for less than two years, you generally need to have considered reconciliation with a family counsellor first.',
+        'Divorce is the formal end of a marriage, and that is all it does. The only ground is that the marriage has broken down irretrievably, shown by at least 12 months of separation, and who was to blame plays no part. Since 10 June 2025, there is no extra step for marriages of less than two years.',
         <>{'Applications are made online to the Federal Circuit and Family Court of Australia, jointly or by one of you alone, and a divorce order takes effect one month and one day after it is made. Divorce does not divide property or settle arrangements for children, and you do not need to be divorced to deal with either. Our page for '}<L to="sydneyDivorce">Sydney divorce lawyers</L>{' explains the application step by step.'}</>,
       ],
       inShort: 'You can apply after 12 months of separation, and fault is irrelevant. Divorce does not deal with property or children, and it starts the 12 month clock for property claims.',
+      notes: ['LEGAL REVIEW · Tash (D-59, 27 Nov): this sentence replaced "If you have been married for less than two years, you generally need to have considered reconciliation with a family counsellor first." The counselling certificate rule (section 44(1B) and (1C)) was repealed from 10 June 2025 by the Family Law Amendment Act 2024. Replacement wording from the divorce hand-off (Ben, 27 Nov).'],
     },
     {
       id: 'children', toc: 'Children', label: 'Children',
@@ -228,7 +229,7 @@ export const sydney: CityHubConfig = {
     { q: 'Do I need to register or file anything when we separate?', a: 'No. There is no legal process for separating in Australia. You separate, and the date you did so becomes important. It helps to note the date and to tell your former partner clearly, in writing if it is safe to do so.' },
     { q: 'Can we be separated but still live together?', a: 'Yes. Separation under one roof is recognised, and many couples live together for a while after separating. What matters is that the relationship has ended in substance. Keep a note of the date and how your living arrangements changed, in case it is questioned later.' },
     { q: 'How long do I have to sort out property after separating in NSW?', a: "Married couples generally have 12 months from when a divorce order takes effect to apply to the court for property orders. De facto couples have two years from separation. After that you need the court's permission, which is not guaranteed, so it is best to act well before either deadline." },
-    { q: 'How soon after separating can I apply for divorce in NSW?', a: 'You need to have been separated for at least 12 months. If you have been married for less than two years, you generally also need to have considered reconciliation with a family counsellor. Applications are made online to the Federal Circuit and Family Court of Australia, and an order takes effect one month and one day after it is made.' },
+    { q: 'How soon after separating can I apply for divorce in NSW?', a: 'You need to have been separated for at least 12 months. Since 10 June 2025, there is no extra step for marriages of less than two years. Applications are made online to the Federal Circuit and Family Court of Australia, and an order takes effect one month and one day after it is made.', note: 'LEGAL REVIEW · Tash (D-59, 27 Nov): the second sentence replaced "If you have been married for less than two years, you generally also need to have considered reconciliation with a family counsellor." The counselling certificate rule was repealed from 10 June 2025 (Family Law Amendment Act 2024).' },
     { q: 'Is property always split 50/50 in NSW?', a: 'No. There is no presumption of an equal split. The court looks at what each of you contributed, financially and otherwise, and at your current and future circumstances, and the result has to be just and equitable in your situation. Some settlements end up close to equal and many do not.' },
     { q: 'Do de facto couples have the same property rights as married couples in NSW?', a: 'Broadly, yes. For couples who separated on or after 1 March 2009, de facto property and maintenance claims are dealt with under the Family Law Act in the same court and on the same principles. You generally need a relationship of at least two years, a child together, substantial contributions, or a registered relationship, and you must apply within two years of separating.' },
     { q: 'Is mediation compulsory before going to court in NSW?', a: 'For parenting matters, you generally need to attempt family dispute resolution and obtain a certificate before applying to the court, unless there is family violence, a risk of abuse or urgency. For property matters, the court expects you to make genuine attempts to resolve things first, and mediation is the usual way to do that.' },

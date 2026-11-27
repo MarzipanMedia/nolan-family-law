@@ -10,6 +10,8 @@ import { routes, url, type RouteKey } from '@/config/routes';
 export interface Imported {
   slug: string; path: string; title: string; seoTitle: string; description: string;
   image: string; date: string; modified: string; jobTitle?: string; h1?: string; key?: string; html: string;
+  /** Notes on corrections and added sentences made in the import (staging only). */
+  reviewNotes?: string[];
 }
 
 const dir = join(process.cwd(), 'src/content/imported');

@@ -361,12 +361,21 @@ export function Content() {
             <p style={{ flex: "1 1 0%", fontSize: "16px", lineHeight: "1.65", color: "#4A5A66", margin: "0px 0px 24px" }}>
               {"Clear, compassionate legal advice to help you navigate separation and divorce with confidence."}
             </p>
-            <a href={url("sydneyHub")} style={{ fontSize: "16px", fontWeight: "600", display: "inline-flex", gap: "8px" }}>
-              {"Learn more "}
-              <span data-arrow="true" style={{ display: "inline-block", transition: "transform 200ms cubic-bezier(0.23, 1, 0.32, 1)" }}>
-                {"→"}
-              </span>
-            </a>
+            {/* Two links (Ben, 27 Nov; D-58): the hub, and the divorce page with the anchor "Divorce lawyers in Sydney". */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "10px" }}>
+              <a href={url("sydneyHub")} style={{ fontSize: "16px", fontWeight: "600", display: "inline-flex", gap: "8px" }}>
+                {"Learn more "}
+                <span data-arrow="true" style={{ display: "inline-block", transition: "transform 200ms cubic-bezier(0.23, 1, 0.32, 1)" }}>
+                  {"→"}
+                </span>
+              </a>
+              <a href={url("sydneyDivorce")} style={{ fontSize: "16px", fontWeight: "600", display: "inline-flex", gap: "8px" }}>
+                {"Divorce lawyers in Sydney "}
+                <span data-arrow="true" style={{ display: "inline-block", transition: "transform 200ms cubic-bezier(0.23, 1, 0.32, 1)" }}>
+                  {"→"}
+                </span>
+              </a>
+            </div>
           </div>
           <div data-reveal="true" data-card="true" style={{ background: "#F8F6F2", border: "1px solid #E8E4DC", borderRadius: "3px", padding: "34px", display: "flex", flexDirection: "column", transition: "transform 220ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 220ms cubic-bezier(0.23, 1, 0.32, 1), border-color 220ms, opacity 520ms cubic-bezier(0.23, 1, 0.32, 1)" }}>
             <h3 style={{ fontFamily: "var(--font-serif)", fontWeight: "500", fontSize: "24px", lineHeight: "1.25", color: "#1A2E40", margin: "0px 0px 14px" }}>

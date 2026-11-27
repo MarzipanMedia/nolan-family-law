@@ -15,6 +15,7 @@ import { LiveLink } from '@/components/LiveLink';
 import { CtaBand } from '@/components/CtaBand';
 import { Picture } from '@/components/Picture';
 import { MidPrompt } from '@/components/MidPrompt';
+import { ReviewNote } from '@/components/ReviewNote';
 import type { CityHubConfig, Destination } from '@/site/city-hubs/types';
 
 // ── Shared styles (DESIGN.md v2.0) ───────────────────────────────────────────────────────
@@ -252,6 +253,7 @@ export function CityHubTemplate({ hub }: { hub: CityHubConfig }) {
                   <span data-faq-plus="true" aria-hidden="true" style={{ flex: 'none', fontSize: '22px', color: '#3A6D8C', transition: 'transform 200ms cubic-bezier(0.23,1,0.32,1)' }}>+</span>
                 </summary>
                 <p data-faq-answer="true" style={{ fontSize: '17px', lineHeight: '1.7', color: '#2C3E50', margin: '0 0 24px', maxWidth: '62ch' }}>{f.a}</p>
+                {f.note && <div style={{ margin: '-12px 0 24px' }}><ReviewNote>{f.note}</ReviewNote></div>}
               </details>
             ))}
           </div>
@@ -274,6 +276,7 @@ function GuideBlock({ hub, section: s, first }: { hub: CityHubConfig; section: C
           <div style={S.inShortLabel}>In short</div>
           <p style={S.inShortP}>{s.inShort}</p>
         </div>
+        {s.notes?.map((n) => <ReviewNote key={n}>{n}</ReviewNote>)}
       </section>
       {s.id === hub.midAfter && <MidPrompt office={hub.office} img={hub.mid.img} objectPosition={hub.mid.objectPosition} text={hub.mid.text} cta={hub.cta} eyebrow="Every situation is different" phonePrefix="or call " />}
     </>

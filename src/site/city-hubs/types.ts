@@ -25,6 +25,8 @@ export interface GuideSection {
   /** One entry per paragraph. */
   body: ReactNode[];
   inShort: string;
+  /** Yellow review notes shown under the section on staging only (ReviewNote). */
+  notes?: string[];
 }
 
 export interface CityHubConfig {
@@ -83,7 +85,8 @@ export interface CityHubConfig {
 
   faqHeading: string;
   /** All in FAQPage schema. The schema text is read off `a`, so it always matches the page. */
-  faq: Array<{ q: string; a: ReactNode }>;
+  /** `note`: a yellow review note shown under the answer on staging only (ReviewNote). */
+  faq: Array<{ q: string; a: ReactNode; note?: string }>;
 
   contact: { lede: string; address: string };
 }
