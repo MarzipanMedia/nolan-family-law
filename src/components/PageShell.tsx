@@ -24,9 +24,12 @@ export function PageShell({ city, currentPath, menuCta, footerNote, children }: 
           <span aria-hidden="true">↑</span>Back to top
         </button>
       </div>
-      <Header city={city} currentPath={currentPath} menuCta={menuCta} />
-      <main id="main">{children}</main>
-      <TrustRibbon office={city ?? 'sydney'} />
+      {/* The page is a raised panel that lifts off the footer beneath it (DESIGN.md §6, footer reveal). */}
+      <div data-curtain="">
+        <Header city={city} currentPath={currentPath} menuCta={menuCta} />
+        <main id="main">{children}</main>
+        <TrustRibbon office={city ?? 'sydney'} />
+      </div>
       <Footer note={footerNote ?? NOTES[city ?? 'none']} />
     </div>
   );
