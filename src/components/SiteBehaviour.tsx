@@ -171,6 +171,55 @@ export function SiteBehaviour() {
     on(window, 'resize', sweep, { passive: true });
     onScroll();
 
+    // ── Footer reveal: the page lifts off the footer like a curtain (DESIGN.md §6) ──
+    // Pin the footer under the page. A footer taller than the screen is pinned by a negative
+    // offset so its top is what the page uncovers. As it is uncovered, its content rises a
+    // little (skipped with reduced motion; the reveal itself is layout, not animation).
+    const footer = $('[data-site-footer]');
+    const curtain = $('[data-curtain]');
+    const footerInner = $('[data-footer-inner]');
+    if (footer && curtain) {
+      let footerH = 0, driftQueued = false;
+      const pin = () => {
+        footerH = footer.offsetHeight;
+        footer.style.setProperty('--footer-pin', `${Math.min(0, window.innerHeight - footerH)}px`);
+        footer.setAttribute('data-pinned', '');
+      };
+      const drift = () => {
+        if (driftQueued || reduce || !footerInner) return;
+        driftQueued = true;
+        requestAnimationFrame(() => {
+          driftQueued = false;
+          const shown = window.innerHeight - curtain.getBoundingClientRect().bottom;
+          const p = Math.max(0, Math.min(1, shown / Math.min(footerH || 1, window.innerHeight)));
+          footerInner.style.transform = p > 0.99 ? '' : `translate3d(0, ${((1 - p) * 32).toFixed(1)}px, 0)`;
+          footerInner.style.opacity = p > 0.99 ? '' : (0.5 + 0.5 * p).toFixed(3);
+        });
+      };
+      pin();
+      drift();
+      if ('ResizeObserver' in window) {
+        const ro = new ResizeObserver(() => { pin(); drift(); });
+        ro.observe(footer);
+        cleanups.push(() => ro.disconnect());
+      }
+      on(window, 'resize', () => { pin(); drift(); }, { passive: true });
+      on(window, 'scroll', drift, { passive: true });
+
+      // The browser sees the pinned footer as already on screen, so tabbing into it would
+      // leave the focused link hidden under the page. Scroll it into the uncovered area.
+      on(footer, 'focusin', (e: FocusEvent) => {
+        const el = e.target as HTMLElement;
+        const r = el.getBoundingClientRect();
+        const covered = curtain.getBoundingClientRect().bottom;
+        if (r.top >= covered && r.bottom <= window.innerHeight) return;
+        const naturalTop = covered + window.scrollY;
+        const elDocY = naturalTop + (r.top - footer.getBoundingClientRect().top);
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        window.scrollTo({ top: Math.min(max, Math.max(naturalTop, elDocY - window.innerHeight * 0.4)), behavior: 'instant' });
+      });
+    }
+
     // ── Counters animate once on entry; the final value is already in the markup ──
     const counters = $$('[data-counter]');
     if (counters.length && 'IntersectionObserver' in window && !reduce) {

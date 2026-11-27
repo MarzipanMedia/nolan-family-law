@@ -119,11 +119,15 @@ Paper fill, 1px Stone border, 2px radius, 14px 16px padding. Labels sit above fi
 `:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }`
 
 ### Footer
-- Dark (`--deep`). Columns: **Sydney** · **Melbourne** · **The firm** · **Offices** (address + phone).
+- Dark (`--deep`) with one soft `--soft` glow at the top left (about 11% opacity), where the page lifts away.
+- **Top row:** the sign-off "When you’re ready, we’re here." in Playfair 400 (34–58px), the one-line description under it, and both offices: phone in Playfair 24px, address, and "Get directions →" to the office map link.
+- **Link row:** logo, then columns **Sydney** · **Melbourne** · **The firm**.
 - City columns, identical across both cities: `[City] family lawyers`, Child custody, Property settlement, Prenuptial agreements.
 - The firm: Our people, Mediation, Fees, Contact us.
 - Legal row: © line; "Liability limited by a scheme approved under Professional Standards Legislation."; Privacy policy; Disclaimer; `Website by Marzipan` (`rel="nofollow"`).
 - No suburb links in the footer. Suburb pages are linked from their city hub only.
+- Footer links: `#E3E9EE` (legal links `#B6C2CE`), white on hover, with a 1px `--soft` underline that scales in from the left (fine pointers, and on keyboard focus).
+- No oversized wordmark for now (considered, held back).
 
 ---
 
@@ -136,6 +140,8 @@ Easing: `cubic-bezier(0.23, 1, 0.32, 1)` everywhere. Hover only on `(hover: hove
 | Hero image | Settles from scale 1.035 to 1 over 1500ms |
 | Nav link | 1px `--accent` underline scales in from the left |
 | Press | 160ms scale (0.975 buttons · 0.99 large cards) |
+| Footer reveal | The page (header, main, trust ribbon) is a raised panel: 6px bottom corners, soft navy shadow. The footer is pinned under it with `position: sticky`, so the page lifts off it like a curtain. A footer taller than the screen is pinned by a negative offset so its top is uncovered first. Without scripts the footer is an ordinary block |
+| Footer drift | As the footer is uncovered, its content rises 32px → 0 and fades 0.5 → 1, tied to scroll. Removed with reduced motion (the reveal itself stays: it is layout, not animation) |
 
 `prefers-reduced-motion`: remove all transforms, clip-paths and blur, and keep only short opacity fades.
 
