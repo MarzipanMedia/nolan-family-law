@@ -666,6 +666,7 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 - **Placeholder artwork (6):** homepage hero, both "Who we act for" images, the CTA background and the "four partners" photo box; child custody hero. Marked `data-placeholder`. A production build refuses to run while any remain.
 - **Needs Ben:** Vercel project; enquiry destination (`ENQUIRY_WEBHOOK_URL`: until set, staging accepts enquiries and delivers them nowhere, production refuses them); GTM ID (Q-12); Places API key and place IDs; Q-4, Q-9, Q-10.
 - **Not yet tested:** `URL_MODE=A` end to end; host and protocol hops (needs the real domain; see D-36); Core Web Vitals; real phones.
+- **Melbourne property carry-over** (`/melbourne/property-settlement/`, unedited WordPress copy) says "legal costs often exceed $100,000+" (D-02). It goes when the page is designed, or can be corrected sooner through `scripts/lib/article-fixes.mjs`.
 - **`/wp-content/uploads/`:** only the 153 files that imported content uses are copied (about 32 MB). The WordPress library has 357 items. To decide: copy the rest, or keep them served from WordPress.
 - Mobile Largest Contentful Paint on both hubs is 3.5 to 3.7s on Lighthouse's slow-phone setting: the hero paragraph waits for its fade-in. Worth revisiting with the motion rules before launch.
 - The other Melbourne service pages, Fees and the designed versions of Our people and Contact, as their prototypes arrive. Each currently serves its carry-over version at its final URL.
