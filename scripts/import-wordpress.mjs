@@ -9,7 +9,9 @@
  *  - rewrites every internal link to a route token ("route:<key>") that the site resolves
  *    through the routes file, so nothing links through a redirect under either URL mode (D-25);
  *  - copies referenced uploads to public/wp-content/uploads/ at their original paths;
- *  - adds the links listed in scripts/lib/added-links.mjs (D-12 pattern), so they survive a re-import.
+ *  - adds the links listed in scripts/lib/added-links.mjs (D-12 pattern) and makes the corrections in
+ *    scripts/lib/article-fixes.mjs (D-59, D-02), so they survive a re-import. Their review notes are
+ *    saved as `reviewNotes` and shown on staging only.
  *
  * Output: src/content/imported/{articles,profiles}/<slug>.json and index.json.
  */
@@ -19,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 import { parse, parseFragment } from 'parse5';
 import { readMap, normalisePath } from './lib/csv.mjs';
 import { addLinks } from './lib/added-links.mjs';
+import { fixArticle } from './lib/article-fixes.mjs';
 
 const ORIGIN = 'https://www.nolanlawyers.com.au';
 const UA = 'Mozilla/5.0 (compatible; site-migration-import)';
@@ -180,6 +183,7 @@ for (const kind of ['articles', 'profiles', 'pages']) { rmSync(`${outDir}/${kind
 const uploads = new Set();
 const titleFixes = [];
 const linksMissed = [];
+const fixesMissed = [];
 const index = { articles: [], profiles: [], pages: [], teamOrder: [] };
 for (const { kind, item, path, key } of jobs) {
   const live = await get(ORIGIN + path);
@@ -201,7 +205,11 @@ for (const { kind, item, path, key } of jobs) {
   // Page-builder leftovers: the section banner, and the page's own name repeated as a heading.
   html = html.replace(/<h2>\s*our (family lawyers|team|people)\s*<\/h2>\s*/i, '');
   html = html.replace(/^\s*<h[234]>([\s\S]*?)<\/h[234]>\s*/, (m, inner) => (text(inner) === title.toLowerCase() ? '' : m));
-  if (kind === 'articles') { const r = addLinks(item.slug, html); html = r.html; linksMissed.push(...r.missed); }
+  const reviewNotes = [];
+  if (kind === 'articles') {
+    const f = fixArticle(item.slug, html); html = f.html; fixesMissed.push(...f.missed); reviewNotes.push(...f.notes);
+    const r = addLinks(item.slug, html); html = r.html; linksMissed.push(...r.missed); reviewNotes.push(...r.notes);
+  }
   let jobTitle = '';
   if (kind === 'profiles') {
     // The role sits in a small heading straight after the name.
@@ -228,6 +236,7 @@ for (const { kind, item, path, key } of jobs) {
     ...(kind === 'profiles' ? { jobTitle } : {}),
     ...(kind === 'pages' ? { key, h1: h1 ? decode(h1.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim() : '' } : {}),
     html,
+    ...(reviewNotes.length ? { reviewNotes } : {}),
   };
   writeFileSync(`${outDir}/${kind}/${kind === 'pages' ? key : item.slug}.json`, JSON.stringify(record, null, 2) + '\n');
   index[kind].push(kind === 'pages' ? { key, path, title: record.title } : { slug: item.slug, path, title: record.title, ...(kind === 'articles' ? { date: item.date, description: meta.description } : { jobTitle, image }) });
@@ -256,6 +265,7 @@ if (unresolved.length) {
   console.warn(`\nInternal links with no route (${unresolved.length}). The words were kept and the link removed:`);
   for (const u of unresolved) console.warn(`  ${u.from}: ${u.href}`);
 }
+if (fixesMissed.length) { console.warn(`\nArticle corrections that could not be placed (${fixesMissed.length}); the article changed in WordPress, so check it and update scripts/lib/article-fixes.mjs:`); for (const m of fixesMissed) console.warn(`  ${m.slug}: ${m.find}…`); }
 if (linksMissed.length) { console.warn(`\nAdded links that could not be placed (${linksMissed.length}); the article changed in WordPress, so update scripts/lib/added-links.mjs:`); for (const m of linksMissed) console.warn(`  ${m.slug}: "${m.anchor}" → ${m.to}`); }
 if (titleFixes.length) { console.warn(`\nProfile titles that lacked the person's name (D-17), now "Name | Nolan Family Law & Mediation":`); for (const t of titleFixes) console.warn(`  ${t.slug}: was "${t.live}"`); }
-writeFileSync(`${outDir}/import-report.json`, JSON.stringify({ importedAt: new Date().toISOString(), articles: index.articles.length, profiles: index.profiles.length, unresolvedLinks: unresolved, profileTitlesChanged: titleFixes, addedLinksMissed: linksMissed, missingUploads: missing }, null, 2) + '\n');
+writeFileSync(`${outDir}/import-report.json`, JSON.stringify({ importedAt: new Date().toISOString(), articles: index.articles.length, profiles: index.profiles.length, unresolvedLinks: unresolved, profileTitlesChanged: titleFixes, addedLinksMissed: linksMissed, articleFixesMissed: fixesMissed, missingUploads: missing }, null, 2) + '\n');

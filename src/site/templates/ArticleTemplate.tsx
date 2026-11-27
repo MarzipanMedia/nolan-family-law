@@ -7,6 +7,7 @@ import { offices } from '@/config/offices';
 import { graph, breadcrumbNode } from '@/lib/schema';
 import { PageHero, Breadcrumb, Body } from '@/components/InnerPage';
 import { CtaBand } from '@/components/CtaBand';
+import { ReviewNote } from '@/components/ReviewNote';
 import type { Imported } from '@/site/imported';
 
 const monthYear = (iso: string) => new Date(iso).toLocaleDateString('en-AU', { month: 'long', year: 'numeric', timeZone: 'Australia/Sydney' });
@@ -41,6 +42,8 @@ export function ArticleTemplate({ routeKey, article, city }: { routeKey: RouteKe
       <PageHero eyebrow={city === 'melbourne' ? 'Melbourne · Family law guide' : 'Family law guide'} title={article.title} />
       <Breadcrumb trail={[{ key: 'home' }, { key: 'resources', name: 'Resources' }, { key: routeKey, name: article.title }]} meta={<span>Updated {monthYear(article.modified)}</span>} />
       <Body>
+        {/* Corrections and added sentences from the import (scripts/lib/article-fixes.mjs, added-links.mjs). Staging only. */}
+        {article.reviewNotes?.map((n) => <ReviewNote key={n}>{n}</ReviewNote>)}
         <article className="prose" dangerouslySetInnerHTML={{ __html: article.html }} />
       </Body>
       <CtaBand office={office.key} />

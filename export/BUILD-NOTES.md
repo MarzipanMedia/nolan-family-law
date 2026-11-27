@@ -520,6 +520,8 @@ As the draft: Hero · Breadcrumb and byline · Quick answer · Accreditations ·
 ### Links added elsewhere
 - **Homepage:** second link on the "Separation & Divorce" card (above).
 - **Three articles** link here with the anchor "divorce lawyers in Sydney", from `scripts/lib/added-links.mjs`, which `npm run import` applies after cleaning each article (and warns if an article has changed so a link cannot be placed). The checklist article's existing words "experienced divorce lawyers in Sydney" became the link. The other two had no such words, so each gained one new sentence, after a paragraph near its end: "Our page for divorce lawyers in Sydney explains how we help with the application and with everything a divorce leaves open." **Ben to approve that sentence.**
+- **D-12 (mediation):** `/role-of-the-mediator/` and `/how-to-prepare-for-mediation/` now link to `/sydney/mediation/` with the anchor "family law mediation in Sydney", each through one new sentence: "Our page on family law mediation in Sydney explains how mediation works with our Sydney team, and what it involves." **Ben to approve.**
+- **Article corrections (D-59, D-02):** `/the-divorce-process-explained/` (counselling certificate, attendance and the $865 fee) and `/separation-checklist-melbourne/` (reconciliation) are corrected by `scripts/lib/article-fixes.mjs`, which the import applies after cleaning, so a re-import cannot undo them. Only those passages change, using the divorce page's approved copy. Every correction and every new sentence is listed in a review note at the top of the article on staging (the article template now shows an article's `reviewNotes`).
 - **D-59 on the hubs:** see D-59. The city hub template gained optional review notes on guide sections (`notes`) and FAQ answers (`note`), using the existing `ReviewNote`, so each change carries its LEGAL REVIEW note.
 
 ### Content and compliance decisions (do not undo)
@@ -533,7 +535,7 @@ As the draft: Hero · Breadcrumb and byline · Quick answer · Accreditations ·
 ### Open items before go-live
 1. **Tash (legal review):** every yellow LEGAL REVIEW note on the page, especially sections 39(3), 44(3), 48, 50, 55 and 55A, the one-roof affidavits, service periods and substituted service, rule 15.15 and section 98A, Succession Act section 13, and all 12 FAQ answers. Also the four D-59 notes on the hubs.
 2. **Ben, checks:** the new short labels; Jessica's wording; that the firm acts on simple divorce applications; the article sentence above; the Melbourne hub's rewritten "Do I have to go to court" answer; whether the two client videos from page 8327 come back.
-3. **`/the-divorce-process-explained/` still states the old rules and a filing fee** (D-59). It is in this page's related reading and links here, so it needs correcting before launch.
+3. **Tash:** the three corrections to `/the-divorce-process-explained/` and the one to `/separation-checklist-melbourne/` (notes at the top of each article on staging). Also flagged there, unchanged: "a Divorce Order will be sent to you" (orders are now downloaded from the Portal). The live WordPress articles still carry the old wording until launch.
 4. The missing hand-off files: `BUILD-NOTES-divorce-section.md`, `DECISIONS-additions-divorce.md`, `sydney-divorce-gsc-baseline.csv`.
 
 ---
@@ -654,6 +656,8 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Homepage | "Separation & Divorce" card gains "Divorce lawyers in Sydney →"; "Learn more" still goes to the hub |
 | Articles | Three divorce articles link to the page with the anchor "divorce lawyers in Sydney", added in the import step (`scripts/lib/added-links.mjs`) |
 | D-59 | Counselling rule replaced on both hubs (body and FAQ); Melbourne attendance FAQ rewritten; each with a LEGAL REVIEW note. Hub template: optional review notes on guide sections and FAQ answers |
+| Article corrections | The divorce process article (old rules and the $865 fee, D-02) and the Melbourne separation checklist (reconciliation) corrected in the import step (`scripts/lib/article-fixes.mjs`); notes on staging. Article template shows `reviewNotes` |
+| D-12 | Both mediation articles link to `/sydney/mediation/` with "family law mediation in Sydney" |
 | Uploaded files | The prototype and copy draft are in `export/`. Three hand-off files were not uploaded (see the Sydney divorce section, open item 4) |
 
 ### Left to do

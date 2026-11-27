@@ -5,6 +5,7 @@
  * Each entry either wraps words already in the article (`wrap`), or inserts one new paragraph
  * after the paragraph that starts with `after` (`insert`, for articles without the words).
  * Links use route tokens ("route:<key>"), resolved through the routes file (D-25).
+ * An inserted sentence is new copy, so it gets a CHECK note, shown at the top of the article on staging.
  * Applying an entry twice changes nothing. If an entry can no longer be placed (the article
  * changed in WordPress), it is reported, never guessed.
  */
@@ -28,13 +29,31 @@ export const ADDED_LINKS = {
       insert: 'Our page for {link} explains how we help with the application and with everything a divorce leaves open.',
     },
   ],
+
+  // D-12: both mediation articles link to /sydney/mediation/ with the anchor "family law mediation in Sydney".
+  'role-of-the-mediator': [
+    {
+      to: 'sydneyMediation', anchor: 'family law mediation in Sydney',
+      after: 'When discussions stall, you may also find that a family mediator NSW',
+      insert: 'Our page on {link} explains how mediation works with our Sydney team, and what it involves.',
+    },
+  ],
+  'how-to-prepare-for-mediation': [
+    {
+      to: 'sydneyMediation', anchor: 'family law mediation in Sydney',
+      after: 'If no agreement is reached, you may explore other options.',
+      insert: 'Our page on {link} explains how mediation works with our Sydney team, and what it involves.',
+    },
+  ],
 };
 
-/** Returns { html, missed }: the article with its added links, and any entries that could not be placed. */
+/** Returns { html, missed, notes }: the article with its added links, entries that could not be placed, and notes on new sentences. */
 export function addLinks(slug, html) {
   const missed = [];
+  const notes = [];
   for (const e of ADDED_LINKS[slug] ?? []) {
     const link = `<a href="route:${e.to}">${e.anchor}</a>`;
+    if (e.insert) notes.push(`CHECK · Ben: the sentence "${e.insert.replace('{link}', e.anchor)}" is new, added so this article links to the ${e.to === 'sydneyMediation' ? 'Sydney mediation page (D-12)' : 'Sydney divorce page (D-58)'}.`);
     if (html.includes(link)) continue;
     if (e.wrap) {
       const i = html.indexOf(e.wrap);
@@ -49,5 +68,5 @@ export function addLinks(slug, html) {
       html = html.slice(0, at) + `\n<p>${e.insert.replace('{link}', link)}</p>` + html.slice(at);
     }
   }
-  return { html, missed };
+  return { html, missed, notes };
 }
