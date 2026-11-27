@@ -19,6 +19,7 @@
  * For prototypes exported as a bundle (homepage, child custody) pass the browser-rendered
  * HTML instead: see tools/render-bundled-prototype.cjs.
  */
+import { fileURLToPath } from 'node:url';
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { parse } from 'parse5';
@@ -34,7 +35,7 @@ const keepNotes = rest.includes('--notes');
 let usesNotes = false;
 if (!input || !pageDir) { console.error('usage: convert-prototype.mjs <html> <page-folder> --office sydney|melbourne'); process.exit(1); }
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 const outDir = `${root}src/site/pages/${pageDir}`;
 const imgDir = `${root}public/images`;
 mkdirSync(outDir, { recursive: true }); mkdirSync(imgDir, { recursive: true });

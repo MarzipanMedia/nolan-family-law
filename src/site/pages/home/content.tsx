@@ -361,7 +361,7 @@ export function Content() {
             <p style={{ flex: "1 1 0%", fontSize: "16px", lineHeight: "1.65", color: "#4A5A66", margin: "0px 0px 24px" }}>
               {"Clear, compassionate legal advice to help you navigate separation and divorce with confidence."}
             </p>
-            {/* Two links (Ben, 27 Nov; D-58): the hub, and the divorce page with the anchor "Divorce lawyers in Sydney". */}
+            {/* Three links (Ben, 27 Nov; D-58, D-60): the hub, the divorce page with the anchor "Divorce lawyers in Sydney", and the de facto page with the anchor "De facto relationship lawyers in Sydney". */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "10px" }}>
               <a href={url("sydneyHub")} style={{ fontSize: "16px", fontWeight: "600", display: "inline-flex", gap: "8px" }}>
                 {"Learn more "}
@@ -371,6 +371,12 @@ export function Content() {
               </a>
               <a href={url("sydneyDivorce")} style={{ fontSize: "16px", fontWeight: "600", display: "inline-flex", gap: "8px" }}>
                 {"Divorce lawyers in Sydney "}
+                <span data-arrow="true" style={{ display: "inline-block", transition: "transform 200ms cubic-bezier(0.23, 1, 0.32, 1)" }}>
+                  {"→"}
+                </span>
+              </a>
+              <a href={url("sydneyDeFacto")} style={{ fontSize: "16px", fontWeight: "600", display: "inline-flex", gap: "8px" }}>
+                {"De facto relationship lawyers in Sydney "}
                 <span data-arrow="true" style={{ display: "inline-block", transition: "transform 200ms cubic-bezier(0.23, 1, 0.32, 1)" }}>
                   {"→"}
                 </span>
