@@ -1,0 +1,36 @@
+/**
+ * Which page is served for each route key. A route in the routes file becomes 'live' once it
+ * has an entry here (designed pages) or imported content (articles and profiles).
+ */
+import type { StaticRouteKey } from '@/config/routes';
+import type { PageModule } from './types';
+import { home } from './pages/home/page';
+import { sydneyChildCustody } from './pages/sydney-child-custody/page';
+import { melbourneHub, sydneyHub } from './city-hubs';
+import { sydneyMediation } from './pages/sydney-mediation/page';
+import { sydneyProperty } from './pages/sydney-property/page';
+import { team } from './pages/team/page';
+import { resources } from './pages/resources/page';
+import { contact } from './pages/contact/page';
+import { melbourneMediation } from './pages/melbourne-mediation/page';
+import { melbournePrenups } from './pages/melbourne-prenups/page';
+import { sydneyPrenups } from './pages/sydney-prenups/page';
+import { sydneyDivorce } from './pages/sydney-divorce/page';
+import { sydneyDeFacto } from './pages/sydney-de-facto/page';
+
+export const pages: Partial<Record<StaticRouteKey, PageModule>> = {
+  home,
+  sydneyChildCustody,
+  melbourneHub,
+  sydneyHub,
+  sydneyMediation,
+  sydneyProperty,
+  team,
+  resources,
+  contact,
+  melbourneMediation,
+  melbournePrenups,
+  sydneyPrenups,
+  sydneyDivorce,
+  sydneyDeFacto,
+};

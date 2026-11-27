@@ -1,0 +1,622 @@
+[
+  {
+    "id": "D-62",
+    "num": 62,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 27 Nov",
+    "summary": "\"De facto\" stays two words in copy, headings and titles, with \"defacto\" used once in the copy and once in schema.",
+    "detail": "The live site writes \"de facto\" everywhere (the one-word form appears only in the property pages' anchor #married-vs-defacto). On the new page \"defacto\" appears once in the first sentence of #status (\"De facto, sometimes written defacto, ...\") and in the Service schema's alternateName.",
+    "evidence": "About 3,100 impressions a year on page 8287 use \"defacto\"; \"defacto lawyers sydney\" is the homepage's best de facto position (4.7)."
+  },
+  {
+    "id": "D-61",
+    "num": 61,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 27 Nov (toggle hidden until the article is live)",
+    "summary": "The Sydney de facto page carries a location toggle to the Melbourne de facto article, not to the Melbourne hub, and only once that article is live.",
+    "detail": "The toggle is the hubs' existing \"In Victoria instead?\" card, pointing to articleDeFactoVictoria (/de-facto-property-rights-victoria/, D-28, from WordPress draft 15996). The build renders it only when that route exists, so it never points at a 404. The page doesn't target Melbourne terms.",
+    "evidence": "About 730 impressions a year on page 8287 are Victorian searches (\"de facto lawyer clayton\", \"noble park\", \"frankston\", \"narre warren\", \"de facto lawyers melbourne\" and others) at positions 25 to 75, with no clicks. They have a better home in the Victorian article."
+  },
+  {
+    "id": "D-60",
+    "num": 60,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, copy approved and built 27 Nov (legal review by Tash still open)",
+    "summary": "/sydney/de-facto-relationship-lawyer/ owns the de facto terms; the Sydney hub owns separation and the time limits; the prenup page owns agreements for couples moving in; the homepage keeps the brand and \"family lawyers sydney\".",
+    "detail": "The page targets \"de facto lawyer(s) sydney\", \"de facto relationship lawyer(s) sydney\", \"de facto separation lawyer sydney\", \"defacto lawyers sydney\", and how de facto status, eligibility, property and maintenance work in NSW. It does not cover separation in general or the time limits in detail; it links to the hub for those (/sydney/family-law/#timelimits), to /sydney/property-settlement/ for the property process and to /sydney/prenuptial-agreements/#defacto for couples moving in together. The hub keeps its short #defacto section, which already links here. Title \"De Facto Relationship Lawyers Sydney | Nolan Family Law\" (55 characters), H1 \"De facto relationship lawyers in Sydney\" (Ben, 27 Nov). Tash Nolan is author and reviewedBy, with Jessica Swain as the second lawyer card, as on the divorce page (Ben, 27 Nov). The homepage \"Separation & Divorce\" card gains a link, \"De facto relationship lawyers in Sydney →\", beside the hub and divorce links; the homepage title and H1 are unchanged (D-33). /the-family-court-and-de-facto-relationships/ links back with the anchor \"de facto relationship lawyers in Sydney\" (D-12 pattern). Copy: sydney-de-facto-draft-v1.md. Prototype: sydney-de-facto-relationship-lawyer.html.",
+    "evidence": ""
+  },
+  {
+    "id": "D-59",
+    "num": 59,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 27 Nov (legal review by Tash still open)",
+    "summary": "Divorce copy follows the law from 10 June 2025.",
+    "detail": "The Family Law Amendment Act 2024 repealed section 44(1B) and (1C), so couples married less than two years no longer need a counselling certificate or the court's permission, and amended section 98A, so a sole applicant no longer has to attend the hearing just because there are children under 18. The hand-off brief, page 8327, draft 16051 and both city hubs described the old rules.",
+    "evidence": ""
+  },
+  {
+    "id": "D-58",
+    "num": 58,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 27 Nov",
+    "summary": "The Sydney divorce page (/sydney/divorce-lawyer/) owns \"divorce lawyers sydney\" and the divorce application; the hub keeps separation.",
+    "detail": "Title \"Divorce Lawyers Sydney | Nolan Family Law & Mediation\" (52 characters), H1 \"Divorce lawyers in Sydney\". Tash Nolan is author and reviewedBy, as on the property and prenup pages, with Jessica Swain as the second lawyer card (Ben, 27 Nov). The homepage \"Separation & Divorce\" card keeps its \"Learn more\" link to the Sydney hub and gains a second link here, \"Divorce lawyers in Sydney\"; the homepage title and H1 are unchanged (D-33). The three divorce articles (/the-divorce-process-explained/, /your-essential-checklist-when-getting-a-divorce/, /11-questions-to-ask-your-divorce-lawyer-at-your-first-meeting/) keep their URLs and each links here with the anchor \"divorce lawyers in Sydney\" (D-12 pattern), added in the import step so it survives a re-import. The page keeps time limits, separation, property and parenting short and links out, so it and the hub do not compete. /divorce-lawyer/ (WP 8327) and /divorce/ each reach the page in one 301 (already in REDIRECT-MAP.csv, option B). Copy: sydney-divorce-draft-v1.md, word for word. Prototype: sydney-divorce-lawyer.html.",
+    "evidence": ""
+  },
+  {
+    "id": "D-57",
+    "num": 57,
+    "date": "23 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 23 Nov",
+    "summary": "The Sydney prenup page (/sydney/prenuptial-agreements/) is a NSW rewrite with its own title, and Tash is author and reviewer.",
+    "detail": "Title \"Prenup Lawyers Sydney | Prenuptial Agreements & BFAs | Nolan\" (60 characters), H1 \"Prenups and binding financial agreements in Sydney\". The homepage prenup card links to the page with the anchor \"prenup lawyers in Sydney\"; the homepage title is unchanged. Tash Nolan is author and reviewedBy, as on the property page. Experience claims come only from her live profile (/our-team/tash-nolan/, read 23 Nov); Chad and Tash review the whole page, and settle the open claims, before launch. Copy: sydney-prenup-draft-v1.md (in this folder), word for word. Prototype: prenuptial-agreements-sydney.html. Hero image (Ben, 23 Nov, in the prototype's notes): a photograph of a Sydney couple aged about 45 or over replaces Tash's portrait in the hero. This overrides the draft's \"no stock imagery of couples or rings\", so it must be a real or commissioned photograph, not stock, and Chad should confirm it. Until it arrives the hero is a marked placeholder, and a production build refuses to run. Tash's portrait stays in the mid-page prompt and the lawyer card.",
+    "evidence": ""
+  },
+  {
+    "id": "D-56",
+    "num": 56,
+    "date": "22 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "The summary box at the top of a service page is called \"Quick answer\", everywhere.",
+    "detail": "Not \"Quick Answer for AI\". It is the on-screen label on the hubs, property, child custody, mediation and Melbourne prenup pages, and the name to use in briefs, drafts and notes. The box's purpose (a short, quotable answer that AI search and Google can lift, D-11) is unchanged; only the name is settled.",
+    "evidence": "Every built page already labelled it \"Quick answer\"; only house-style notes said \"for AI\", which raised a check on the Melbourne prenup draft. That check is closed and its review notes removed."
+  },
+  {
+    "id": "D-55",
+    "num": 55,
+    "date": "22 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Melbourne prenuptial agreements approved and exported",
+    "detail": "(prenuptial-agreements-melbourne.html, Melbourne prenuptial agreements section in BUILD-NOTES.md). Copy is melbourne-prenup-draft-v2.md word for word, forked from the property settlement template with the Melbourne hub's header, accreditations, lead card, mid-page prompt, toggle and form. No new components. The header follows D-49: Melbourne service links, with \"Also in Sydney\" as the city switch. No rooms image (no Bourke Street photo on file).",
+    "evidence": ""
+  },
+  {
+    "id": "D-54",
+    "num": 54,
+    "date": "22 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "The Melbourne prenup page owns \"binding financial agreements melbourne\"; Tash reviews it.",
+    "detail": "Title \"Prenup Lawyers Melbourne | Binding Financial Agreements | Nolan\", H1 \"Prenups and binding financial agreements in Melbourne\". The hub keeps one routing card with the anchor \"binding financial agreements in Melbourne\". Anastasia is author, Tash is reviewer (answers Q-17). Experience copy centres on Anastasia (\"more than a decade\" until her years are confirmed). Copy draft: claude/melbourne-prenup-draft-v2.md in the project, laid out against the property settlement template.",
+    "evidence": ""
+  },
+  {
+    "id": "D-53",
+    "num": 53,
+    "date": "17 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Schema and trust signals state only what is true.",
+    "detail": "alumniOf is used for education only, never for court admission. The Law Institute of Victoria logo goes on Melbourne pages only once membership is confirmed (Q-16). Melbourne pages show Melbourne reviews first where the Google Business Profile has them.",
+    "evidence": "The outside review suggested alumniOf for admitted jurisdictions and the LIV logo. The Melbourne hub on staging shows national badges only (Doyle's, Law Council, Family Law Section, AACP)."
+  },
+  {
+    "id": "D-52",
+    "num": 52,
+    "date": "17 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "The Melbourne prenuptial agreements page is rewritten as a Victorian page, not taken from the March 2026 brief.",
+    "detail": "The \"Prenups\" Google Doc (23 Mar 2026) holds a Sydney and a Melbourne version that are the same text with the city swapped, and it is what staging currently shows for both cities. See HANDOFF-melbourne-prenup.md.",
+    "evidence": "89% shared wording. The live Melbourne page (/melbourne-family-law/prenuptial-agreement-melbourne/, page 15889) had 13,071 impressions and 26 clicks in 12 months, so it has the most to lose from duplication."
+  },
+  {
+    "id": "D-51",
+    "num": 51,
+    "date": "17 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided (thresholds confirmed by Ben, 22 Nov 2026)",
+    "summary": "No Melbourne page launches as a city-name swap of its Sydney twin.",
+    "detail": "The build runs a twin test: main content only, city and state names neutralised, five-word shingles, Jaccard overlap. Service pages must be at or under 30%. City hubs, which share template blocks, at or under 50%. A page over the line either gets rewritten or launches with a canonical to its twin, decided at the go/no-go.",
+    "evidence": ""
+  },
+  {
+    "id": "D-50",
+    "num": 50,
+    "date": "17 Nov 2026",
+    "who": "Ben",
+    "status": "Decided (extends D-27)",
+    "summary": "/melbourne/mediation/ exists at launch, in the generic inner-page template if it has not been designed by the freeze (D-22).",
+    "detail": "It is in the sitemap and in the Melbourne navigation.",
+    "evidence": "The URL returned 404 on staging on 17 Nov, while the Melbourne hub holds page-one positions for mediation searches (\"family mediation melbourne\" 2.2, \"family law mediation melbourne\" 3.4, about 12,100 impressions). With D-49 the Melbourne header needs a mediation destination."
+  },
+  {
+    "id": "D-49",
+    "num": 49,
+    "date": "17 Nov 2026",
+    "who": "Ben",
+    "status": "Decided (answers Melbourne hub open item 7)",
+    "summary": "The header navigation follows the city of the page.",
+    "detail": "On /melbourne/ pages (and Melbourne articles and Anastasia's profile) every service link in the header and mobile menu goes to the Melbourne page. On Sydney pages and pages with no city it goes to Sydney. A visible city switch links to the same service in the other city, or to that city's hub where there is no twin. Plain server-rendered links from the routes file. No location detection, no cookies, no redirects by IP.",
+    "evidence": "On staging, the Melbourne hub's header linked only to /sydney/ pages (children, property, separation and divorce, prenups, mediation). Melbourne services were reachable only from the footer and the hub body. Google crawls mostly from the United States, so a header that changes by visitor location would show it one version only."
+  },
+  {
+    "id": "D-48",
+    "num": 48,
+    "date": "17 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "D-23 stands after an outside review: the site moves to /sydney/ and /melbourne/ at launch.",
+    "detail": "The review proposed keeping Sydney services at the root and putting Melbourne under /locations/melbourne/.... Not adopted.",
+    "evidence": "Tested on staging (nolan-family-law.vercel.app) on 17 Nov. Every old service URL tried reached its new home in one hop, including /melbourne-family-law/, /property-settlements/ and /prenuptial-agreements/. The moved pages earn about 5% of Google clicks; the homepage and profiles (about 80%) do not move. The proposed alternative would still move every Melbourne page, adds a level of depth, and makes Melbourne a branch of a Sydney site. The fallback in D-23 (URL_MODE=A if the redirect test is not at 100% on 11 Dec) is unchanged."
+  },
+  {
+    "id": "D-47",
+    "num": 47,
+    "date": "14 Nov 2026",
+    "who": "Claude Code",
+    "status": "Decided, built (Ben to confirm points 3 and 4)",
+    "summary": "The city hub template is now a real, shared template, and the Sydney hub is its second entry.",
+    "detail": "The Melbourne hub had been converted straight from its prototype into one page file, so there was nothing to reuse. The layout now lives once in src/site/templates/CityHubTemplate.tsx, and each city is one entry in src/site/city-hubs/ (melbourne.tsx, sydney.tsx). Guide sections are a per-city list, so Sydney's extra time limits section needs no template change. Melbourne was moved onto it and its visible text, links and layout were checked against the previous build: identical.",
+    "evidence": ""
+  },
+  {
+    "id": "D-46",
+    "num": 46,
+    "date": "14 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Sydney hub approved and exported",
+    "detail": "(sydney-family-law.html, Sydney hub section in BUILD-NOTES.md). De facto links follow REDIRECT-MAP.csv (/sydney/de-facto-relationship-lawyer/). The guides grid shows six Sydney articles at their current URLs.",
+    "evidence": ""
+  },
+  {
+    "id": "D-45",
+    "num": 45,
+    "date": "14 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Tash Nolan is author and reviewer on the Sydney hub; Jessica Swain is the second card. Tash's Doyle's wording is as Ben supplied:",
+    "detail": "Recommended Lawyer, Family & Divorce Lawyers – Sydney, since 2023; 2026 (fourth year): Leading Family & Divorce Lawyers – Sydney, Leading Parenting & Children's Matters, Leading Family Lawyers – High Net-Worth and Complex Financial Matters.",
+    "evidence": ""
+  },
+  {
+    "id": "D-44",
+    "num": 44,
+    "date": "14 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Parramatta appears on the Sydney hub only as a court registry",
+    "detail": "(the court section and one FAQ), not in the serving line or schema. There is no Parramatta office.",
+    "evidence": ""
+  },
+  {
+    "id": "D-43",
+    "num": 43,
+    "date": "14 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "The hub's divorce section is short and links to /sydney/divorce-lawyer/.",
+    "detail": "A new \"time limits after separation\" section takes the space instead.",
+    "evidence": "The homepage holds \"divorce lawyer(s) sydney\" at 2.5 to 3.3 (38,700 impressions), and /sydney/divorce-lawyer/ is the divorce page (D-24)."
+  },
+  {
+    "id": "D-42",
+    "num": 42,
+    "date": "14 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "DESIGN.md v2.0 is the design source for the Sydney hub, following the Melbourne export, not the design-system artifact attached to the Claude Design project.",
+    "detail": "Confirms D-04.",
+    "evidence": ""
+  },
+  {
+    "id": "D-41",
+    "num": 41,
+    "date": "14 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "The Sydney hub leads with separation. Title \"Separation Lawyers Sydney | Nolan Family Law & Mediation\", H1 \"Separation lawyers in Sydney\".",
+    "detail": "\"Family lawyers sydney\" and the brand stay with the homepage.",
+    "evidence": "Sydney hub baseline above. The old pages' head terms are held better by the homepage (2.4 to 2.9). About 12,000 impressions a year of separation searches sit at positions 4 to 5 on the homepage and earn about one click."
+  },
+  {
+    "id": "D-40",
+    "num": 40,
+    "date": "12 Nov 2026",
+    "who": "Claude Code",
+    "status": "Pending Ben",
+    "summary": "Three small calls made during the build, each easy to reverse:",
+    "detail": "(1) child custody: \"We have helped hundreds of Sydney families\" softened to \"We help Sydney families\" until verified; (2) the enquiry form asks for a phone number or an email as well as a name; (3) the homepage meta description is new: \"Doyle's Guide recognised family lawyers in Sydney and Melbourne. Clear, practical advice on divorce, parenting, property settlement and mediation.\"",
+    "evidence": "BUILD-NOTES child custody open item 2 and the property page's rule for the same claim; an enquiry with no contact detail cannot be answered; the live description says \"specialists\" (D-05)."
+  },
+  {
+    "id": "D-39",
+    "num": 39,
+    "date": "12 Nov 2026",
+    "who": "Claude Code (follows from D-22)",
+    "status": "Decided, built",
+    "summary": "Every page that exists on WordPress today is imported as a carry-over page and served at its final URL in the generic inner-page template until its design is built.",
+    "detail": "A designed page replaces it in place by being added to src/site/registry.ts. Our people, Resources and Contact are generated generic pages for now. This is D-22's safety net built on day one, so the redirect test can reach 100% without waiting for designs.",
+    "evidence": "After the import, 82 URLs are live locally and the redirect test's only failures are three pages with no content anywhere yet (/fees/, /disclaimer/, /melbourne/mediation/)."
+  },
+  {
+    "id": "D-38",
+    "num": 38,
+    "date": "12 Nov 2026",
+    "who": "Ben and Claude Code",
+    "status": "Decided",
+    "summary": "Tracking names.",
+    "detail": "Phone taps push call_click (the GA4 baseline name, not phone_call_click from the older call brief) with office, click_location and cta_position. A sent enquiry pushes enquiry_submit with the topic only, never field values, and shows the success state in the page. /thanks-enquiry/ stays alive for /lp/. The older brief's sticky mobile call bar is superseded by D-30.",
+    "evidence": ""
+  },
+  {
+    "id": "D-37",
+    "num": 37,
+    "date": "12 Nov 2026",
+    "who": "Ben and Claude Code",
+    "status": "Decided",
+    "summary": "The Google rating and review count are never written in the build, including in headings.",
+    "detail": "The homepage prototype's \"Rated 4.9 out of 5 from 155 Google reviews\" and DESIGN.md's \"show the 4.9 rating\" become live values. If Google is unavailable, the page shows no number.",
+    "evidence": ""
+  },
+  {
+    "id": "D-36",
+    "num": 36,
+    "date": "12 Nov 2026",
+    "who": "Ben and Claude Code",
+    "status": "Decided",
+    "summary": "Redirects are resolved in one place, as a single 301.",
+    "detail": "One piece of middleware, generated from REDIRECT-MAP.csv, resolves host, trailing slash and path together. The build fails if a redirect target is not a real route. Known limit, to confirm on staging: Vercel upgrades http:// to https:// itself before the site sees the request, so an http:// URL may take two hops. If confirmed, this is accepted (every URL Google has indexed is https://).",
+    "evidence": ""
+  },
+  {
+    "id": "D-35",
+    "num": 35,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided (answers Q-5)",
+    "summary": "Articles and profiles are imported once from WordPress into the repo.",
+    "detail": "A script reads the WordPress content API, rewrites internal links to launch URLs (D-25) and copies uploads to the same /wp-content/uploads/ paths. It can be re-run until the 9 December freeze. WordPress is not a content source after launch.",
+    "evidence": ""
+  },
+  {
+    "id": "D-34",
+    "num": 34,
+    "date": "12 Nov 2026",
+    "who": "Ben and Claude Code",
+    "status": "Decided",
+    "summary": "The build is Next.js on Vercel, in the nolan-family-law GitHub repo.",
+    "detail": "Pages are pre-rendered. Styling is plain CSS from the DESIGN.md tokens (the prototypes are hand-written CSS). Fonts are self-hosted. export/, mediation-assets/ and melbourne-assets/ stay in the repo as reference and are never deployed. The September false start is parked in _archive/.",
+    "evidence": "Build plan agreed 12 Nov."
+  },
+  {
+    "id": "D-33",
+    "num": 33,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided (revisit in January)",
+    "summary": "The homepage keeps the live title and H1 word for word.",
+    "detail": "Title: \"Doyles-Recommended Family Lawyers Sydney | Mediation Service\". H1: \"Nolan Family Lawyers & Mediation is an award-winning family law firm in Sydney.\" The H1 is set as a smaller line above the prototype's headline, \"Navigating family change with complete clarity.\", which stays as the large display line but is not the H1. Both are visible. This applies D-17; the homepage prototype had changed both.",
+    "evidence": "The homepage earns 48% of Google clicks and holds \"family lawyers sydney\" at 1.7 to 2.6. The prototype's title and H1 dropped \"family lawyers\", \"Sydney\" and \"mediation\". Design, platform and URLs already change at launch, so the title and H1 are held steady."
+  },
+  {
+    "id": "D-32",
+    "num": 32,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Melbourne hub approved and exported",
+    "detail": "(melbourne-family-law.html, Melbourne hub and City hub template sections in BUILD-NOTES.md). Title \"Family Lawyers & Mediation Melbourne | Nolan Family Law\", H1 \"Family lawyers and mediation in Melbourne\", chosen to keep the page-one mediation rankings while lifting the head terms off page two (baseline above).",
+    "evidence": ""
+  },
+  {
+    "id": "D-31",
+    "num": 31,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Long pages get one mid-page prompt, no more.",
+    "detail": "A light card halfway down the guide (\"Not sure how this applies to you?\", the primary button and the local phone number), not a second navy band. Its links carry data-cta-position=\"mid\". First used on the Melbourne hub, and part of the city hub template.",
+    "evidence": "On the Melbourne hub there were about 8,000px between the hero buttons and the contact band on desktop, with nowhere to act in between. One prompt helps; more would feel like being chased, which is the wrong tone for readers on a hard day."
+  },
+  {
+    "id": "D-30",
+    "num": 30,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "The local office phone number leads in the header on every page, from the office config.",
+    "detail": "At 1321px and wider, a slim strip above the sticky header shows the local office and number first and the other city second. From 901 to 1320px, a phone link sits beside \"Talk to us\". On phones, a \"Call\" button sits beside Menu. Melbourne pages lead with (03) 9088 8889, Sydney pages with (02) 8014 5885 (D-08), and pages with no city with Sydney first. First built on the Melbourne hub (the city hub template), then carried to every page.",
+    "evidence": "Calls are the firm's main enquiry route (80+ a month in August, 40 to 50 in early November, firm's count), and GA4 call_click is a baseline measure (Aug 38, Sep 17, Oct 18). The header previously had no number at all, and on phones the number was one tap away in the menu. The number did not fit inline beside the nav at 1321 to 1440px (90px overflow, tested), hence the strip."
+  },
+  {
+    "id": "D-29",
+    "num": 29,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "WordPress draft 15999 (the duplicate spousal maintenance draft) goes in the bin once its earning-capacity section has been merged into 15998.",
+    "detail": "It's a draft, so nothing public changes.",
+    "evidence": ""
+  },
+  {
+    "id": "D-28",
+    "num": 28,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "All four Melbourne drafts are reworked and published as Melbourne articles linked from the hub:",
+    "detail": "de facto property rights in Victoria (15996), separation vs divorce in Victoria (15994), spousal maintenance in Melbourne (15998, absorbing 15999's earning-capacity section) and family violence and property settlements in Victoria (16001). Before publishing, each is updated for Anastasia as Partner (D-26), drops the office level (Q-4), is brought in line with the Family Law Amendment Acts of 2023 and 2024, and goes to Tash for legal review. The reworked articles go into the new Claude Code build (hosted on Vercel) with the other imported articles at launch, not onto the old WordPress site. WordPress is only the source of the draft text (see Q-5).",
+    "evidence": ""
+  },
+  {
+    "id": "D-27",
+    "num": 27,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided (answers Q-7)",
+    "summary": "The Melbourne office offers mediation.",
+    "detail": "On the Melbourne hub, mediation is a main route card, and a Melbourne mediation page follows at /melbourne/mediation/ (added to REDIRECT-MAP.csv; not yet designed). The hub keeps \"& Mediation\" in its title.",
+    "evidence": "The Melbourne page already ranks on page one for about 12,100 impressions of mediation searches (\"family mediation melbourne\" position 2.2, \"family law mediation melbourne\" 3.4), while the live page's mediation card says \"coming soon\"."
+  },
+  {
+    "id": "D-26",
+    "num": 26,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Anastasia Simes's title is Partner",
+    "detail": "everywhere: the Melbourne hub, her Person schema, the Melbourne drafts and the profile. \"Special Counsel\" in the older notes and the five Melbourne drafts is out of date.",
+    "evidence": "Her live profile (page 9499) says Partner; Ben confirmed it."
+  },
+  {
+    "id": "D-25",
+    "num": 25,
+    "date": "12 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "One routes file is the only place a URL is written.",
+    "detail": "Nav, footer, internal links, breadcrumbs, canonicals, schema @ids, the sitemap and the redirects are all generated from it, with URL_MODE=B as the launch setting. Links inside the 39 imported articles and the profiles are rewritten to the new URLs during import, so no page on the new site links through a redirect.",
+    "evidence": "The prototypes currently disagree. The child custody and mediation prototypes link to /sydney/... paths, while the property settlement prototype uses today's URLs (its build notes, open item 14)."
+  },
+  {
+    "id": "D-24",
+    "num": 24,
+    "date": "12 Nov 2026",
+    "who": "Ben (follows from D-23)",
+    "status": "Decided",
+    "summary": "The Sydney hub is /sydney/family-law/",
+    "detail": "(\"Separation and divorce\" in the nav). /family-lawyer/ (22,900 impressions in 12 months) and /family-law-services/ (16,000 impressions) both 301 to it. /divorce-lawyer/ stays a separate service page at /sydney/divorce-lawyer/. This answers Q-2.",
+    "evidence": ""
+  },
+  {
+    "id": "D-23",
+    "num": 23,
+    "date": "12 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Move to the /sydney/ and /melbourne/ structure (option B) in one hit on launch day, 15 December. No later or staggered URL changes.",
+    "detail": "The homepage, team profiles, articles, About, Contact, Fees and the legal pages keep their URLs. Each moved page gets exactly one 301 from every old URL it has had (see REDIRECT-MAP.csv, option B columns).",
+    "evidence": ""
+  },
+  {
+    "id": "D-22",
+    "num": 22,
+    "date": "10 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided (recommended)",
+    "summary": "Protect the 15 December date by trimming scope, not by moving the date.",
+    "detail": "Any page not designed by the 9 December freeze goes live in the generic inner-page template at its final URL, and is redesigned in place in January and February. Changing a page's design and copy at the same URL is low risk. A late-January launch would land in peak season, so it becomes a last resort, used only if the redirect tests, tracking or forms fail.",
+    "evidence": ""
+  },
+  {
+    "id": "D-21",
+    "num": 21,
+    "date": "10 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Team profiles keep their exact URLs under both URL options",
+    "detail": ", including the root-level ones (/kate-frost-riskalla/, /samantha-lewis/, /kim-ford/ and others).",
+    "evidence": "The eight root-level profiles earned about 470 clicks in 12 months. A tidier path isn't worth the risk."
+  },
+  {
+    "id": "D-20",
+    "num": 20,
+    "date": "10 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Keep this decision log, and check it before every page and every build step.",
+    "detail": "",
+    "evidence": "Ben, to avoid drift and to support the case study."
+  },
+  {
+    "id": "D-19",
+    "num": 19,
+    "date": "10 Nov 2026",
+    "who": "Ben",
+    "status": "Decided 12 Nov 2026: option B, in one hit at launch (see D-23)",
+    "summary": "URL structure: decide once, and only change URLs on 15 December or not at all. No staggered or later move.",
+    "detail": "Option A keeps today's URLs (25 redirects for legacy and broken URLs). Option B moves the service pages to /sydney/... and /melbourne/... (30 single-hop 301s); team profiles stay where they are under both options.",
+    "evidence": "- January is Nolan's busiest period, and it doesn't ease off. Clicks went from 327 in December 2025 to 493 in January 2026 (+51%), then held at 475 to 564 a month through to October. December is the quietest month of the year, which makes mid-December the best window for any disruption."
+  },
+  {
+    "id": "D-18",
+    "num": 18,
+    "date": "10 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Redirects are built into the project. No URL that Google knows about will 404 at launch.",
+    "detail": "REDIRECT-MAP.csv lists all 115 known URLs with their launch treatment, and the build tests every one before launch.",
+    "evidence": "104 live or historic URLs found (sitemaps plus 12 months of Search Console). 10 already redirect, one wrongly (/our-team/our-team/ goes to a profile), and 3 return 404 today, including a divorce checklist PDF Google still sends people to."
+  },
+  {
+    "id": "D-17",
+    "num": 17,
+    "date": "10 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Protecting the homepage and the team profiles is the top launch priority.",
+    "detail": "The homepage's title, H1 and firm-level signals carry over and are checked by hand. Every profile keeps its exact URL (including the root-level ones such as /kate-frost-riskalla/), its name in the title, and its Person schema.",
+    "evidence": "Together they earn about 80% of the site's Google clicks: homepage 48%, profiles 32% (Aug to Oct 2026). (Corrected 10 Nov: an earlier figure of 83% for the homepage alone came from a filtered list.)"
+  },
+  {
+    "id": "D-16",
+    "num": 16,
+    "date": "10 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Launch Tuesday 15 Dec 2026, go/no-go Friday 11 Dec, content freeze Wednesday 9 Dec. Fallback Tuesday 19 Jan. No launch over the break.",
+    "detail": "",
+    "evidence": ""
+  },
+  {
+    "id": "D-15",
+    "num": 15,
+    "date": "10 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Build order: property settlement (Sydney) next, then the Melbourne hub (which sets the city hub template), then the Sydney hub and prenups.",
+    "detail": "",
+    "evidence": "\"property settlement lawyer\" fell from 8.3 to 31.6. The Sydney property page has about 27 impressions in three months; the homepage and the Melbourne page are taking its searches."
+  },
+  {
+    "id": "D-14",
+    "num": 14,
+    "date": "10 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Titles: Tash is Principal, Jessica is Partner.",
+    "detail": "The old mediation page said \"Director\" and \"Special Counsel\".",
+    "evidence": ""
+  },
+  {
+    "id": "D-13",
+    "num": 13,
+    "date": "10 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Tash Nolan (Principal) and Jessica Swain (Partner) are both Nationally Accredited Mediators and AIFLAM members. The site does not claim they can issue section 60I certificates.",
+    "detail": "",
+    "evidence": "Ben confirmed the accreditations. National mediator accreditation is not the same as Family Dispute Resolution practitioner registration."
+  },
+  {
+    "id": "D-12",
+    "num": 12,
+    "date": "8 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "The mediation page's two articles feed it, not compete with it.",
+    "detail": "It links to /role-of-the-mediator/ and /how-to-prepare-for-mediation/, and both should link back with \"family law mediation in Sydney\".",
+    "evidence": "\"Role of the mediator\" ranks for informational searches (position 5 for \"the mediator\"); the service page for commercial ones. No overlap."
+  },
+  {
+    "id": "D-11",
+    "num": 11,
+    "date": "8 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Build service pages for AI search as well as Google:",
+    "detail": "question-led H2s, a Quick Answer box at the top, an \"In short\" box under each section, 10 to 12 FAQs all in FAQPage schema, a reviewed-by byline, and Service and Person schema.",
+    "evidence": "Competitor review (Justice Family Lawyers, Marsdens, Segal) and the queries people use."
+  },
+  {
+    "id": "D-10",
+    "num": 10,
+    "date": "8 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided (URL part superseded by D-23: the page moves to /sydney/mediation/. Title and H1 stand)",
+    "summary": "Mediation page keeps /sydney-family-law-mediation/; its title leads with \"Family Mediation Sydney\" and its H1 with \"Family law mediation in Sydney\".",
+    "detail": "",
+    "evidence": "The URL has 15,400 impressions over 12 months. \"family mediation lawyer\" (461) and \"family mediation sydney\" (350) are searched more than \"family law mediation sydney\" (95)."
+  },
+  {
+    "id": "D-09",
+    "num": 9,
+    "date": "Nov 2026",
+    "who": "Ben and Chad",
+    "status": "Decided",
+    "summary": "Mediation is the firm's renewed focus.",
+    "detail": "The Sydney mediation page is the next page rebuilt after child custody.",
+    "evidence": "The firm is largely winning on core family law terms (\"family lawyers sydney\" at 1.7 to 2.6)."
+  },
+  {
+    "id": "D-08",
+    "num": 8,
+    "date": "8 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Sydney phone number is (02) 8014 5885",
+    "detail": ", checked against the live site and the Google Business Profile. In the new build it comes only from the office config.",
+    "evidence": ""
+  },
+  {
+    "id": "D-07",
+    "num": 7,
+    "date": "Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "Quick exit button removed from the whole site.",
+    "detail": "Not to be rebuilt. The child custody prototype still shows it and must be corrected in the build.",
+    "evidence": ""
+  },
+  {
+    "id": "D-06",
+    "num": 6,
+    "date": "3 Nov 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Pause on-page changes on the old site; put effort into the Google Business Profile, reviews and citations.",
+    "detail": "",
+    "evidence": "Organic traffic was flat. Most calls arrive off-site (GBP and brand search). Brand search fell from 291 to 180 impressions (Aug to Oct)."
+  },
+  {
+    "id": "D-05",
+    "num": 5,
+    "date": "4 Nov 2026",
+    "who": "Ben (DESIGN.md §7)",
+    "status": "Decided",
+    "summary": "Never \"specialist\" or \"Accredited Specialist\" in new copy.",
+    "detail": "Use \"experienced family lawyers\". Body copy says \"parenting arrangements\"; \"child custody\" stays in headings for search.",
+    "evidence": "Advertising compliance."
+  },
+  {
+    "id": "D-04",
+    "num": 4,
+    "date": "4 Nov 2026",
+    "who": "Ben",
+    "status": "Decided",
+    "summary": "DESIGN.md v2.0 (Terracotta) is the single source of truth for design.",
+    "detail": "It supersedes DESIGN.md v1.0, \"Nolan v5 DESIGN.md\" and the \"Nolan Family Law Design System\" artifact.",
+    "evidence": ""
+  },
+  {
+    "id": "D-03",
+    "num": 3,
+    "date": "28 Sep 2026",
+    "who": "Chad",
+    "status": "Decided",
+    "summary": "Homepage leads with \"how can we help you\", not a list of services.",
+    "detail": "Credibility markers near the top; a sticky header; prenups and BFAs added to the nav.",
+    "evidence": "Chad's review of the homepage design."
+  },
+  {
+    "id": "D-02",
+    "num": 2,
+    "date": "28 Sep 2026",
+    "who": "Chad",
+    "status": "Decided",
+    "summary": "No fixed fees or dollar figures anywhere.",
+    "detail": "Fee links open a conversation (\"Clear costs from day one\").",
+    "evidence": "The firm no longer offers fixed fees, mediation included."
+  },
+  {
+    "id": "D-01",
+    "num": 1,
+    "date": "9 Sep 2026",
+    "who": "Ben and Claude",
+    "status": "Decided",
+    "summary": "Fix the Sydney cannibalisation: one URL per topic.",
+    "detail": "Child custody consolidated to /child-custody-lawyer-sydney/ and property settlement to /property-settlement/, with 301s from /child-custody-lawyer/, /parenting-agreements/ and /property-settlements/.",
+    "evidence": "Three child custody pages and two property pages were competing, some with identical SEO titles (claude/sydney-cannibalization-audit.md)."
+  }
+]
