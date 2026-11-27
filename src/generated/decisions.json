@@ -1,5 +1,35 @@
 [
   {
+    "id": "D-62",
+    "num": 62,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 27 Nov",
+    "summary": "\"De facto\" stays two words in copy, headings and titles, with \"defacto\" used once in the copy and once in schema.",
+    "detail": "The live site writes \"de facto\" everywhere (the one-word form appears only in the property pages' anchor #married-vs-defacto). On the new page \"defacto\" appears once in the first sentence of #status (\"De facto, sometimes written defacto, ...\") and in the Service schema's alternateName.",
+    "evidence": "About 3,100 impressions a year on page 8287 use \"defacto\"; \"defacto lawyers sydney\" is the homepage's best de facto position (4.7)."
+  },
+  {
+    "id": "D-61",
+    "num": 61,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, built 27 Nov (toggle hidden until the article is live)",
+    "summary": "The Sydney de facto page carries a location toggle to the Melbourne de facto article, not to the Melbourne hub, and only once that article is live.",
+    "detail": "The toggle is the hubs' existing \"In Victoria instead?\" card, pointing to articleDeFactoVictoria (/de-facto-property-rights-victoria/, D-28, from WordPress draft 15996). The build renders it only when that route exists, so it never points at a 404. The page doesn't target Melbourne terms.",
+    "evidence": "About 730 impressions a year on page 8287 are Victorian searches (\"de facto lawyer clayton\", \"noble park\", \"frankston\", \"narre warren\", \"de facto lawyers melbourne\" and others) at positions 25 to 75, with no clicks. They have a better home in the Victorian article."
+  },
+  {
+    "id": "D-60",
+    "num": 60,
+    "date": "27 Nov 2026",
+    "who": "Ben",
+    "status": "Decided, copy approved and built 27 Nov (legal review by Tash still open)",
+    "summary": "/sydney/de-facto-relationship-lawyer/ owns the de facto terms; the Sydney hub owns separation and the time limits; the prenup page owns agreements for couples moving in; the homepage keeps the brand and \"family lawyers sydney\".",
+    "detail": "The page targets \"de facto lawyer(s) sydney\", \"de facto relationship lawyer(s) sydney\", \"de facto separation lawyer sydney\", \"defacto lawyers sydney\", and how de facto status, eligibility, property and maintenance work in NSW. It does not cover separation in general or the time limits in detail; it links to the hub for those (/sydney/family-law/#timelimits), to /sydney/property-settlement/ for the property process and to /sydney/prenuptial-agreements/#defacto for couples moving in together. The hub keeps its short #defacto section, which already links here. Title \"De Facto Relationship Lawyers Sydney | Nolan Family Law\" (55 characters), H1 \"De facto relationship lawyers in Sydney\" (Ben, 27 Nov). Tash Nolan is author and reviewedBy, with Jessica Swain as the second lawyer card, as on the divorce page (Ben, 27 Nov). The homepage \"Separation & Divorce\" card gains a link, \"De facto relationship lawyers in Sydney →\", beside the hub and divorce links; the homepage title and H1 are unchanged (D-33). /the-family-court-and-de-facto-relationships/ links back with the anchor \"de facto relationship lawyers in Sydney\" (D-12 pattern). Copy: sydney-de-facto-draft-v1.md. Prototype: sydney-de-facto-relationship-lawyer.html.",
+    "evidence": ""
+  },
+  {
     "id": "D-59",
     "num": 59,
     "date": "27 Nov 2026",

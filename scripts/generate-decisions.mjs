@@ -6,9 +6,10 @@
  * line, the rest of that paragraph, and any *Evidence:* line. Markdown is turned into plain text.
  * DECISIONS.md stays the one place a decision is written; this file is only a copy for display.
  */
+import { fileURLToPath } from 'node:url';
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 const source = readFileSync(root + 'export/DECISIONS.md', 'utf8');
 
 const plain = (s) => s
