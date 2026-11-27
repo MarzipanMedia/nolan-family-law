@@ -52,6 +52,7 @@ const NOTES: Partial<Record<RouteKey, { note: string; who: Reviewer[] }>> = {
   sydneyMediation: { note: 'Legal review notes are open. Please check the description of how mediation works at Nolan.', who: ['Tash'] },
   melbourneHub: { note: 'The new Melbourne landing page. Legal points are flagged for Tash, and the Melbourne mediator still needs confirming (see the questions below).', who: ['Tash', 'Chad'] },
   sydneyPrenups: { note: 'New page for Sydney prenups and binding financial agreements, written for NSW. Tash is named as author and reviewer. Yellow notes on the page mark the legal points to check, plus Tash\'s title (Principal or Director) and years of practice.', who: ['Tash', 'Chad'] },
+  sydneyDivorce: { note: 'New page for Sydney divorce, written on the law as it has stood since 10 June 2025. Tash is named as author and reviewer, with Jessica beside her. Yellow notes on the page mark the legal points to check.', who: ['Tash', 'Chad'] },
   melbournePrenups: { note: 'Anastasia is named as author and Tash as legal reviewer. Yellow notes on the page mark the points to check.', who: ['Tash'] },
   melbourneMediation: { note: 'A simple page for launch, to be fully designed in January. It carries a note until we know who mediates in Melbourne.', who: ['Chad'] },
   team: { note: 'The Our People page. Please check everyone is listed, in the right order, with the right titles.', who: ['Chad'] },

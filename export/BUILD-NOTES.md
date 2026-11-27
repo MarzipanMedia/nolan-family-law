@@ -1,5 +1,5 @@
 # Nolan Family Law & Mediation — Build notes
-**4 Nov 2026, updated 23 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template), Sydney hub, Melbourne prenuptial agreements, Melbourne mediation (stub), Sydney prenuptial agreements · Design rules: `DESIGN.md` v2.0**
+**4 Nov 2026, updated 27 Nov 2026 · Pages: Homepage, Child custody (Sydney), Mediation (Sydney), Property settlement (Sydney), Melbourne hub (the city hub template), Sydney hub, Melbourne prenuptial agreements, Melbourne mediation (stub), Sydney prenuptial agreements, Sydney divorce · Design rules: `DESIGN.md` v2.0**
 
 > **URL structure (decided 12 Nov 2026, D-23):** service pages move to `/sydney/...` and `/melbourne/...` in one hit at launch, with `URL_MODE=B` and the option B columns of `REDIRECT-MAP.csv`. If the redirect test isn't passing 100% at the go/no-go on 11 December, launch with `URL_MODE=A`. Every URL comes from one routes file (D-25). Where older notes below mention today's URLs for a moved page, the routes file wins.
 
@@ -25,6 +25,9 @@
 | `prenuptial-agreements-sydney.html` | Sydney prenuptial agreements, 23 Nov. See the Sydney prenuptial agreements section |
 | `sydney-prenup-draft-v1.md` | The approved copy for that page. The page follows it word for word |
 | `sydney-prenup-gsc-baseline.csv` | Search Console prenup-type queries for page 8427 and `/prenuptial-agreements/` (21 Nov 2025 to 20 Nov 2026), the page's baseline (D-57) |
+| `sydney-divorce-lawyer.html` | Sydney divorce, 27 Nov. See the Sydney divorce section. Add `?notes=0` to hide the review notes |
+| `sydney-divorce-draft-v1.md` | The approved copy for that page. The page follows it word for word |
+| `sydney-divorce-gsc-baseline.csv` | **Not yet uploaded.** Search Console baseline for divorce queries and page 8327 (27 Nov 2025 to 26 Nov 2026), the page's baseline (D-58) |
 
 Unless noted, the HTML prototypes are plain HTML with images inlined, and open offline. Uploaded hand-off folders and prompts are merged into this folder and removed once built; they stay in the git history.
 
@@ -488,6 +491,53 @@ As the draft: Hero · Breadcrumb and byline · Quick Answer · Accreditations ·
 
 ---
 
+## Sydney divorce: build notes
+**Built 27 Nov 2026 · Prototype: `sydney-divorce-lawyer.html` · Copy: `sydney-divorce-draft-v1.md` · Decisions D-58 and D-59**
+
+> The hand-off's own build notes section (`BUILD-NOTES-divorce-section.md`) and `DECISIONS-additions-divorce.md` were not in the upload. This section was written by Claude Code from the draft, the prototype and the build. Replace or merge it when those files arrive.
+
+Forked from the Sydney prenup page, with the Sydney header, accreditations, mid-page prompt and enquiry form, and the Sydney hub's second lawyer card for Jessica. **No new components.** No location toggle: there is no Melbourne divorce page. Written on the law from 10 June 2025 (D-59).
+
+### URL, title and meta
+| Item | Value |
+|---|---|
+| URL | `/sydney/divorce-lawyer/` (`sydneyDivorce` in the routes file). 301s from `/divorce-lawyer/` (WP 8327) and `/divorce/`, one hop each, already in `REDIRECT-MAP.csv` |
+| Title tag | `Divorce Lawyers Sydney \| Nolan Family Law & Mediation` (52 characters) |
+| Meta description | `Divorce ends a marriage but settles nothing else, and it starts a 12 month clock on property claims. Our Sydney family lawyers help you with both.` (146 characters) |
+| H1 | `Divorce lawyers in Sydney` |
+| Breadcrumb | Home / Sydney / Divorce (the routes file label is now "Divorce"). Byline: written and reviewed by Tash Nolan, Principal · updated November 2026 |
+| Homepage | The "Separation & Divorce" card keeps "Learn more" (to the hub) and gains "Divorce lawyers in Sydney →". Homepage title and H1 unchanged (D-33) |
+
+### Section map
+As the draft: Hero · Breadcrumb and byline · Quick answer · Accreditations · `#help` · guide (`#what`, `#eligible`, `#oneroof`, `#short`, `#apply`, mid-page prompt, `#children`, `#hearing`, `#clock`, `#lawyer`, `#how`) · Your lawyers (Tash, then Jessica) · Related reading · Rooms image · `#faq` (12) · `#book`.
+
+### Schema
+`WebPage` (Tash as author and `reviewedBy`, `dateModified` 2026-11-27) · `BreadcrumbList` (Home > Sydney > Divorce) · `LegalService` `/sydney/family-law/#office` (repeated, as on the other Sydney service pages) · `Service` "Divorce", alternateName "Divorce applications", provider the office `@id`, `areaServed` New South Wales · `Person` Tash (`/our-team/tash-nolan/#person`) · `Person` Jessica (`/our-team/jessica-swain/#person`, the Sydney mediation page's node) · `FAQPage` read from the visible answers. No `priceRange`, no `alumniOf`.
+
+### How it was built
+`tools/convert-prototype.mjs --notes`, then by hand: the shared `MidPrompt` (eyebrow "Every situation is different", topic divorce) and `CtaBand` with this page's four promises, six topics ("Applying for a divorce", "I've been served with a divorce application", "Property and money after separation", "Arrangements for our children", "Fees and how this works", "Something else") and three stages ("Separated 12 months or more", "Separated recently", "Just exploring"). Hero is the homepage's lobby photo (`lobby-of-25-bligh-street-sydney-b488661d.webp`); Tash is `images.tashSmall`; Jessica is `images.jessica` through `Picture`, as on the hub. The converter's three new copies of those photos were deleted. The trust ribbon is the footer's. All 20 review notes show on staging only.
+
+### Links added elsewhere
+- **Homepage:** second link on the "Separation & Divorce" card (above).
+- **Three articles** link here with the anchor "divorce lawyers in Sydney", from `scripts/lib/added-links.mjs`, which `npm run import` applies after cleaning each article (and warns if an article has changed so a link cannot be placed). The checklist article's existing words "experienced divorce lawyers in Sydney" became the link. The other two had no such words, so each gained one new sentence, after a paragraph near its end: "Our page for divorce lawyers in Sydney explains how we help with the application and with everything a divorce leaves open." **Ben to approve that sentence.**
+- **D-59 on the hubs:** see D-59. The city hub template gained optional review notes on guide sections (`notes`) and FAQ answers (`note`), using the existing `ReviewNote`, so each change carries its LEGAL REVIEW note.
+
+### Content and compliance decisions (do not undo)
+- Copy is `sydney-divorce-draft-v1.md` word for word (checked by script, every sentence present). The prototype adds short labels the draft did not give (fact-strip sub-lines, Quick answer heading, related reading heading and sub-lines); each has a CHECK note for Ben.
+- Current law only (D-59). No fees or figures (D-02), no "specialist" (D-05), no quick exit (D-07), no promised timeframes.
+- Jessica's card links her name, as the hub's second card does, rather than a separate "Read Jessica's profile" link (the draft's wording; the prototype follows the hub).
+
+### Testing done (27 Nov 2026, local build)
+1440, 390 and 320px: no overflow, one H1, valid JSON-LD (WebPage, BreadcrumbList, LegalService, Service, two Person, FAQPage), no console errors, all 103 reveal and clip elements appear; height within 105px of the prototype at 1440 (the prototype carries its own header and ribbon). The homepage, both hubs and the divorce process article pass the same check at all three widths. Twin test: no Melbourne twin; 3.8% against the Sydney hub, and the hubs pair is 47.5% after the D-59 changes (limit 50%). Nav check ok (85 pages). Redirect test: `/divorce-lawyer/` and `/divorce/` (with and without the slash, any case, query string kept) reach the page in one 301; the only failures are the known footer links to `/fees/` and `/disclaimer/`.
+
+### Open items before go-live
+1. **Tash (legal review):** every yellow LEGAL REVIEW note on the page, especially sections 39(3), 44(3), 48, 50, 55 and 55A, the one-roof affidavits, service periods and substituted service, rule 15.15 and section 98A, Succession Act section 13, and all 12 FAQ answers. Also the four D-59 notes on the hubs.
+2. **Ben, checks:** the new short labels; Jessica's wording; that the firm acts on simple divorce applications; the article sentence above; the Melbourne hub's rewritten "Do I have to go to court" answer; whether the two client videos from page 8327 come back.
+3. **`/the-divorce-process-explained/` still states the old rules and a filing fee** (D-59). It is in this page's related reading and links here, so it needs correcting before launch.
+4. The missing hand-off files: `BUILD-NOTES-divorce-section.md`, `DECISIONS-additions-divorce.md`, `sydney-divorce-gsc-baseline.csv`.
+
+---
+
 ## Redirects and URL safety: build notes
 **Added 10 Nov 2026 · Source: `REDIRECT-MAP.csv` · Decisions D-18 and D-19 in `DECISIONS.md`**
 
@@ -597,6 +647,15 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Uploaded folder | `export/Sydney Prenup/` merged into `export/` and removed. Its `DECISIONS.md` was the Claude Design copy; its one new entry is D-57 here |
 | Tidy | Removed duplicates and unused copies: the four CMYK room photos (the `-rgb` versions are used), the six badge source files and AIFLAM copy in `mediation-assets/` (optimised copies live in `public/`), an unused smaller copy of Anastasia's portrait, and a byte-identical copy of Jessica's photo (the mediation page now uses `jessica-swain-partner-400.webp`). All are in the git history |
 
+### Built (27 Nov 2026): Sydney divorce
+| Step | Status |
+|---|---|
+| Sydney divorce (D-58) | `/sydney/divorce-lawyer/`, replacing the carry-over. See the Sydney divorce section |
+| Homepage | "Separation & Divorce" card gains "Divorce lawyers in Sydney →"; "Learn more" still goes to the hub |
+| Articles | Three divorce articles link to the page with the anchor "divorce lawyers in Sydney", added in the import step (`scripts/lib/added-links.mjs`) |
+| D-59 | Counselling rule replaced on both hubs (body and FAQ); Melbourne attendance FAQ rewritten; each with a LEGAL REVIEW note. Hub template: optional review notes on guide sections and FAQ answers |
+| Uploaded files | The prototype and copy draft are in `export/`. Three hand-off files were not uploaded (see the Sydney divorce section, open item 4) |
+
 ### Left to do
 - **Two pages with no content yet:** `/fees/` and `/disclaimer/` (both linked from every footer). The redirect test fails on these until they exist. (`/melbourne/mediation/` was built 22 Nov as a stub; its designed version follows in January.)
 - **Four Melbourne articles (D-28):** their cards and inline links on the hub are hidden until each article is imported. They appear by themselves once it is.
@@ -627,6 +686,9 @@ How the build is organised is in the repo's `README.md`. Tracking set-up is in `
 | Sydney prenups | Tash's photos are `images.tashSmall`, not the prototype's silhouette | As the property page |
 | Sydney prenups | Mid-page prompt and consultation band are the shared components; the page's trust ribbon is the footer's | Reuse, don't fork |
 | Sydney prenups | The BFA article card links to its real URL from the routes file | The prototype guessed the slug |
+| Sydney divorce | Hero is the homepage's lobby photo file, not a new copy; Tash and Jessica use the shared photo files | One file per image |
+| Sydney divorce | Mid-page prompt and consultation band are the shared components; the page's trust ribbon is the footer's | Reuse, don't fork |
+| Sydney divorce | Jessica's card links her name, not "Read Jessica's profile" | The prototype follows the hub's second card |
 | All | `/our-people/`, `/privacy`, `/contact`, `/disclaimer`, `/collaborative-family-law/` in prototypes resolve through the routes file | D-25 |
 | All | Phone links use `tel:+61…`; footer note on pages with no city reads "This website is general information about family law…" | Office config; the prototypes only had NSW and Victoria versions |
 | Enquiry form | Requires a phone number or an email as well as a name | Otherwise the firm cannot reply. **Ben to confirm** |
